@@ -60,6 +60,28 @@ tibble(x = c(1,2,3,4,6),
   DT::datatable() #ROTATE
 ```
 
+---
+
+# group
+
+---
+
+`r chunk_reveal("group", break_type = 1)`
+
+```{r group, eval = F, echo = F}
+gapminder::gapminder %>%
+  group_by(country) %>% 
+  filter(year > 1990) %>% 
+  filter(continent == "Americas") %>% 
+  select(-continent) %>% 
+  gt::gt()
+```
+
+---
+
+
+
+
 
 ```{css, eval = TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 80%}
