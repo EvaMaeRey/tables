@@ -1,5 +1,5 @@
 ---
-title: "Flipbooking"
+title: "Table formatting!"
 subtitle: "With flipbookr and xaringan"
 author: "Gina Reynolds, December 2019"
 output:
@@ -24,7 +24,17 @@ library(tidyverse)
 ```
 
 
-`r chunk_reveal("tables", break_type = "rotate")`
+
+
+
+
+
+
+---
+
+
+
+`r chunk_reveal("tables", break_type = "rotate", title = "### Some of our formatting options")`
 
 ```{r tables, eval = F, echo = F}
 gapminder::gapminder %>% 
@@ -46,7 +56,7 @@ gapminder::gapminder %>%
 
 ---
 
-`r chunk_reveal("listcolumn", break_type = "rotate")`
+`r chunk_reveal("listcolumn", break_type = "rotate", title = "### What they do with the list column..." )`
 
 ```{r listcolumn, eval = F, echo = F}
 tibble(x = c(1,2,3,4,6),
@@ -66,7 +76,7 @@ tibble(x = c(1,2,3,4,6),
 
 ---
 
-`r chunk_reveal("group", break_type = 1)`
+`r chunk_reveal("group", break_type = 1, title = "### What they do with grouped data..." )`
 
 ```{r group, eval = F, echo = F}
 gapminder::gapminder %>%
@@ -77,9 +87,76 @@ gapminder::gapminder %>%
   gt::gt()
 ```
 
+
+
+---
+
+`r chunk_reveal("margins_table_tidy", title = "### using tidyverse 'verbs' to create pop count by continent in 2002 with percentages and totals")`
+
+
+
+```{r margins_table_tidy, include=FALSE}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  group_by(continent) %>% 
+  summarise(population = sum(pop)) %>% 
+  mutate(percent = 100 * population / 
+           sum(population)) ->
+base
+  
+base %>% 
+  summarise(percent = sum(percent), 
+            population = sum(population),
+            continent = "Totals") ->
+totals
+
+bind_rows(base, totals) %>% 
+  mutate(`Population (millions)` = population/1000000) %>% 
+  mutate(percent = round(percent, 2)) %>% 
+  rename(` ` = continent) %>% 
+  select(` `, `Population (millions)`, percent)
+```
+
+
+---
+
+# That was a lot of code... What other options do we have?
+
+
+---
+
+`r chunk_reveal("prop.table", title = "### What about the very classic table and prop.table?")`
+
+```{r prop.table, include = F}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  pull(continent) %>% 
+  table() %>% 
+  prop.table() %>% 
+  `*`(100) %>% 
+  round(1) %>% 
+  paste0("%")
+```
+
 ---
 
 
+```{r}
+library(gtsummary)
+
+
+
+```
+
+
+
+---
+
+
+We are working with maintainers of many of the R community’s most popular R packages for building tables, including Yihui Xie of DT, Rich Iannone of gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra. Many of these maintainers will help review submissions built with their packages.
+
+
+---
 
 
 
