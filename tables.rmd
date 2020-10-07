@@ -100,8 +100,7 @@ gapminder::gapminder %>%
   filter(year == 2002) %>% 
   group_by(continent) %>% 
   summarise(population = sum(pop)) %>% 
-  mutate(percent = 100 * population / 
-           sum(population)) ->
+  mutate(percent = 100 * round(prop.table(population), 3) ) ->
 base
   
 base %>% 
