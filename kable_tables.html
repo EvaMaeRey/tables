@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>knitr::kable Tables</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gina Reynolds - ⚔ made with xaringan" />
+    <link href="libs/remark-css-0.0.1/kunoichi.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# knitr::kable Tables
+## with kableExtra and formattable
+### Gina Reynolds - ⚔<br/>made with xaringan
+### 2019/03/05
+
+---
+
+
+
+```r
+library(flipbookr)
+```
+
+
+
+
+---
+
+
+count: false
+ 
+
+.panel1-kable-auto[
+
+```r
+*library(tidyverse)
+```
+]
+ 
+.panel2-kable-auto[
+
+```
+## ── Attaching packages ─────────────────────────────────────────────── tidyverse 1.3.0 ──
+```
+
+```
+## ✓ ggplot2 3.3.2     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ dplyr   1.0.2
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.6.2
+```
+
+```
+## Warning: package 'tibble' was built under R version 3.6.2
+```
+
+```
+## Warning: package 'dplyr' was built under R version 3.6.2
+```
+
+```
+## ── Conflicts ────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable-auto[
+
+```r
+library(tidyverse)
+*mtcars[1:5, 1:4]
+```
+]
+ 
+.panel2-kable-auto[
+
+```
+##                    mpg cyl disp  hp
+## Mazda RX4         21.0   6  160 110
+## Mazda RX4 Wag     21.0   6  160 110
+## Datsun 710        22.8   4  108  93
+## Hornet 4 Drive    21.4   6  258 110
+## Hornet Sportabout 18.7   8  360 175
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable-auto[
+
+```r
+library(tidyverse)
+mtcars[1:5, 1:4] %&gt;%
+* mutate(car = row.names(.))
+```
+]
+ 
+.panel2-kable-auto[
+
+```
+##    mpg cyl disp  hp               car
+## 1 21.0   6  160 110         Mazda RX4
+## 2 21.0   6  160 110     Mazda RX4 Wag
+## 3 22.8   4  108  93        Datsun 710
+## 4 21.4   6  258 110    Hornet 4 Drive
+## 5 18.7   8  360 175 Hornet Sportabout
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable-auto[
+
+```r
+library(tidyverse)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+* select(car, everything())
+```
+]
+ 
+.panel2-kable-auto[
+
+```
+##                 car  mpg cyl disp  hp
+## 1         Mazda RX4 21.0   6  160 110
+## 2     Mazda RX4 Wag 21.0   6  160 110
+## 3        Datsun 710 22.8   4  108  93
+## 4    Hornet 4 Drive 21.4   6  258 110
+## 5 Hornet Sportabout 18.7   8  360 175
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable-auto[
+
+```r
+library(tidyverse)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+*knitr::kable("html", escape = F)
+```
+]
+ 
+.panel2-kable-auto[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 175 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+&lt;style&gt;
+.panel1-kable-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-kable-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-kable-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+---
+
+
+
+
+
+---
+
+count: false
+ 
+
+.panel1-kable_extra-non_seq[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+  kableExtra::add_header_above(header =
+                                 c(" ",
+                                   "Hello" = 2,
+                                   "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-non_seq[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 22.8 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 93 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 21.4 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 175 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-non_seq[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+* mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+  kableExtra::add_header_above(header =
+                                 c(" ",
+                                   "Hello" = 2,
+                                   "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-non_seq[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 93 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 175 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-non_seq[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+* mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+  kableExtra::add_header_above(header =
+                                 c(" ",
+                                   "Hello" = 2,
+                                   "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-non_seq[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-non_seq[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+* mutate(cyl = kableExtra::cell_spec(x = cyl,
+*                        format = "html",
+*                        angle = (1:5)*90/5,
+*                        background = "red",
+*                        color = "white",
+*                        align = "center")) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+  kableExtra::add_header_above(header =
+                                 c(" ",
+                                   "Hello" = 2,
+                                   "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-non_seq[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;4&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;8&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;width: 1cm; "&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-non_seq[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  mutate(cyl = kableExtra::cell_spec(x = cyl,
+                         format = "html",
+                         angle = (1:5)*90/5,
+                         background = "red",
+                         color = "white",
+                         align = "center")) %&gt;%
+* mutate(disp = ifelse(disp &gt; 200,
+*                      kableExtra::cell_spec(
+*                        x = disp,
+*                        "html",
+*                        color = "red",
+*                        bold = T),
+*                      kableExtra::cell_spec(
+*                        x = disp,
+*                        format = "html",
+*                        color = "green",
+*                        italic = T))) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+  kableExtra::add_header_above(header =
+                                 c(" ",
+                                   "Hello" = 2,
+                                   "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-non_seq[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;4&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;108&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;258&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;8&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;360&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+&lt;style&gt;
+.panel1-kable_extra-non_seq {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-kable_extra-non_seq {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-kable_extra-non_seq {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+
+# What's going on under the hood (translation to html and formatting)
+
+---
+
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+*# library(kableExtra)  # library(kableExtra)
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+*library(formattable)
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+*mtcars[1:5, 1:4]
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                    mpg cyl disp  hp
+## Mazda RX4         21.0   6  160 110
+## Mazda RX4 Wag     21.0   6  160 110
+## Datsun 710        22.8   4  108  93
+## Hornet 4 Drive    21.4   6  258 110
+## Hornet Sportabout 18.7   8  360 175
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+* mutate(car = row.names(.))
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##    mpg cyl disp  hp               car
+## 1 21.0   6  160 110         Mazda RX4
+## 2 21.0   6  160 110     Mazda RX4 Wag
+## 3 22.8   4  108  93        Datsun 710
+## 4 21.4   6  258 110    Hornet 4 Drive
+## 5 18.7   8  360 175 Hornet Sportabout
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+* select(car, everything())
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                 car  mpg cyl disp  hp
+## 1         Mazda RX4 21.0   6  160 110
+## 2     Mazda RX4 Wag 21.0   6  160 110
+## 3        Datsun 710 22.8   4  108  93
+## 4    Hornet 4 Drive 21.4   6  258 110
+## 5 Hornet Sportabout 18.7   8  360 175
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+* mutate(mpg = formattable::color_tile("white", "orange")(mpg))
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                 car
+## 1         Mazda RX4
+## 2     Mazda RX4 Wag
+## 3        Datsun 710
+## 4    Hornet 4 Drive
+## 5 Hornet Sportabout
+##                                                                                                       mpg
+## 1 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 2 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 3 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt;
+## 4 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt;
+## 5 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt;
+##   cyl disp  hp
+## 1   6  160 110
+## 2   6  160 110
+## 3   4  108  93
+## 4   6  258 110
+## 5   8  360 175
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+* mutate(hp = formattable::color_bar("lightgreen")(hp))
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                 car
+## 1         Mazda RX4
+## 2     Mazda RX4 Wag
+## 3        Datsun 710
+## 4    Hornet 4 Drive
+## 5 Hornet Sportabout
+##                                                                                                       mpg
+## 1 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 2 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 3 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt;
+## 4 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt;
+## 5 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt;
+##   cyl disp
+## 1   6  160
+## 2   6  160
+## 3   4  108
+## 4   6  258
+## 5   8  360
+##                                                                                                                                                     hp
+## 1  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 2  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 3   &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt;
+## 4  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 5 &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt;
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+* mutate(cyl = kableExtra::cell_spec(x = cyl,
+*                        format = "html",
+*                        angle = (1:5)*90/5,
+*                        background = "red",
+*                        color = "white",
+*                        align = "center"))
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                 car
+## 1         Mazda RX4
+## 2     Mazda RX4 Wag
+## 3        Datsun 710
+## 4    Hornet 4 Drive
+## 5 Hornet Sportabout
+##                                                                                                       mpg
+## 1 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 2 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 3 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt;
+## 4 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt;
+## 5 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt;
+##                                                                                                                                                                                                                                                                                                                                                                       cyl
+## 1 &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 2 &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 3 &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;4&lt;/span&gt;&lt;/span&gt;
+## 4 &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 5 &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;8&lt;/span&gt;&lt;/span&gt;
+##   disp
+## 1  160
+## 2  160
+## 3  108
+## 4  258
+## 5  360
+##                                                                                                                                                     hp
+## 1  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 2  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 3   &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt;
+## 4  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 5 &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt;
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  mutate(cyl = kableExtra::cell_spec(x = cyl,
+                         format = "html",
+                         angle = (1:5)*90/5,
+                         background = "red",
+                         color = "white",
+                         align = "center")) %&gt;%
+* mutate(disp = ifelse(disp &gt; 200,
+*                      kableExtra::cell_spec(
+*                        x = disp,
+*                        "html",
+*                        color = "red",
+*                        bold = T),
+*                      kableExtra::cell_spec(
+*                        x = disp,
+*                        format = "html",
+*                        color = "green",
+*                        italic = T)))
+```
+]
+ 
+.panel2-kable_extra-auto[
+
+```
+##                 car
+## 1         Mazda RX4
+## 2     Mazda RX4 Wag
+## 3        Datsun 710
+## 4    Hornet 4 Drive
+## 5 Hornet Sportabout
+##                                                                                                       mpg
+## 1 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 2 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt;
+## 3 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt;
+## 4 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt;
+## 5 &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt;
+##                                                                                                                                                                                                                                                                                                                                                                       cyl
+## 1 &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 2 &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 3 &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;4&lt;/span&gt;&lt;/span&gt;
+## 4 &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt;
+## 5 &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;8&lt;/span&gt;&lt;/span&gt;
+##                                                                         disp
+## 1 &lt;span style="  font-style: italic;   color: green !important;" &gt;160&lt;/span&gt;
+## 2 &lt;span style="  font-style: italic;   color: green !important;" &gt;160&lt;/span&gt;
+## 3 &lt;span style="  font-style: italic;   color: green !important;" &gt;108&lt;/span&gt;
+## 4    &lt;span style=" font-weight: bold;    color: red !important;" &gt;258&lt;/span&gt;
+## 5    &lt;span style=" font-weight: bold;    color: red !important;" &gt;360&lt;/span&gt;
+##                                                                                                                                                     hp
+## 1  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 2  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 3   &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt;
+## 4  &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt;
+## 5 &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt;
+```
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  mutate(cyl = kableExtra::cell_spec(x = cyl,
+                         format = "html",
+                         angle = (1:5)*90/5,
+                         background = "red",
+                         color = "white",
+                         align = "center")) %&gt;%
+  mutate(disp = ifelse(disp &gt; 200,
+                       kableExtra::cell_spec(
+                         x = disp,
+                         "html",
+                         color = "red",
+                         bold = T),
+                       kableExtra::cell_spec(
+                         x = disp,
+                         format = "html",
+                         color = "green",
+                         italic = T))) %&gt;%
+* knitr::kable("html", escape = F)
+```
+]
+ 
+.panel2-kable_extra-auto[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="  font-style: italic;   color: green !important;" &gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="  font-style: italic;   color: green !important;" &gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;4&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="  font-style: italic;   color: green !important;" &gt;108&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: red !important;" &gt;258&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;" &gt;8&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: red !important;" &gt;360&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  mutate(cyl = kableExtra::cell_spec(x = cyl,
+                         format = "html",
+                         angle = (1:5)*90/5,
+                         background = "red",
+                         color = "white",
+                         align = "center")) %&gt;%
+  mutate(disp = ifelse(disp &gt; 200,
+                       kableExtra::cell_spec(
+                         x = disp,
+                         "html",
+                         color = "red",
+                         bold = T),
+                       kableExtra::cell_spec(
+                         x = disp,
+                         format = "html",
+                         color = "green",
+                         italic = T))) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+* kableExtra::column_spec(column = 2:5,
+*                         width = c("1cm", "1cm","1cm","3cm")
+*                                     )
+```
+]
+ 
+.panel2-kable_extra-auto[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;4&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;108&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;258&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;8&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;360&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-kable_extra-auto[
+
+```r
+# library(kableExtra)  # library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %&gt;%
+  mutate(car = row.names(.)) %&gt;%
+  select(car, everything()) %&gt;%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %&gt;%
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %&gt;%
+  mutate(cyl = kableExtra::cell_spec(x = cyl,
+                         format = "html",
+                         angle = (1:5)*90/5,
+                         background = "red",
+                         color = "white",
+                         align = "center")) %&gt;%
+  mutate(disp = ifelse(disp &gt; 200,
+                       kableExtra::cell_spec(
+                         x = disp,
+                         "html",
+                         color = "red",
+                         bold = T),
+                       kableExtra::cell_spec(
+                         x = disp,
+                         format = "html",
+                         color = "green",
+                         italic = T))) %&gt;%
+  knitr::kable("html", escape = F) %&gt;%
+  kableExtra::column_spec(column = 2:5,
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %&gt;%
+* kableExtra::add_header_above(header =
+*                                c(" ",
+*                                  "Hello" = 2,
+*                                  "World" = 2))
+```
+]
+ 
+.panel2-kable_extra-auto[
+&lt;table&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Hello&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;World&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; car &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(18deg); -moz-transform: rotate(18deg); -ms-transform: rotate(18deg); -o-transform: rotate(18deg); transform: rotate(18deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f"&gt;21.0&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(36deg); -moz-transform: rotate(36deg); -ms-transform: rotate(36deg); -o-transform: rotate(36deg); transform: rotate(36deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;160&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500"&gt;22.8&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(54deg); -moz-transform: rotate(54deg); -ms-transform: rotate(54deg); -o-transform: rotate(54deg); transform: rotate(54deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;4&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="  font-style: italic;   color: green !important;"&gt;108&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%"&gt;93&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357"&gt;21.4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(72deg); -moz-transform: rotate(72deg); -ms-transform: rotate(72deg); -o-transform: rotate(72deg); transform: rotate(72deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;6&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;258&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%"&gt;110&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"&gt;18.7&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); display: inline-block; "&gt;&lt;span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;"&gt;8&lt;/span&gt;&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style=" font-weight: bold;    color: red !important;"&gt;360&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;width: 1cm; "&gt; &lt;span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%"&gt;175&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+&lt;style&gt;
+.panel1-kable_extra-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-kable_extra-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-kable_extra-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;You have the second plot and you want the first one? Just use aes(group = variablethatuniquelyidentifiesarow)&lt;/p&gt;&amp;mdash; Hadley Wickham (@hadleywickham) &lt;a href="https://twitter.com/hadleywickham/status/1187206912963686400?ref_src=twsrc%5Etfw"&gt;October 24, 2019&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 60%}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

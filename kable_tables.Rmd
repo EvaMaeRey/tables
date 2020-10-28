@@ -1,0 +1,122 @@
+---
+title: "knitr::kable Tables"
+subtitle: "with kableExtra and formattable"
+author: "Gina Reynolds - ⚔<br/>made with xaringan"
+date: "2019/03/05"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["kunoichi", "ninjutsu"]
+    nature:
+      ratio: "16:9"
+      highlightLines: true
+---
+
+```{r}
+library(flipbookr)
+```
+
+
+```{r kable, echo = F, eval = F}
+library(tidyverse)
+mtcars[1:5, 1:4] %>%
+  mutate(car = row.names(.)) %>%
+  select(car, everything()) %>% 
+knitr::kable("html", escape = F)
+```
+
+---
+
+
+`r chunk_reveal("kable")`
+
+---
+
+```{r kable_extra, echo = F, eval = F}
+# library(kableExtra)
+library(formattable)
+mtcars[1:5, 1:4] %>%
+  mutate(car = row.names(.)) %>%
+  select(car, everything()) %>%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %>% #BREAK2
+  mutate(hp = formattable::color_bar("lightgreen")(hp)) %>% #BREAK3
+  mutate(cyl = kableExtra::cell_spec(x = cyl, #BREAK4
+                         format = "html", #BREAK4
+                         angle = (1:5)*90/5, #BREAK4
+                         background = "red", #BREAK4
+                         color = "white", #BREAK4
+                         align = "center")) %>% #BREAK4
+  mutate(disp = ifelse(disp > 200, #BREAK5
+                       kableExtra::cell_spec( #BREAK5
+                         x = disp, #BREAK5
+                         "html",  #BREAK5
+                         color = "red",  #BREAK5
+                         bold = T), #BREAK5
+                       kableExtra::cell_spec( #BREAK5
+                         x = disp, #BREAK5
+                         format = "html",  #BREAK5
+                         color = "green",  #BREAK5
+                         italic = T))) %>%  #BREAK5
+  knitr::kable("html", escape = F) %>%
+  kableExtra::column_spec(column = 2:5, 
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %>%
+  kableExtra::add_header_above(header = 
+                                 c(" ", 
+                                   "Hello" = 2, 
+                                   "World" = 2))
+```
+
+
+
+---
+
+`r flipbookr::chunk_reveal("kable_extra", break_type = "non_seq")`
+
+
+---
+
+# What's going on under the hood (translation to html and formatting)
+
+---
+
+`r flipbookr::chunk_reveal("kable_extra")`
+
+
+---
+
+```{r}
+library(kableExtra)
+library(sparkline)
+
+split(mtcars$mpg, mtcars$cyl) ->
+  mpg_list
+
+split(mtcars$disp, mtcars$cyl) ->
+  disp_list
+
+data.frame(cyl = c(4, 6, 8), 
+           mpg_box = "", mpg_hist = "",
+           mpg_line1 = "", mpg_line2 = "",
+           mpg_points1 = "", mpg_points2 = "", 
+           mpg_poly = "")  %>% 
+  kbl(booktabs = TRUE) %>%
+  kable_paper(full_width = FALSE) %>%
+  column_spec(2, image = spec_boxplot(mpg_list)) %>%
+  column_spec(3, image = spec_hist(mpg_list)) %>%
+  column_spec(4, image = spec_plot(mpg_list, same_lim = TRUE)) %>%
+  column_spec(5, image = spec_plot(mpg_list, same_lim = FALSE)) %>%
+  column_spec(6, image = spec_plot(mpg_list, type = "p")) %>%
+  column_spec(7, image = spec_plot(mpg_list, disp_list, type = "p")) %>%
+  column_spec(8, image = spec_plot(mpg_list, polymin = 5))
+```
+
+
+
+
+
+
+```{css, eval = TRUE, echo = F}
+.remark-code{line-height: 1.5; font-size: 60%}
+```
+

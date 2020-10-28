@@ -1,9 +1,10 @@
 ---
-title: "Table formatting!"
-subtitle: "With flipbookr and xaringan"
-author: "Gina Reynolds, December 2019"
+title: "### default look in html"
+subtitle: ""
+author: ""
 output:
   xaringan::moon_reader:
+    seal: FALSE
     lib_dir: libs
     css: [default, hygge, ninjutsu]
     nature:
@@ -16,151 +17,33 @@ output:
 
 
 ```{r, include = F}
-# This is the recommended set up for flipbooks
-# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, dev = "svg", fig.ext = "svg")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
+load("current_image.Rdata")
 ```
 
 
+```{r, echo = F, eval = FALSE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
 
 
-
-
-
-
----
-
-
-
-`r chunk_reveal("tables", break_type = "rotate", title = "### Some of our formatting options")`
-
-```{r tables, eval = F, echo = F}
+```{r the_chunk, include = F}
 gapminder::gapminder %>% 
   filter(year == 2002) %>% 
-  tibble() #ROTATE
-  data.frame() #ROTATE
-  data.table::data.table() #ROTATE
-  flextable::flextable() #ROTATE
-  knitr::kable() #ROTATE
-  gt::gt() #ROTATE
-  DT::datatable() #ROTATE
+  select(-year) %>% 
+  arrange(-pop) %>% 
+  slice(1:20) %>% 
+  flextable::flextable()
 ```
 
-
-
----
-
-# list column
-
----
-
-`r chunk_reveal("listcolumn", break_type = "rotate", title = "### What they do with the list column..." )`
-
-```{r listcolumn, eval = F, echo = F}
-tibble(x = c(1,2,3,4,6),
-       y = 1:5,
-       z = list(1:2, 4:5, 8, NA, c(1,7,9,0))) %>% 
-  tibble() #ROTATE
-  data.frame() #ROTATE
-  data.table::data.table() #ROTATE
-  knitr::kable() #ROTATE
-  gt::gt() #ROTATE
-  DT::datatable() #ROTATE
-```
-
----
-
-# group
-
----
-
-`r chunk_reveal("group", break_type = 1, title = "### What they do with grouped data..." )`
-
-```{r group, eval = F, echo = F}
-gapminder::gapminder %>%
-  group_by(country) %>% 
-  filter(year > 1990) %>% 
-  filter(continent == "Americas") %>% 
-  select(-continent) %>% 
-  gt::gt()
-```
-
-
-
----
-
-`r chunk_reveal("margins_table_tidy", title = "### using tidyverse 'verbs' to create pop count by continent in 2002 with percentages and totals")`
-
-
-
-```{r margins_table_tidy, include=FALSE}
-gapminder::gapminder %>% 
-  filter(year == 2002) %>% 
-  group_by(continent) %>% 
-  summarise(population = sum(pop)) %>% 
-  mutate(percent = 100 * round(prop.table(population), 3) ) ->
-base
-  
-base %>% 
-  summarise(percent = sum(percent), 
-            population = sum(population),
-            continent = "Totals") ->
-totals
-
-bind_rows(base, totals) %>% 
-  mutate(`Population (millions)` = population/1000000) %>% 
-  mutate(percent = round(percent, 2)) %>% 
-  rename(` ` = continent) %>% 
-  select(` `, `Population (millions)`, percent)
-```
-
-
----
-
-# That was a lot of code... What other options do we have?
-
-
----
-
-`r chunk_reveal("prop.table", title = "### What about the very classic table and prop.table?")`
-
-```{r prop.table, include = F}
-gapminder::gapminder %>% 
-  filter(year == 2002) %>% 
-  pull(continent) %>% 
-  table() %>% 
-  prop.table() %>% 
-  `*`(100) %>% 
-  round(1) %>% 
-  paste0("%")
-```
-
----
-
-
-```{r}
-library(gtsummary)
-
-
-
-```
-
-
-
----
-
-
-We are working with maintainers of many of the R community’s most popular R packages for building tables, including Yihui Xie of DT, Rich Iannone of gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra. Many of these maintainers will help review submissions built with their packages.
-
-
----
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "replace", ...)`
 
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 80%}
+.remark-code{line-height: 1.5; font-size: 110%}
 
 @media print {
   .has-continuation {
@@ -168,3 +51,4 @@ We are working with maintainers of many of the R community’s most popular R pa
   }
 }
 ```
+

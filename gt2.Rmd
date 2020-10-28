@@ -1,0 +1,70 @@
+---
+title: "gt2"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = FALSE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+library(gt)
+example %>%
+  .[1:5, ] %>% 
+  gt() %>%
+  fmt_number(columns = vars(weight), 
+             decimals = 2) %>%
+  fmt_date(columns = vars(holiday), 
+           date_style = 1) %>% 
+  fmt_time(columns = vars(schedule), time_style = 1) %>%
+  fmt_datetime(columns = vars(appointment), 
+               date_style = 6, 
+               time_style = 4) %>%
+  fmt_currency(columns = vars(price), 
+               currency = "EUR") %>%
+  tab_header(
+    title = md("This is the `exibble` dataset in **gt**"), 
+    subtitle = "It is one of six datasets in the package"
+  ) %>%
+  tab_source_note(source_note = 
+                    md("More information is available at `?exibble`.")) %>% 
+  tab_spanner(label = "Dates and Times", 
+              columns = matches("schedule|appointment"))
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 75%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+

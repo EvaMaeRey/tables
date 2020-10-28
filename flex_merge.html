@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>flex merge</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_v(j = ~ letters1 + letters2 )
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-902f9cd2{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-902f9d04{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-902fb438{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-902fb460{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-90300316{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-90300348{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9cd2">letters1</span></p></td><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9cd2">letters2</span></p></td><td class="cl-90300348"><p class="cl-902fb460"><span class="cl-902f9cd2">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">a</span></p></td><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">d</span></p></td><td class="cl-90300348"><p class="cl-902fb460"><span class="cl-902f9d04">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">b</span></p></td><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">e</span></p></td><td class="cl-90300348"><p class="cl-902fb460"><span class="cl-902f9d04">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">b</span></p></td><td class="cl-90300348"><p class="cl-902fb460"><span class="cl-902f9d04">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-90300316"><p class="cl-902fb438"><span class="cl-902f9d04">c</span></p></td><td class="cl-90300348"><p class="cl-902fb460"><span class="cl-902f9d04">4</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_h()
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-905072c2{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-905072f4{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-90517564{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-905175a0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-9051c49c{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9051c4ce{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072c2">letters1</span></p></td><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072c2">letters2</span></p></td><td class="cl-9051c4ce"><p class="cl-905175a0"><span class="cl-905072c2">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">a</span></p></td><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">d</span></p></td><td class="cl-9051c4ce"><p class="cl-905175a0"><span class="cl-905072f4">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">b</span></p></td><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">e</span></p></td><td class="cl-9051c4ce"><p class="cl-905175a0"><span class="cl-905072f4">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">b</span></p></td><td class="cl-9051c4ce"><p class="cl-905175a0"><span class="cl-905072f4">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">c</span></p></td><td class="cl-9051c49c"><p class="cl-90517564"><span class="cl-905072f4">b</span></p></td><td class="cl-9051c4ce"><p class="cl-905175a0"><span class="cl-905072f4">4</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_h_range(i =  ~ number &lt; 3, j1 = "letters1", j2 = "letters2")
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-906abde4{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-906abe16{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-906ad392{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-906ad3b0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-906b22a2{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-906b22e8{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abde4">letters1</span></p></td><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abde4">letters2</span></p></td><td class="cl-906b22e8"><p class="cl-906ad3b0"><span class="cl-906abde4">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">a</span></p></td><td class="cl-906b22e8"><p class="cl-906ad3b0"><span class="cl-906abe16">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">b</span></p></td><td class="cl-906b22e8"><p class="cl-906ad3b0"><span class="cl-906abe16">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">b</span></p></td><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">b</span></p></td><td class="cl-906b22e8"><p class="cl-906ad3b0"><span class="cl-906abe16">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">c</span></p></td><td class="cl-906b22a2"><p class="cl-906ad392"><span class="cl-906abe16">b</span></p></td><td class="cl-906b22e8"><p class="cl-906ad3b0"><span class="cl-906abe16">4</span></p></td></tr></tbody></table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-rotate {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-rotate {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-rotate {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 93%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

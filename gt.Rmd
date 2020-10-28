@@ -1,0 +1,317 @@
+---
+title: "gt"
+output: html_document
+---
+
+
+```{r, include=F}
+options(knitr.duplicate.label = "allow")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+# Using gt w/ example data
+
+```{r gt_prep, include = F}
+library(gt)
+gt::exibble %>% 
+  rename(fruit = char) %>%
+  rename(team = fctr) %>% 
+  rename(weight = num) %>% 
+  rename(holiday = date) %>% 
+  rename(schedule = time) %>% 
+  rename(appointment = datetime) %>% 
+  rename(price = currency) %>% 
+  rename(id = row) %>% 
+  rename(club = group) ->
+example
+```
+
+
+---
+
+# gt functionality
+
+
+```{r gt2}
+library(gt)
+example %>%
+  .[1:5, ] %>% 
+  gt() %>%
+  fmt_number(columns = vars(weight), 
+             decimals = 2) %>%
+  fmt_date(columns = vars(holiday), 
+           date_style = 1) %>% 
+  fmt_time(columns = vars(schedule), 
+           time_style = 1) %>%
+  fmt_datetime(columns = vars(appointment), 
+               date_style = 6, 
+               time_style = 4) %>%
+  fmt_currency(columns = vars(price), 
+               currency = "EUR") %>%
+  tab_header(
+    title = md("This is the `exibble` dataset in **gt**"), 
+    subtitle = "It is one of six datasets in the package"
+  ) %>%
+  tab_source_note(source_note = 
+                    md("More information is available at `?exibble`.")) %>% 
+  tab_spanner(label = "Dates and Times", 
+              columns = matches("schedule|appointment"))
+```
+
+
+```{r}
+embed_flipbook("gt2", font_size = 75)
+```
+
+
+# Formatted values: time
+
+
+
+
+```{r gt_time}
+library(gt)  
+example %>%  
+  .[1:5, 5] %>%  
+  gt() %>%  
+  fmt_time(columns = vars(schedule), time_style = "hms") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hm") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hms_p") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hm_p") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "h_p") #ROTATE
+```
+
+```{r}
+embed_flipbook("gt_time", break_type = "rotate", font_size = 90, widths = c(2,1))
+```
+
+
+---
+class: middle, inverse, center
+
+# Formatted values: date
+
+---
+
+
+```{r gt_date}
+library(gt)  
+example %>%  
+  .[1:5, 4] %>%  
+  gt() %>%  
+  fmt_date(columns = vars(holiday), 
+           date_style = "iso")
+```
+
+```{r}
+embed_flipbook(chunk_name = "gt_date", 
+               break_type = "replace", 
+               replace = "iso",
+               font_size = 90, widths = c(2,1),
+               replacements = c("iso","wday_month_day_year", "wd_m_day_year", 
+                                "wday_day_month_year", "month_day_year", 
+                                "m_day_year", "day_m_year", "day_month_year", 
+                                "day_month", "year", "month", "day", 
+                                "year.mn.day", "y.mn.day")
+               )
+```
+
+
+
+
+---
+class: middle, inverse, center
+
+# Formatted values: currencies
+
+
+---
+
+
+```{r gt_currency}
+library(gt)  
+example %>%  
+  .[1:8, 7] %>%  
+  gt() %>%  
+  fmt_currency(columns = vars(price), 
+               currency = "USD")
+```
+
+
+
+```{r}
+embed_flipbook("gt_currency",
+               break_type = "replace",
+               replace = "USD",
+               replacements = c(
+                 "AED", "AFN", "BAM", "BBD", "BDT", "BGN", "BHD", "TMT", "TND", 
+                 "TOP", "USD", "USN", "USS", "UYI", "UYU", "UZS", "VEF", "VND", 
+                 "VUV", "XPD", "XPF", "XPT", "XSU", "XUA", "YER", "ZAR", "ZMW"
+               ),
+               font_size = 90, 
+               widths = c(2,1)
+               )
+```
+
+
+---
+
+# Prepping a snazzy table
+
+## A pizza menu
+
+```{r gt_pizza}
+library(tidyverse)
+library(paletteer)
+library(gt)
+pizzaplace %>%
+  mutate(type = case_when(
+    type == "chicken" ~ "chicken (pizzas with chicken as a major ingredient)",
+    type == "classic" ~ "classic (classical pizzas)",
+    type == "supreme" ~ "supreme (pizzas that try a little harder)",
+    type == "veggie" ~ "chicken (pizzas without any meats whatsoever)",
+  )) %>%
+  mutate(size = factor(size, levels = c("S", "M", "L", "XL", "XXL"))) %>%
+  dplyr::group_by(type, size) %>%
+  dplyr::summarize(
+    sold = n(),
+    income = sum(price)
+  ) %>% 
+  # table is kind of large, hard to make sense of
+  dplyr::filter(size != "S" & size != "M" & size != "XL") ->
+pizza_prep; pizza_prep
+```
+
+
+```{r}
+embed_flipbook("gt_pizza",
+               font_size = 90, widths = c(2,1))
+```
+
+
+
+
+---
+
+
+# prep a pizza menu table
+
+```{r gt_pizza_prep}
+pizza_prep %>% 
+  gt(rowname_col = "size") %>%
+  tab_header(title = 
+               md("&#127829; Pizzas Sold in 2015 &#127829;")) %>%
+  fmt_number(
+    columns = vars(sold),
+    decimals = 0,
+    use_seps = TRUE
+  ) %>%
+  fmt_currency(
+    columns = vars(income),
+    currency = "USD"
+  ) %>%
+  cols_align(align = "right", columns = TRUE) ->
+pizza2; pizza2
+```
+
+
+```{r}
+embed_flipbook("gt_pizza_prep", font_size = 90)
+```
+
+
+
+---
+
+
+```{r gt_pizza1}
+pizza2 %>% 
+  data_color(
+    columns = vars(sold, income),
+    colors = scales::col_numeric(
+      palette = paletteer::paletteer_d(
+        palette = "ggsci::red_material"
+      ) %>% as.character(),
+      domain = NULL
+    ),
+    alpha = 0.8
+  ) %>%
+  summary_rows(
+    groups = TRUE,
+    columns = vars(sold),
+    fns = list(TOTAL = "sum"),
+    formatter = fmt_number,
+    decimals = 0,
+    use_seps = TRUE
+  ) %>%
+  summary_rows(
+    groups = TRUE,
+    columns = vars(income),
+    fns = list(TOTAL = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %>%
+  grand_summary_rows(
+    columns = vars(sold),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_number,
+    decimals = 0,
+    use_seps = TRUE
+  )  ->
+pizza3; pizza3
+```
+
+```{r}
+embed_flipbook("gt_pizza1", font_size = 75)
+```
+
+
+
+
+---
+
+```{r gt_pizza2}
+pizza3 %>%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %>%
+  tab_options(table.font.size = "tiny") %>% 
+  tab_footnote(
+    footnote = "The pizza category with the highest total sales.",
+    locations = cells_row_groups("classic (classical pizzas)")
+  ) %>%
+  tab_footnote(
+    footnote = md("Custom sizes for **The Greek** pizza."),
+    locations = cells_stub("XXL")
+  ) %>%
+  tab_footnote(
+    footnote = md("This is a new record. Truly, 2015 was a **great** year for the `pizzaplace`."),
+    locations = cells_grand_summary(columns = vars(sold))
+  ) ->
+pizza_tab; pizza_tab
+```  
+  
+  
+
+```{r}
+embed_flipbook("gt_pizza2", font_size = 75)
+```
+
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 200%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+

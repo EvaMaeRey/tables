@@ -1,0 +1,104 @@
+---
+title: Table formatting in R
+author: Reynolds flipbook lab
+output: 
+  html_document:
+    theme: yeti
+    highlight: monochrome
+---
+
+```{r hi, include = F}
+options(knitr.duplicate.label = "allow")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+
+Here we `R` again!
+
+
+
+## [gt](gt.html){target="_blank"} the grammar of tables *to html*
+
+
+
+# reactable
+
+
+> Interactive data tables for R, based on the React Table library and made with reactR.
+
+
+## [flextable](flextable.html){target="_blank"} easy table reporting from data frames *HTML format, Microsoft Word, Microsoft PowerPoint and PDF*
+
+## [huxtable](huxtable.html){target="_blank"}
+
+
+
+
+
+
+
+gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra
+
+
+
+```{r, fig.align='center', out.width='50%'}
+knitr::include_graphics("https://github.com/ddsjoberg/gtsummary/blob/master/man/figures/gt_output_formats.PNG?raw=true")
+```
+
+
+---
+
+# Default table look (in html)
+
+
+```{r}
+base_behavior <- c("data.frame()", 
+                   "tibble::tibble()", 
+                   "data.table::data.table()",
+                   "gt::gt()", 
+                   "knitr::kable('html')",
+                   "flextable::flextable()", 
+                   "DT::datatable()",
+                   "reactable::reactable()")
+```
+
+```{r tables}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  select(-year) %>% 
+  arrange(-pop) %>% 
+  slice(1:20) %>% 
+  flextable::flextable()
+```
+
+```{r}
+embed_flipbook("tables", 
+               font_size = 110,
+               break_type = "replace", 
+               replace = "flextable::flextable\\(\\)", 
+               replacements = base_behavior, 
+               title = "### default look in html",
+               use_embed_xaringan = T)
+```
+
+
+
+# kableExtra
+
+---
+
+# gtsummary
+# stargazer
+# modelsummary
+# table1
+
+Including Yihui Xie of DT, Rich Iannone of gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra. Many of these maintainers will help review submissions built with their packages.
+
+```{r}
+
+```
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Newish: left justifying output panel makes it easier to track changes to table outputs. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/flipbooks?src=hash&amp;ref_src=twsrc%5Etfw">#flipbooks</a> <a href="https://t.co/n00XY8UQ2t">pic.twitter.com/n00XY8UQ2t</a></p>&mdash; Gina Reynolds (@EvaMaeRey) <a href="https://twitter.com/EvaMaeRey/status/1154382975179591681?ref_src=twsrc%5Etfw">July 25, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

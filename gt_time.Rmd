@@ -1,0 +1,57 @@
+---
+title: "gt time"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = FALSE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+library(gt)  
+example %>%  
+  .[1:5, 5] %>%  
+  gt() %>%  
+  fmt_time(columns = vars(schedule), time_style = "hms") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hm") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hms_p") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "hm_p") %>% #ROTATE
+  fmt_time(columns = vars(schedule), time_style = "h_p") #ROTATE
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "rotate", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 90%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+

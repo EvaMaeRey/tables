@@ -1,0 +1,214 @@
+---
+title: huxtable
+subtitle: a tutorial
+---
+
+
+```{r, include=FALSE}
+options(knitr.duplicate.label = "allow")
+library(flipbookr)
+library(tidyverse)
+knitr::opts_chunk$set(cache = T, message =F)
+```
+
+
+> Huxtable is a package for creating text tables. It is powerful, but easy to use. Huxtable’s features include 
+
+- Export to LaTeX, HTML, Microsoft Word, Microsoft Excel, Microsoft Powerpoint, RTF and Markdown,
+- Easy integration with knitr and rmarkdown documents
+- Formatted on-screen display, 
+- Multirow and multicolumn cells, 
+- Fine-grained control over cell background, spacing, alignment, size and borders, 
+- Control over text font, style, size, color, alignment, number format and rotation, 
+- Table manipulation using standard R subsetting, or dplyr functions like filter and select, 
+- Easy conditional formatting based on table contents, 
+- Quick table themes, 
+- Automatic creation of regression output tables with the huxreg function
+
+
+### Getting started with huxtable
+
+```{r huxbasics, echo = F}
+library(huxtable)
+hux(Type  = c("Strawberry", "Raspberry", "Plum"),
+    Price = c(1.90, 2.10, 1.80)) %>% 
+  set_all_padding(4) %>% 
+  set_outer_padding(0) %>% 
+  set_number_format(2) %>% 
+  set_bold(row = 1, col = everywhere) %>% 
+  set_bottom_border(1, everywhere) %>% 
+  set_width(0.4) %>% 
+  set_caption("Pots of jam for sale")
+```
+
+```{r, echo = F, message=F}
+flipbookr::embed_flipbook("huxbasics", font_size = 120, widths = c(3,2))
+```
+
+### Advanced formatting and markdown
+
+```{r huxformat, echo = F}
+data.frame(Type  = c("Strawberry", "Raspberry", "Plum"),
+    Price = c(1.90, 2.10, 1.80)) %>% 
+  as_hux() %>% 
+  set_text_color(row = 2:3, col = 1, 
+                 value = "purple") %>% 
+  set_background_color(row = evens, 
+                       col = everywhere, 
+                       value = "grey85") %>% 
+  set_background_color(odds, everywhere, 
+                       "grey93") %>% 
+  set_markdown_contents(1, 1, "*Type* of jam") %>% 
+  set_markdown_contents(1, 2, "*Price* of jam") %>% 
+  set_markdown_contents(3, 2, "~~2.10~~ **Sale!** 1.50") %>%
+  set_right_border(everywhere, 1, brdr(3, "double", "grey"))
+```
+
+```{r, echo = F}
+flipbookr::embed_flipbook("huxformat", font_size = 120)
+```
+
+
+### Border formatting
+
+```{r huxborders, echo = F}
+hux(Type  = c("Strawberry", "Raspberry", "Plum"),
+    Price = c(1.90, 2.10, 1.80)) %>%
+  set_all_borders(brdr(0.4, "dotted", "white")) %>%
+  set_right_border(everywhere, 1, 
+                   brdr(thickness = 3, 
+                        style = "double", 
+                        color = "grey")) %>%
+  set_right_border(everywhere, 
+                   1, 
+                   3) %>%
+  set_lr_borders(value = 
+                   brdr(thickness = 8, 
+                        style = "solid", 
+                        color = "magenta")) %>%
+  set_outer_borders(value = 
+                      brdr(thickness = 2, 
+                           style = "dashed", 
+                           color = "green")) %>%    
+  set_tb_borders(value = 
+                   brdr(thickness = 1, 
+                        style = "dotted", 
+                        color = "goldenrod"))
+```
+
+
+```{r, echo = F, cache = F}
+flipbookr::embed_flipbook("huxborders", font_size = 120)
+```
+
+
+### Formatting a larger table
+
+
+```{r hux_large, echo=FALSE}
+iris %>% 
+  group_by(Species) %>% 
+  select(Species, Sepal.Length, Sepal.Width, 
+             Petal.Length, Petal.Width) %>% 
+  slice(1:5) %>% 
+  as_hux() %>%
+  set_tb_padding(2) %>% 
+  set_contents(1, 2:5, c("Length", "Width", "Length", "Width")) %>% 
+  insert_row("", "Sepal", "", "Petal", "", after = 0) %>% 
+  merge_cells(1, 2:3) %>% 
+  merge_cells(1, 4:5) %>% 
+  set_align(1, everywhere, "center") %>% 
+  set_tb_padding(1, everywhere, 0) %>% 
+  set_bold(1, everywhere)
+```
+
+
+```{r, echo = F, cache = F}
+flipbookr::embed_flipbook("hux_large", font_size = 120)
+```
+
+### reshaping
+
+```{r hux_reshape, echo=F}
+matrix(1:16, 4, 4) %>% 
+  as_hux() %>% 
+  set_background_color(1:2, 1:2, "red") %>% 
+  set_background_color(1:2, 3:4, "yellow") %>% 
+  set_background_color(3:4, 1:2, "darkgreen") %>% 
+  set_background_color(3:4, 3:4, "blue") %>% 
+  set_text_color(3:4, 1:4, "white") %>% 
+  set_all_borders(brdr(2, "solid", "white")) %>%   
+  set_caption("Original table") %>% 
+  restack_across(rows = 2) %>% 
+  set_caption("Restacked across") %>% 
+  restack_down(cols = 2) %>% 
+  set_caption("Restacked down")
+```
+
+```{r, echo = F}
+flipbookr::embed_flipbook("hux_reshape", font_size = 120)
+```
+
+
+# Table position and column width
+
+```{r hux_mega, echo = F}
+iris %>% 
+  group_by(Species) %>% 
+  select(Species, Sepal.Length, 
+         Sepal.Width, Petal.Length, 
+         Petal.Width) %>% 
+  slice(1:5) %>% 
+  as_hux() %>% 
+  set_contents(1, 2:5, c("Length", "Width", "Length", "Width")) %>% 
+  insert_row("", "Sepal", "", "Petal", "", after = 0) %>% 
+  merge_cells(1, 2:3) %>% 
+  merge_cells(1, 4:5) %>% 
+  set_align(1, everywhere, "center") %>% 
+  set_tb_padding(1, everywhere, 0) %>% 
+  set_bold(1, everywhere) %>% 
+  set_header_rows(1:2, TRUE) %>% 
+  restack_across(rows = 7) %>% 
+  set_bottom_border(final(1), everywhere) %>% 
+  set_width(0.8) %>% 
+  set_font_size(8) %>% 
+  set_lr_padding(2) %>% 
+  set_col_width(rep(c(0.4, 0.2, 0.2, 0.2, 0.2), 3)/3) %>% 
+  set_position("left")
+```
+
+
+```{r, echo = F}
+flipbookr::embed_flipbook("hux_mega", font_size = 100)
+```
+
+---
+
+# Themes
+
+```{r hux_theme1, echo=FALSE}
+library(huxtable)
+gapminder::gapminder %>%
+  filter(year == 2002,
+         pop > 100000000) %>% 
+  arrange(-pop) %>% 
+  select(-year) %>% 
+  as_hux() %>% 
+  set_caption("Most populous Countries, 2002") %>% 
+  theme_bright() %>% #ROTATE
+  theme_blue() %>% #ROTATE
+  theme_article() %>% #ROTATE
+  theme_basic() %>% #ROTATE
+  theme_compact() %>% #ROTATE
+  theme_green() %>% #ROTATE
+  theme_grey() %>% #ROTATE
+  theme_mondrian() %>% #ROTATE
+  theme_orange() %>% #ROTATE
+  theme_plain() %>% #ROTATE
+  theme_striped() #ROTATE
+```
+
+```{r, echo = F, cache = F}
+flipbookr::embed_flipbook("hux_theme1", font_size = 90, break_type = "rotate")
+```
+

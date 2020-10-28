@@ -1,0 +1,127 @@
+---
+title: "knitr::kable Tables"
+output: html_document
+---
+
+```{r, include = F}
+library(flipbookr)
+library(tidyverse)
+options(knitr.duplicate.label = "allow")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F)
+```
+
+
+```{r kable_basic, echo = F}
+library(kableExtra)
+mtcars[1:5, 1:4] %>%
+  mutate(car = row.names(.)) %>%
+  select(car, everything()) %>% 
+  knitr::kable("html", escape = F)
+```
+
+---
+
+
+```{r}
+embed_flipbook("kable_basic", font_size = 90)
+```
+
+
+
+---
+
+```{r kable_extra_more, echo = F}
+mtcars[1:5, 1:4] %>%
+  mutate(car = row.names(.)) %>%
+  select(car, everything()) %>%
+  mutate(mpg = formattable::color_tile("white", "orange")(mpg)) %>% #BREAK2
+  mutate(hp = formattable::color_tile("white", "lightgreen")(hp)) %>% #BREAK3
+  mutate(cyl = kableExtra::cell_spec(x = cyl, #BREAK4
+                         format = "html", #BREAK4
+                         angle = (1:5)*90/5, #BREAK4
+                         background = "red", #BREAK4
+                         color = "white", #BREAK4
+                         align = "center")) %>% #BREAK4
+  mutate(disp = ifelse(disp > 200, #BREAK5
+                       kableExtra::cell_spec( #BREAK5
+                         x = disp, #BREAK5
+                         "html",  #BREAK5
+                         color = "red",  #BREAK5
+                         bold = T), #BREAK5
+                       kableExtra::cell_spec( #BREAK5
+                         x = disp, #BREAK5
+                         format = "html",  #BREAK5
+                         color = "green",  #BREAK5
+                         italic = T))) %>%  #BREAK5
+  knitr::kable("html", escape = F) %>%
+  kableExtra::column_spec(column = 2:5, 
+                          width = c("1cm", "1cm","1cm","3cm")
+                                      ) %>%
+  kableExtra::add_header_above(header = 
+                                 c(" ", 
+                                   "Hello" = 2, 
+                                   "World" = 2))
+```
+
+
+
+```{r}
+embed_flipbook("kable_extra_more", break_type = "non_seq", font_size = 90)
+```
+
+
+
+
+---
+
+# What's going on under the hood (it's html)
+
+---
+
+```{r}
+embed_flipbook("kable_extra_more", 
+               font_size = 90)
+```
+
+---
+
+```{r kable_extra_spark}
+library(sparkline) # miniplots spec underscore functions
+split(mtcars$mpg, mtcars$cyl) ->
+  mpg_list
+
+kableExtra::spec_boxplot(mpg_list) ->
+  figures
+
+split(mtcars$disp, mtcars$cyl) ->
+  disp_list
+
+data.frame(cyl = c(4, 6, 8), 
+           mpg_box = "", mpg_hist = "",
+           mpg_line1 = "", mpg_line2 = "",
+           mpg_points1 = "", mpg_points2 = "", 
+           mpg_poly = "")  %>% 
+  kableExtra::kbl(booktabs = TRUE) %>%
+  kableExtra::kable_paper(full_width = FALSE) %>%
+  kableExtra::column_spec(2, image = kableExtra::spec_boxplot(mpg_list)) %>%
+  kableExtra::column_spec(3, image = kableExtra::spec_hist(mpg_list)) %>%
+  kableExtra::column_spec(4, image = kableExtra::spec_plot(mpg_list, same_lim = TRUE)) %>%
+  kableExtra::column_spec(5, image = kableExtra::spec_plot(mpg_list, same_lim = FALSE)) %>%
+  kableExtra::column_spec(6, image = kableExtra::spec_plot(mpg_list, type = "p")) %>%
+  kableExtra::column_spec(7, image = kableExtra::spec_plot(mpg_list, disp_list, type = "p")) %>%
+  kableExtra::column_spec(8, image = kableExtra::spec_plot(mpg_list, polymin = 5))
+```
+
+
+
+```{r}
+embed_flipbook("kable_extra_spark", 
+               font_size = 90)
+```
+
+
+
+```{css, eval = TRUE, echo = F}
+.remark-code{line-height: 1.5; font-size: 60%}
+```
+

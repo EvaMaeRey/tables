@@ -1,0 +1,69 @@
+---
+title: "gt pizza2"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = FALSE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+pizza3 %>%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %>%
+  tab_options(table.font.size = "tiny") %>% 
+  tab_footnote(
+    footnote = "The pizza category with the highest total sales.",
+    locations = cells_row_groups("classic (classical pizzas)")
+  ) %>%
+  tab_footnote(
+    footnote = md("Custom sizes for **The Greek** pizza."),
+    locations = cells_stub("XXL")
+  ) %>%
+  tab_footnote(
+    footnote = md("This is a new record. Truly, 2015 was a **great** year for the `pizzaplace`."),
+    locations = cells_grand_summary(columns = vars(sold))
+  ) ->
+pizza_tab; pizza_tab
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 75%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+
