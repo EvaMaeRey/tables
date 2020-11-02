@@ -1,5 +1,5 @@
 ---
-title: "flex detail"
+title: "flex wide_format"
 subtitle: ""
 author: ""
 output:
@@ -30,21 +30,25 @@ xaringanExtra::use_share_again()
 
 
 ```{r the_chunk, include = F}
-myft <- iris[c(1:3, 51:53, 101:104),]
-myft <- flextable(
-  data = myft, 
-  col_keys = c("Species", "col_1", 
-               "Sepal.Length", "Petal.Length") )
-myft <- theme_vanilla(myft)
-myft <- autofit(myft)
-myft <- empty_blanks(myft)
-
-# reset and build
-myft <- head(iris)
-myft <- flextable(myft) 
-myft <- set_header_labels(myft, Sepal.Length = "Sepal length", 
-    Sepal.Width = "Sepal width", Petal.Length = "Petal length",
-    Petal.Width = "Petal width" )
+arranged_table %>% 
+  select(-is_sub, -is_grand) %>% 
+  flextable() %>% 
+  theme_box() %>% 
+  merge_v() %>% 
+  rotate(j = 1, part = "body", rotation = "btlr") %>% 
+  set_header_labels(continent = "",
+                    country = "") %>% 
+  bg(bg = "aliceblue", part = "all") %>% 
+  bg(i = ~ country == "Total", 
+     bg = "steelblue3") %>% 
+  bg(i = ~ country == "Grand Total", 
+     bg = "steelblue4") %>% 
+  color (i = ~ country == "Grand Total", 
+     color = "grey90") %>% 
+  bg(j = "continent", bg = "steelblue3") %>% 
+  bold(j = "Total", part = "all") %>% 
+  bold(i = ~ str_detect(country, "Total")) %>% 
+  font(fontname = "Times")
 ```
 
 `r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`

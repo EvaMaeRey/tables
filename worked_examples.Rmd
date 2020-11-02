@@ -1,0 +1,41 @@
+---
+title: "worked example"
+---
+
+
+
+```{r, include=F}
+options(knitr.duplicate.label = "allow")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+```{r margins_table_tidy}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  group_by(continent) %>% 
+  summarise(population = sum(pop)) %>% 
+  mutate(percent = 100 * round(prop.table(population), 3) ) ->
+base
+  
+base %>% 
+  summarise(percent = sum(percent), 
+            population = sum(population),
+            continent = "Total") ->
+totals_row
+
+bind_rows(base, totals_row) %>% 
+  mutate(`Population (millions)` = population/1000000) %>% 
+  mutate(percent = round(percent, 2)) %>% 
+  rename(` ` = continent) %>% 
+  select(` `, `Population (millions)`, percent) %>% 
+  flextable::flextable() 
+```
+
+```{r}
+embed_flipbook("margins_table_tidy", 
+               title = "### using tidyverse 'verbs' to create pop count by continent in 2002 with percentages and totals", 
+               font_size = 80)
+```
+

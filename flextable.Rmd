@@ -4,8 +4,9 @@ subtitle: a tutorial
 ---
 
 
-```{r}
+```{r, include = F}
 options(knitr.duplicate.label = "allow")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F, error = F)
 library(flipbookr)
 library(flextable)
 library(tidyverse)
@@ -16,37 +17,160 @@ library(officer)
 ```{r flex_basics}
 gapminder::gapminder %>% 
   filter(year == 2002) %>% 
-  head() %>% 
+  head() %>%
+  select(year, continent, everything()) %>% 
   flextable() %>% 
-  merge_v(j = c("country", "continent") ) %>% 
-  set_header_labels(country = "The Country" ) %>% 
+  theme_box() %>% 
+  merge_v(j = c("year", "country", "continent") ) %>% 
+  set_header_labels(country = "The Country Name", 
+                    year = "Year", 
+                    continent = "",
+                    pop = "Population") %>% 
   autofit() %>% 
-  theme_vader()
+  bg(bg = "grey95", part = "body") %>% 
+  bg(bg = "steelblue", part = "header") %>% 
+  color(color = "oldlace", part = "header") %>% 
+  font(fontname = "Times") %>% 
+  bg(bg = "grey70", j = 6) %>% 
+  bg(bg = "goldenrod2", j = 1) %>% 
+  rotate(j = 1:4, rotation="btlr", part = "header") %>% 
+  rotate(j = 3, rotation="lrtb", part = "header") %>% 
+  rotate(i = 3, j = 2, rotation="btlr", part = "body") %>% 
+  rotate(j = 1, rotation="btlr", part = "body") %>%
+  # conditional formatting
+  color(i = ~ lifeExp > 75, 
+        j = ~ country + lifeExp, 
+        color = "goldenrod4") %>% 
+  bold(j = c("year", "gdpPercap"), 
+       bold = TRUE) %>% 
+  align(align = "center", part = "all" ) %>% 
+  fontsize(j = "continent", size = 14) %>% 
+  fontsize(j = "year", size = 20) %>% 
+  color(j = 1, color = "steelblue", part = "body") %>% 
+  line_spacing(space = 3, part = "header") %>% 
+  vline(border = fp_border(color="goldenrod3", 
+                           style = "dashed"), 
+        part = "all" ) %>% 
+  hline_bottom(border = 
+                  fp_border(color="steelblue", 
+                            style = "solid", width = 5), 
+               part = "body" ) %>% 
+  hline(i = 5, border = fp_border(color = "plum4", width = 4)) %>% 
+  hline_top(border = fp_border(color="goldenrod3", width = 3), 
+            part = "all")
 ```
 
 ```{r}
-embed_flipbook("flex_basics")
+embed_flipbook("flex_basics",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
 ```
 
 
 
-```{r flex_theme, eval = F}
+---
+
+# A wide example
+
+
+```{r flex_wide}
+gapminder::gapminder %>% 
+  filter(country %in% 
+           c("Australia", "New Zealand", 
+             "Canada", "United States", "Mexico"),
+         year > 1990) %>% 
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %>% 
+  mutate(gdp_billion = round(gdp_billion,1)) %>% 
+  select(1:3, gdp_billion) %>% 
+  pivot_wider(values_from = gdp_billion,names_from = year) %>% 
+  select(continent, everything()) %>% 
+  arrange(continent) %>% 
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %>% 
+  mutate(is_sub = F) ->
+prep
+
+prep %>% 
+  group_by(continent) %>% 
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %>% 
+  mutate(country = "Total") %>% 
+  mutate(is_sub = T) %>% 
+  bind_rows(prep, .) %>% 
+  mutate(is_grand = F) %>% 
+  bind_rows(prep %>% 
+              summarise_at(vars(`1992`:Total), 
+                           sum, na.rm = TRUE) %>% 
+              mutate(country = "Grand Total") %>% 
+              mutate(is_sub = F) %>% 
+              mutate(is_grand = T)) %>% 
+  arrange(is_grand, continent, is_sub) ->
+arranged_table
+
+arranged_table
+```
+
+```{r}
+embed_flipbook("flex_wide",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
+```
+
+
+
+```{r flex_wide_format}
+arranged_table %>% 
+  select(-is_sub, -is_grand) %>% 
+  flextable() %>% 
+  theme_box() %>% 
+  merge_v() %>% 
+  rotate(j = 1, part = "body", rotation = "btlr") %>% 
+  set_header_labels(continent = "",
+                    country = "") %>% 
+  bg(bg = "aliceblue", part = "all") %>% 
+  bg(i = ~ country == "Total", 
+     bg = "steelblue3") %>% 
+  bg(i = ~ country == "Grand Total", 
+     bg = "steelblue4") %>% 
+  color (i = ~ country == "Grand Total", 
+     color = "grey90") %>% 
+  bg(j = "continent", bg = "steelblue3") %>% 
+  bold(j = "Total", part = "all") %>% 
+  bold(i = ~ str_detect(country, "Total")) %>% 
+  font(fontname = "Times")
+```
+
+
+```{r}
+embed_flipbook("flex_wide_format",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
+```
+
+
+
+
+
+---
+
+# Built-in themes!
+
+
+```{r flex_theme}
 gapminder::gapminder %>% 
   filter(year == 2002) %>% 
   head() %>% 
   flextable() %>%
-  theme_alafoli() %>% #ROTATE
-  theme_booktabs() %>% #ROTATE
-  theme_box() %>% #ROTATE
-  theme_tron() %>% #ROTATE
-  theme_tron_legacy() %>% #ROTATE
-  theme_vader() %>% #ROTATE
-  theme_vanilla() %>% #ROTATE
-  theme_zebra() #ROTATE
+  theme_tron_legacy() 
 ```
 
 ```{r}
-embed_flipbook("flex_theme", break_type = "rotate")
+embed_flipbook("flex_theme", 
+               break_type = "replace",
+               replace = "tron_legacy",
+               replacements = c("alafoli", "booktabs", "box", "tron", "tron_legacy",
+                                "vader", "vanilla", "zebra"))
 ```
 
 
@@ -58,13 +182,19 @@ gapminder::gapminder %>%
   head() %>% 
   flextable() %>% 
   theme_vanilla() %>% 
-  color(color = "black", part = "all") %>% 
-  bg(bg = "transparent", part = "all") %>% 
+  color(color = "steelblue", 
+        part = "all") %>% 
+  bg(bg = "transparent", 
+     part = "all") %>% 
   italic(j = 1) %>% 
-  bg(bg = "#C90000", part = "header") %>% 
-  color(color = "white", part = "header") %>% 
-  color(~ year > 3.5, ~ year, color = "red") %>% 
-  bold(~ year > 3.5, ~ year, bold = TRUE) %>% 
+  bg(bg = "#C90000", 
+     part = "header") %>% 
+  color(color = "white", 
+        part = "header") %>%
+  color(~ year > 3.5, ~ year, 
+        color = "red") %>% 
+  bold(~ year > 3.5, ~ year, 
+       bold = TRUE) %>% 
   autofit()
 ```
 
@@ -83,7 +213,8 @@ embed_flipbook("flex_custom_theme", font_size = 90)
 myft <- iris[c(1:3, 51:53, 101:104),]
 myft <- flextable(
   data = myft, 
-  col_keys = c("Species", "col_1", "Sepal.Length", "Petal.Length") )
+  col_keys = c("Species", "col_1", 
+               "Sepal.Length", "Petal.Length") )
 myft <- theme_vanilla(myft)
 myft <- autofit(myft)
 myft <- empty_blanks(myft)
@@ -98,7 +229,10 @@ myft <- set_header_labels(myft, Sepal.Length = "Sepal length",
 
 
 ```{r}
-embed_flipbook("flex_detail", font_size = 93, left_assign = T)
+embed_flipbook("flex_detail", left_assign = T,
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
 ```
 
 
@@ -119,8 +253,55 @@ tibble(
   merge_h_range(i =  ~ number < 3, j1 = "letters1", j2 = "letters2") #ROTATE
 ```
 
+---
+
+
+
+```{r margins_table_tidy, include=FALSE}
+library(tidyverse)
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  group_by(continent) %>% 
+  summarise(population = sum(pop)) %>% 
+  mutate(percent = 100 * round(prop.table(population), 3) ) ->
+base
+  
+base %>% 
+  summarise(percent = sum(percent), 
+            population = sum(population),
+            continent = "Totals") ->
+totals
+
+bind_rows(base, totals) %>% 
+  mutate(`Population (millions)` = population/1000000) %>% 
+  mutate(percent = round(percent, 2)) %>% 
+  rename(` ` = continent) %>% 
+  select(` `, `Population (millions)`, percent)
+```
+---
+# That was a lot of code... What other options do we have?
+---
+
+```{r prop.table, include = F}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  pull(continent) %>% 
+  table() %>% 
+  prop.table() %>% 
+  `*`(100) %>% 
+  round(1) %>% 
+  paste0("%")
+```
+
+
+
+
 ```{r}
-embed_flipbook("flex_merge", font_size = 93, break_type = "rotate")
+embed_flipbook("flex_merge",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80,
+               break_type = "rotate")
 ```
 
 

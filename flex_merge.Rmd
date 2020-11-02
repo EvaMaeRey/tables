@@ -24,7 +24,7 @@ load("current_image.Rdata")
 ```
 
 
-```{r, echo = F, eval = FALSE , message = F, warning = F}
+```{r, echo = F, eval = TRUE , message = F, warning = F}
 xaringanExtra::use_share_again()
 ```
 
@@ -46,7 +46,7 @@ tibble(
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 93%}
+.remark-code{line-height: 1.5; font-size: 80%}
 
 @media print {
   .has-continuation {

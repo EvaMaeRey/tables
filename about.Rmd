@@ -9,7 +9,7 @@ output:
 
 ```{r hi, include = F}
 options(knitr.duplicate.label = "allow")
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, echo = F, error = F)
 library(flipbookr)
 library(tidyverse)
 ```
@@ -48,6 +48,84 @@ knitr::include_graphics("https://github.com/ddsjoberg/gtsummary/blob/master/man/
 ```
 
 
+```{r comparison_build}
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns, 
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %>% 
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~ 
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~ 
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~ 
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~ 
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %>%
+  gt::gt() %>%
+  gt::cols_move_to_start(columns = vars(link, fns)) %>%
+  gt::cols_hide(columns = vars(printer)) %>%
+  gt::cols_label(link = gt::md("**Print Engine**"), 
+             fns = gt::md("**Function**"), 
+             HTML = gt::md("**HTML**"), PDF = gt::md("**PDF**"), 
+             RTF = gt::md("**RTF**"), Word = gt::md("**Word**")) %>%
+  gt::fmt_markdown(columns = vars(fns, link)) %>%
+  gt::data_color(
+    columns = vars(HTML, PDF, RTF, Word),
+    colors = scales::col_factor(
+      palette = c("#bae1ff", "#ffb3ba", "#ffdfba", "#ffffba", "#baffc9"),
+      domain = NULL,
+      reverse = TRUE
+    ),
+    alpha = 0.8
+  ) %>%
+  gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
+             vars(link) ~ px(110),
+             vars(link, fns) ~ px(140))
+```
+
+
+
+```{r}
+embed_flipbook("comparison_build",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 60)
+```
+
+
+%>%
+  text_transform(
+    locations = cells_body(columns = vars(HTML, PDF, RTF, Word)),
+    fn = function(x) {
+      dplyr::case_when(
+        x == 1 ~ local_image(filename = path_figure[[1]]),
+        x == 2 ~ local_image(filename = path_figure[[2]]),
+        x == 3 ~ local_image(filename = path_figure[[3]]),
+        x == 4 ~ local_image(filename = path_figure[[4]]),
+        x == 5 ~ local_image(filename = path_figure[[5]])
+      )
+    }
+  ) %>%
+  cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
+             vars(link) ~ px(110),
+             vars(link, fns) ~ px(140))
+
+
+
+
 ---
 
 # Default table look (in html)
@@ -83,6 +161,36 @@ embed_flipbook("tables",
                use_embed_xaringan = T)
 ```
 
+
+---
+
+# list column
+
+```{r listcolumn, eval = F, echo = F}
+tibble(x = c(1,2,3,4,6),
+       y = 1:5,
+       z = list(1:2, 4:5, 8, NA, c(1,7,9,0))) %>% 
+  tibble() #ROTATE
+  data.frame() #ROTATE
+  data.table::data.table() #ROTATE
+  knitr::kable() #ROTATE
+  gt::gt() #ROTATE
+  DT::datatable() #ROTATE
+```
+
+
+---
+# group
+---
+`r chunk_reveal("group", break_type = 1, title = "### What they do with grouped data..." )`
+```{r group, eval = F, echo = F}
+gapminder::gapminder %>%
+  group_by(country) %>% 
+  filter(year > 1990) %>% 
+  filter(continent == "Americas") %>% 
+  select(-continent) %>% 
+  gt::gt()
+```
 
 
 # kableExtra

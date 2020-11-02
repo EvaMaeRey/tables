@@ -1,0 +1,3465 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>comparison build</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+*tribble(
+*~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+*"gt",	1,	5,	5,	4,  "`as_gt()`",
+*"kable", 2,	2,	2,	2, "`as_kable()`",
+*"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+*"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+*"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+*"tibble",	3,	3,	3,	3, "`as_tibble()`"
+*) 
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 6 x 6
+  printer     HTML   PDF   RTF  Word fns               
+  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             
+1 gt             1     5     5     4 `as_gt()`         
+2 kable          2     2     2     2 `as_kable()`      
+3 flextable      1     1     4     1 `as_flex_table()` 
+4 kableExtra     1     1     4     4 `as_kable_extra()`
+5 huxtable       1     1     1     1 `as_hux_table()`  
+6 tibble         3     3     3     3 `as_tibble()`     
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+* dplyr::mutate(
+*   link = dplyr::case_when(
+*     printer == "gt" ~
+*       "[gt](https://gt.rstudio.com/index.html)",
+*     printer == "kable" ~
+*       "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+*     printer == "flextable" ~
+*       "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+*     printer == "kableExtra" ~
+*       "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+*     printer == "huxtable" ~
+*       "[huxtable](https://hughjonesd.github.io/huxtable/)",
+*     printer == "tibble" ~
+*       "[tibble](https://tibble.tidyverse.org/)"
+*   )
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 6 x 7
+  printer    HTML   PDF   RTF  Word fns        link                             
+  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                            
+1 gt            1     5     5     4 `as_gt()`  [gt](https://gt.rstudio.com/inde…
+2 kable         2     2     2     2 `as_kable… [kable](https://bookdown.org/yih…
+3 flextable     1     1     4     1 `as_flex_… [flextable](https://davidgohel.g…
+4 kableExt…     1     1     4     4 `as_kable… [kableExtra](http://haozhu233.gi…
+5 huxtable      1     1     1     1 `as_hux_t… [huxtable](https://hughjonesd.gi…
+6 tibble        3     3     3     3 `as_tibbl… [tibble](https://tibble.tidyvers…
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+* gt::gt()
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#onnfnwzztc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#onnfnwzztc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#onnfnwzztc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#onnfnwzztc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#onnfnwzztc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#onnfnwzztc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#onnfnwzztc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#onnfnwzztc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#onnfnwzztc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#onnfnwzztc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#onnfnwzztc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#onnfnwzztc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#onnfnwzztc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#onnfnwzztc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#onnfnwzztc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#onnfnwzztc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#onnfnwzztc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#onnfnwzztc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#onnfnwzztc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#onnfnwzztc .gt_left {
+  text-align: left;
+}
+
+#onnfnwzztc .gt_center {
+  text-align: center;
+}
+
+#onnfnwzztc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#onnfnwzztc .gt_font_normal {
+  font-weight: normal;
+}
+
+#onnfnwzztc .gt_font_bold {
+  font-weight: bold;
+}
+
+#onnfnwzztc .gt_font_italic {
+  font-style: italic;
+}
+
+#onnfnwzztc .gt_super {
+  font-size: 65%;
+}
+
+#onnfnwzztc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="onnfnwzztc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">printer</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">HTML</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PDF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">RTF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Word</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">fns</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">link</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">gt</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">`as_gt()`</td>
+      <td class="gt_row gt_left">[gt](https://gt.rstudio.com/index.html)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">kable</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">`as_kable()`</td>
+      <td class="gt_row gt_left">[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">flextable</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">`as_flex_table()`</td>
+      <td class="gt_row gt_left">[flextable](https://davidgohel.github.io/flextable/articles/overview.html)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">kableExtra</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">`as_kable_extra()`</td>
+      <td class="gt_row gt_left">[kableExtra](http://haozhu233.github.io/kableExtra/)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">huxtable</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">`as_hux_table()`</td>
+      <td class="gt_row gt_left">[huxtable](https://hughjonesd.github.io/huxtable/)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">tibble</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">`as_tibble()`</td>
+      <td class="gt_row gt_left">[tibble](https://tibble.tidyverse.org/)</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+* gt::cols_move_to_start(columns = vars(link, fns))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#vdqndyqghu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vdqndyqghu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vdqndyqghu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vdqndyqghu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vdqndyqghu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vdqndyqghu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vdqndyqghu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vdqndyqghu .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vdqndyqghu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vdqndyqghu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vdqndyqghu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vdqndyqghu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vdqndyqghu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#vdqndyqghu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vdqndyqghu .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vdqndyqghu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vdqndyqghu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vdqndyqghu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vdqndyqghu .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vdqndyqghu .gt_left {
+  text-align: left;
+}
+
+#vdqndyqghu .gt_center {
+  text-align: center;
+}
+
+#vdqndyqghu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vdqndyqghu .gt_font_normal {
+  font-weight: normal;
+}
+
+#vdqndyqghu .gt_font_bold {
+  font-weight: bold;
+}
+
+#vdqndyqghu .gt_font_italic {
+  font-style: italic;
+}
+
+#vdqndyqghu .gt_super {
+  font-size: 65%;
+}
+
+#vdqndyqghu .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="vdqndyqghu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">link</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">fns</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">printer</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">HTML</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PDF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">RTF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Word</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">[gt](https://gt.rstudio.com/index.html)</td>
+      <td class="gt_row gt_left">`as_gt()`</td>
+      <td class="gt_row gt_left">gt</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)</td>
+      <td class="gt_row gt_left">`as_kable()`</td>
+      <td class="gt_row gt_left">kable</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[flextable](https://davidgohel.github.io/flextable/articles/overview.html)</td>
+      <td class="gt_row gt_left">`as_flex_table()`</td>
+      <td class="gt_row gt_left">flextable</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kableExtra](http://haozhu233.github.io/kableExtra/)</td>
+      <td class="gt_row gt_left">`as_kable_extra()`</td>
+      <td class="gt_row gt_left">kableExtra</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[huxtable](https://hughjonesd.github.io/huxtable/)</td>
+      <td class="gt_row gt_left">`as_hux_table()`</td>
+      <td class="gt_row gt_left">huxtable</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[tibble](https://tibble.tidyverse.org/)</td>
+      <td class="gt_row gt_left">`as_tibble()`</td>
+      <td class="gt_row gt_left">tibble</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+  gt::cols_move_to_start(columns = vars(link, fns)) %&gt;%
+* gt::cols_hide(columns = vars(printer))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ewvbswrzlb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ewvbswrzlb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ewvbswrzlb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ewvbswrzlb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ewvbswrzlb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ewvbswrzlb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ewvbswrzlb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ewvbswrzlb .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ewvbswrzlb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ewvbswrzlb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ewvbswrzlb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ewvbswrzlb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ewvbswrzlb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ewvbswrzlb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ewvbswrzlb .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ewvbswrzlb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ewvbswrzlb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ewvbswrzlb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ewvbswrzlb .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ewvbswrzlb .gt_left {
+  text-align: left;
+}
+
+#ewvbswrzlb .gt_center {
+  text-align: center;
+}
+
+#ewvbswrzlb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ewvbswrzlb .gt_font_normal {
+  font-weight: normal;
+}
+
+#ewvbswrzlb .gt_font_bold {
+  font-weight: bold;
+}
+
+#ewvbswrzlb .gt_font_italic {
+  font-style: italic;
+}
+
+#ewvbswrzlb .gt_super {
+  font-size: 65%;
+}
+
+#ewvbswrzlb .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ewvbswrzlb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">link</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">fns</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">HTML</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PDF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">RTF</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Word</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">[gt](https://gt.rstudio.com/index.html)</td>
+      <td class="gt_row gt_left">`as_gt()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)</td>
+      <td class="gt_row gt_left">`as_kable()`</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[flextable](https://davidgohel.github.io/flextable/articles/overview.html)</td>
+      <td class="gt_row gt_left">`as_flex_table()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kableExtra](http://haozhu233.github.io/kableExtra/)</td>
+      <td class="gt_row gt_left">`as_kable_extra()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[huxtable](https://hughjonesd.github.io/huxtable/)</td>
+      <td class="gt_row gt_left">`as_hux_table()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[tibble](https://tibble.tidyverse.org/)</td>
+      <td class="gt_row gt_left">`as_tibble()`</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+  gt::cols_move_to_start(columns = vars(link, fns)) %&gt;%
+  gt::cols_hide(columns = vars(printer)) %&gt;%
+* gt::cols_label(link = gt::md("**Print Engine**"),
+*            fns = gt::md("**Function**"),
+*            HTML = gt::md("**HTML**"), PDF = gt::md("**PDF**"),
+*            RTF = gt::md("**RTF**"), Word = gt::md("**Word**"))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#geosmefanc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#geosmefanc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#geosmefanc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#geosmefanc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#geosmefanc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geosmefanc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#geosmefanc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#geosmefanc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#geosmefanc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#geosmefanc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#geosmefanc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#geosmefanc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#geosmefanc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#geosmefanc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#geosmefanc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#geosmefanc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#geosmefanc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#geosmefanc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geosmefanc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#geosmefanc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geosmefanc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#geosmefanc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#geosmefanc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geosmefanc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#geosmefanc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#geosmefanc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#geosmefanc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#geosmefanc .gt_left {
+  text-align: left;
+}
+
+#geosmefanc .gt_center {
+  text-align: center;
+}
+
+#geosmefanc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#geosmefanc .gt_font_normal {
+  font-weight: normal;
+}
+
+#geosmefanc .gt_font_bold {
+  font-weight: bold;
+}
+
+#geosmefanc .gt_font_italic {
+  font-style: italic;
+}
+
+#geosmefanc .gt_super {
+  font-size: 65%;
+}
+
+#geosmefanc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="geosmefanc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Print Engine</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Function</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>HTML</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>PDF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>RTF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Word</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">[gt](https://gt.rstudio.com/index.html)</td>
+      <td class="gt_row gt_left">`as_gt()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)</td>
+      <td class="gt_row gt_left">`as_kable()`</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[flextable](https://davidgohel.github.io/flextable/articles/overview.html)</td>
+      <td class="gt_row gt_left">`as_flex_table()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[kableExtra](http://haozhu233.github.io/kableExtra/)</td>
+      <td class="gt_row gt_left">`as_kable_extra()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[huxtable](https://hughjonesd.github.io/huxtable/)</td>
+      <td class="gt_row gt_left">`as_hux_table()`</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">[tibble](https://tibble.tidyverse.org/)</td>
+      <td class="gt_row gt_left">`as_tibble()`</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+  gt::cols_move_to_start(columns = vars(link, fns)) %&gt;%
+  gt::cols_hide(columns = vars(printer)) %&gt;%
+  gt::cols_label(link = gt::md("**Print Engine**"),
+             fns = gt::md("**Function**"),
+             HTML = gt::md("**HTML**"), PDF = gt::md("**PDF**"),
+             RTF = gt::md("**RTF**"), Word = gt::md("**Word**")) %&gt;%
+* gt::fmt_markdown(columns = vars(fns, link))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dbltpnnyzj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dbltpnnyzj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dbltpnnyzj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dbltpnnyzj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dbltpnnyzj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dbltpnnyzj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dbltpnnyzj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dbltpnnyzj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbltpnnyzj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbltpnnyzj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dbltpnnyzj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dbltpnnyzj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dbltpnnyzj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dbltpnnyzj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbltpnnyzj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbltpnnyzj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dbltpnnyzj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dbltpnnyzj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbltpnnyzj .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dbltpnnyzj .gt_left {
+  text-align: left;
+}
+
+#dbltpnnyzj .gt_center {
+  text-align: center;
+}
+
+#dbltpnnyzj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dbltpnnyzj .gt_font_normal {
+  font-weight: normal;
+}
+
+#dbltpnnyzj .gt_font_bold {
+  font-weight: bold;
+}
+
+#dbltpnnyzj .gt_font_italic {
+  font-style: italic;
+}
+
+#dbltpnnyzj .gt_super {
+  font-size: 65%;
+}
+
+#dbltpnnyzj .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="dbltpnnyzj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Print Engine</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Function</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>HTML</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>PDF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>RTF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Word</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://gt.rstudio.com/index.html">gt</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_gt()</code></p>
+</div></td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">kable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable()</code></p>
+</div></td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://davidgohel.github.io/flextable/articles/overview.html">flextable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_flex_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable_extra()</code></p>
+</div></td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://hughjonesd.github.io/huxtable/">huxtable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_hux_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://tibble.tidyverse.org/">tibble</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_tibble()</code></p>
+</div></td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+  gt::cols_move_to_start(columns = vars(link, fns)) %&gt;%
+  gt::cols_hide(columns = vars(printer)) %&gt;%
+  gt::cols_label(link = gt::md("**Print Engine**"),
+             fns = gt::md("**Function**"),
+             HTML = gt::md("**HTML**"), PDF = gt::md("**PDF**"),
+             RTF = gt::md("**RTF**"), Word = gt::md("**Word**")) %&gt;%
+  gt::fmt_markdown(columns = vars(fns, link)) %&gt;%
+* gt::data_color(
+*   columns = vars(HTML, PDF, RTF, Word),
+*   colors = scales::col_factor(
+*     palette = c("#bae1ff", "#ffb3ba", "#ffdfba", "#ffffba", "#baffc9"),
+*     domain = NULL,
+*     reverse = TRUE
+*   ),
+*   alpha = 0.8
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#oplfmjcurh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#oplfmjcurh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#oplfmjcurh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#oplfmjcurh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#oplfmjcurh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#oplfmjcurh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#oplfmjcurh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#oplfmjcurh .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#oplfmjcurh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#oplfmjcurh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#oplfmjcurh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#oplfmjcurh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#oplfmjcurh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#oplfmjcurh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oplfmjcurh .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oplfmjcurh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#oplfmjcurh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#oplfmjcurh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oplfmjcurh .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#oplfmjcurh .gt_left {
+  text-align: left;
+}
+
+#oplfmjcurh .gt_center {
+  text-align: center;
+}
+
+#oplfmjcurh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#oplfmjcurh .gt_font_normal {
+  font-weight: normal;
+}
+
+#oplfmjcurh .gt_font_bold {
+  font-weight: bold;
+}
+
+#oplfmjcurh .gt_font_italic {
+  font-style: italic;
+}
+
+#oplfmjcurh .gt_super {
+  font-size: 65%;
+}
+
+#oplfmjcurh .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="oplfmjcurh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Print Engine</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Function</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>HTML</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>PDF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>RTF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Word</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://gt.rstudio.com/index.html">gt</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_gt()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">5</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">5</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">kable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,223,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,244,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,255,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,244,186,0.8); color: #000000;">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://davidgohel.github.io/flextable/articles/overview.html">flextable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_flex_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,179,186,0.8); color: #000000;">4</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable_extra()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,179,186,0.8); color: #000000;">4</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://hughjonesd.github.io/huxtable/">huxtable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_hux_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://tibble.tidyverse.org/">tibble</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_tibble()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,194,186,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,223,186,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,194,186,0.8); color: #000000;">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+tribble(
+~printer, ~HTML, ~PDF, ~RTF,~Word, ~fns,
+"gt",	1,	5,	5,	4,  "`as_gt()`",
+"kable", 2,	2,	2,	2, "`as_kable()`",
+"flextable", 1,	1,	4,	1,  "`as_flex_table()`",
+"kableExtra", 1,	1,	4,	4, "`as_kable_extra()`",
+"huxtable",	1,	1,	1,	1, "`as_hux_table()`",
+"tibble",	3,	3,	3,	3, "`as_tibble()`"
+) %&gt;%
+  dplyr::mutate(
+    link = dplyr::case_when(
+      printer == "gt" ~
+        "[gt](https://gt.rstudio.com/index.html)",
+      printer == "kable" ~
+        "[kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)",
+      printer == "flextable" ~
+        "[flextable](https://davidgohel.github.io/flextable/articles/overview.html)",
+      printer == "kableExtra" ~
+        "[kableExtra](http://haozhu233.github.io/kableExtra/)",
+      printer == "huxtable" ~
+        "[huxtable](https://hughjonesd.github.io/huxtable/)",
+      printer == "tibble" ~
+        "[tibble](https://tibble.tidyverse.org/)"
+    )
+  ) %&gt;%
+  gt::gt() %&gt;%
+  gt::cols_move_to_start(columns = vars(link, fns)) %&gt;%
+  gt::cols_hide(columns = vars(printer)) %&gt;%
+  gt::cols_label(link = gt::md("**Print Engine**"),
+             fns = gt::md("**Function**"),
+             HTML = gt::md("**HTML**"), PDF = gt::md("**PDF**"),
+             RTF = gt::md("**RTF**"), Word = gt::md("**Word**")) %&gt;%
+  gt::fmt_markdown(columns = vars(fns, link)) %&gt;%
+  gt::data_color(
+    columns = vars(HTML, PDF, RTF, Word),
+    colors = scales::col_factor(
+      palette = c("#bae1ff", "#ffb3ba", "#ffdfba", "#ffffba", "#baffc9"),
+      domain = NULL,
+      reverse = TRUE
+    ),
+    alpha = 0.8
+  ) %&gt;%
+* gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
+*            vars(link) ~ px(110),
+*            vars(link, fns) ~ px(140))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#qcgruufvxw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qcgruufvxw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qcgruufvxw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qcgruufvxw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qcgruufvxw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qcgruufvxw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qcgruufvxw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qcgruufvxw .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qcgruufvxw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qcgruufvxw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qcgruufvxw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qcgruufvxw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qcgruufvxw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#qcgruufvxw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcgruufvxw .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcgruufvxw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qcgruufvxw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#qcgruufvxw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qcgruufvxw .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#qcgruufvxw .gt_left {
+  text-align: left;
+}
+
+#qcgruufvxw .gt_center {
+  text-align: center;
+}
+
+#qcgruufvxw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qcgruufvxw .gt_font_normal {
+  font-weight: normal;
+}
+
+#qcgruufvxw .gt_font_bold {
+  font-weight: bold;
+}
+
+#qcgruufvxw .gt_font_italic {
+  font-style: italic;
+}
+
+#qcgruufvxw .gt_super {
+  font-size: 65%;
+}
+
+#qcgruufvxw .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="qcgruufvxw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:110px;"/>
+    <col style="width:140px;"/>
+    <col style="width:60px;"/>
+    <col style="width:60px;"/>
+    <col style="width:60px;"/>
+    <col style="width:60px;"/>
+  </colgroup>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Print Engine</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Function</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>HTML</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>PDF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>RTF</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Word</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://gt.rstudio.com/index.html">gt</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_gt()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">5</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">5</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">kable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,223,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,244,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,255,186,0.8); color: #000000;">2</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,244,186,0.8); color: #000000;">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://davidgohel.github.io/flextable/articles/overview.html">flextable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_flex_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,179,186,0.8); color: #000000;">4</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_kable_extra()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,179,186,0.8); color: #000000;">4</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://hughjonesd.github.io/huxtable/">huxtable</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_hux_table()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,255,201,0.8); color: #000000;">1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><a href="https://tibble.tidyverse.org/">tibble</a></p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>as_tibble()</code></p>
+</div></td>
+      <td class="gt_row gt_right" style="background-color: rgba(186,225,255,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,194,186,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,223,186,0.8); color: #000000;">3</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,194,186,0.8); color: #000000;">3</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 60%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
