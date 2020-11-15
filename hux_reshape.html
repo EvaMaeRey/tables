@@ -7,6 +7,11 @@
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -25,14 +30,14 @@
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 *matrix(1:16, 4, 4)
 ```
 ]
  
-.panel2-hux_reshape-auto[
+.panel2-the_chunk-auto[
 
 ```
 ##      [,1] [,2] [,3] [,4]
@@ -47,7 +52,7 @@ count: false
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -55,8 +60,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_02_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_02_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">13</td></tr>
 <tr>
@@ -73,7 +78,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -82,8 +87,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_03_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_03_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">13</td></tr>
 <tr>
@@ -100,7 +105,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -110,8 +115,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_04_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_04_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -128,7 +133,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -139,8 +144,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_05_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_05_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -157,7 +162,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -169,8 +174,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_06_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_06_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -187,7 +192,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -200,8 +205,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_07_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_07_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -218,7 +223,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -232,8 +237,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_08_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_08_output">
 <col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -250,7 +255,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -265,8 +270,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_09_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_09_output">
 <caption style="caption-side: top; text-align: center;">Original table</caption><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td></tr>
 <tr>
@@ -283,7 +288,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -299,8 +304,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_10_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_10_output">
 <caption style="caption-side: top; text-align: center;">Original table</caption><col><col><col><col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 100, 0); font-weight: normal;"><span style="color: rgb(255, 255, 255);">3</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 100, 0); font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 0, 255); font-weight: normal;"><span style="color: rgb(255, 255, 255);">11</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 0, 255); font-weight: normal;"><span style="color: rgb(255, 255, 255);">15</span></td></tr>
 <tr>
@@ -313,7 +318,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -330,8 +335,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_11_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_11_output">
 <caption style="caption-side: top; text-align: center;">Restacked across</caption><col><col><col><col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 0); font-weight: normal;">13</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 100, 0); font-weight: normal;"><span style="color: rgb(255, 255, 255);">3</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 100, 0); font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 0, 255); font-weight: normal;"><span style="color: rgb(255, 255, 255);">11</span></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(0, 0, 255); font-weight: normal;"><span style="color: rgb(255, 255, 255);">15</span></td></tr>
 <tr>
@@ -344,7 +349,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -362,8 +367,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_12_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_12_output">
 <caption style="caption-side: top; text-align: center;">Restacked across</caption><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td></tr>
 <tr>
@@ -388,7 +393,7 @@ matrix(1:16, 4, 4) %&gt;%
 count: false
  
 
-.panel1-hux_reshape-auto[
+.panel1-the_chunk-auto[
 
 ```r
 matrix(1:16, 4, 4) %&gt;%
@@ -407,8 +412,8 @@ matrix(1:16, 4, 4) %&gt;%
 ```
 ]
  
-.panel2-hux_reshape-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_reshape_auto_13_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_13_output">
 <caption style="caption-side: top; text-align: center;">Restacked down</caption><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 2pt 2pt 2pt 2pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 0, 0); font-weight: normal;">5</td></tr>
 <tr>
@@ -430,23 +435,23 @@ matrix(1:16, 4, 4) %&gt;%
 ]
 
 &lt;style&gt;
-.panel1-hux_reshape-auto {
+.panel1-the_chunk-auto {
   color: black;
-  width: 38.6060606060606%;
+  width: 58.8%;
   hight: 32%;
   float: left;
   padding-left: 1%;
   font-size: 80%
 }
-.panel2-hux_reshape-auto {
+.panel2-the_chunk-auto {
   color: black;
-  width: 59.3939393939394%;
+  width: 39.2%;
   hight: 32%;
   float: left;
   padding-left: 1%;
   font-size: 80%
 }
-.panel3-hux_reshape-auto {
+.panel3-the_chunk-auto {
   color: black;
   width: NA%;
   hight: 33%;

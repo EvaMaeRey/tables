@@ -8,7 +8,7 @@ subtitle: a tutorial
 options(knitr.duplicate.label = "allow")
 library(flipbookr)
 library(tidyverse)
-knitr::opts_chunk$set(cache = T, message =F)
+knitr::opts_chunk$set(cache = T, message = F)
 ```
 
 
@@ -24,6 +24,31 @@ knitr::opts_chunk$set(cache = T, message =F)
 - Easy conditional formatting based on table contents, 
 - Quick table themes, 
 - Automatic creation of regression output tables with the huxreg function
+
+
+
+```{r hex_basics, echo= F}
+library(huxtable)
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  head() %>%
+  select(year, continent, everything()) %>% 
+  as_hux() %>% 
+  set_all_border_colors(value = "gold") %>% 
+  merge_cells(col = 1, row = 2:7) %>% 
+  merge_cells(col = 2, row = 4:5)
+```
+```{r, echo = F, message=F}
+flipbookr::embed_flipbook("hex_basics", 
+                          font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
+```
+
+
+
+
 
 
 ### Getting started with huxtable
@@ -42,7 +67,11 @@ hux(Type  = c("Strawberry", "Raspberry", "Plum"),
 ```
 
 ```{r, echo = F, message=F}
-flipbookr::embed_flipbook("huxbasics", font_size = 120, widths = c(3,2))
+flipbookr::embed_flipbook("huxbasics", 
+                          font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 ### Advanced formatting and markdown
@@ -65,7 +94,10 @@ data.frame(Type  = c("Strawberry", "Raspberry", "Plum"),
 ```
 
 ```{r, echo = F}
-flipbookr::embed_flipbook("huxformat", font_size = 120)
+flipbookr::embed_flipbook("huxformat", font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 
@@ -98,7 +130,10 @@ hux(Type  = c("Strawberry", "Raspberry", "Plum"),
 
 
 ```{r, echo = F, cache = F}
-flipbookr::embed_flipbook("huxborders", font_size = 120)
+flipbookr::embed_flipbook("huxborders", font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 
@@ -124,7 +159,10 @@ iris %>%
 
 
 ```{r, echo = F, cache = F}
-flipbookr::embed_flipbook("hux_large", font_size = 120)
+flipbookr::embed_flipbook("hux_large", font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 ### reshaping
@@ -146,7 +184,10 @@ matrix(1:16, 4, 4) %>%
 ```
 
 ```{r, echo = F}
-flipbookr::embed_flipbook("hux_reshape", font_size = 120)
+flipbookr::embed_flipbook("hux_reshape", font_size = 120, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 
@@ -179,7 +220,10 @@ iris %>%
 
 
 ```{r, echo = F}
-flipbookr::embed_flipbook("hux_mega", font_size = 100)
+flipbookr::embed_flipbook("hux_mega", font_size = 100, 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
 ```
 
 ---
@@ -209,6 +253,59 @@ gapminder::gapminder %>%
 ```
 
 ```{r, echo = F, cache = F}
-flipbookr::embed_flipbook("hux_theme1", font_size = 90, break_type = "rotate")
+flipbookr::embed_flipbook("hux_theme1", font_size = 90, break_type = "rotate", 
+                          widths = c(3,2),
+                          use_share_again = T, 
+                          use_embed_xaringan = T)
+```
+
+
+```{r}
+jams %>% 
+      set_all_padding(4) %>% 
+      set_outer_padding(0) %>% 
+      set_number_format(2) %>% 
+      set_bold(1, everywhere) %>% 
+      set_bottom_border(1, everywhere) %>% 
+      set_width(0.4) %>% 
+      set_caption("Pots of jam for sale")
+
+```
+
+# Using assignment
+
+
+```{r hux_set, echo = F}
+jams1 <- jams
+# set all padding:
+left_padding(jams1) <- 7
+right_padding(jams1) <- 20
+top_padding(jams1) <- 11
+bottom_padding(jams1) <- 12
+
+# set outer padding:
+left_padding(jams1)[1:nrow(jams1), 1] <- 3
+top_padding(jams1)[1, 1:ncol(jams1)] <- 1
+right_padding(jams1)[1:nrow(jams1),
+                     ncol(jams1)] <- .3
+bottom_padding(jams1)[nrow(jams1),
+                      1:ncol(jams1)] <- 0
+
+number_format(jams1) <- 2
+bold(jams1)[1, 1:ncol(jams1)] <- TRUE
+bottom_border(jams1)[1, 1:ncol(jams1)] <- 0.8
+width(jams1) <- 1
+caption(jams1) <- "Pots!!!"
+
+bold(jams1)[1, 1:ncol(jams1)] <- FALSE
+```
+
+
+```{r}
+embed_flipbook("hux_set", font_size = 120, 
+               use_embed_xaringan = T, 
+               left_assign = T,
+               widths = c(4.5,3),
+               use_share_again = T)
 ```
 

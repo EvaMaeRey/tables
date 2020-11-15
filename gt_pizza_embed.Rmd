@@ -1,0 +1,83 @@
+---
+title: "gt pizza"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = TRUE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+library(tidyverse)
+library(paletteer)
+library(gt)
+pizzaplace %>%
+  mutate(type = case_when(
+    type == "chicken" ~ "chicken (pizzas with chicken as a major ingredient)",
+    type == "classic" ~ "classic (classical pizzas)",
+    type == "supreme" ~ "supreme (pizzas that try a little harder)",
+    type == "veggie" ~ "chicken (pizzas without any meats whatsoever)",
+  )) %>%
+  mutate(size = factor(size, 
+                       levels = c("S", "M", "L", 
+                                  "XL", "XXL"))) %>%
+  dplyr::group_by(type, size) %>%
+  dplyr::summarize(
+    sold = n(),
+    income = sum(price)
+  ) %>% 
+  # table is kind of large, hard to make sense of
+  dplyr::filter(size != "S" & 
+                  size != "M" & 
+                  size != "XL") ->
+pizza_prep; pizza_prep
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 90%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+

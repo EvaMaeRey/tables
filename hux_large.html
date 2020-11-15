@@ -7,6 +7,11 @@
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -25,15 +30,15 @@
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 *iris
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_01_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_01_output">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Width</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Width</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Species</th></tr>
 <tr>
@@ -344,7 +349,7 @@ count: false
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -352,7 +357,7 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
+.panel2-the_chunk-auto[
 
 ```
 ## # A tibble: 150 x 5
@@ -377,7 +382,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -387,7 +392,7 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
+.panel2-the_chunk-auto[
 
 ```
 ## # A tibble: 150 x 5
@@ -412,7 +417,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -423,7 +428,7 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
+.panel2-the_chunk-auto[
 
 ```
 ## # A tibble: 15 x 5
@@ -452,7 +457,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -464,8 +469,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_05_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_05_output">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Species</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal.Width</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal.Width</th></tr>
 <tr>
@@ -506,7 +511,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -519,8 +524,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_06_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_06_output">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Species</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Sepal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Sepal.Width</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Petal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Petal.Width</th></tr>
 <tr>
@@ -561,7 +566,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -575,8 +580,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_07_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_07_output">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Species</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Width</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Length</th><th style="vertical-align: top; text-align: right; white-space: normal; padding: 2pt 6pt 2pt 6pt; font-weight: normal;">Width</th></tr>
 <tr>
@@ -617,7 +622,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -632,8 +637,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_08_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_08_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td></tr>
 <tr>
@@ -676,7 +681,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -692,8 +697,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_09_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_09_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td colspan="2" style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td></tr>
 <tr>
@@ -736,7 +741,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -753,8 +758,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_10_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_10_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td colspan="2" style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal</td><td colspan="2" style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal</td></tr>
 <tr>
@@ -797,7 +802,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -815,8 +820,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_11_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_11_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sepal</td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Petal</td></tr>
 <tr>
@@ -859,7 +864,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -878,8 +883,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_12_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_12_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: normal;"></td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: normal;">Sepal</td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: normal;">Petal</td></tr>
 <tr>
@@ -922,7 +927,7 @@ iris %&gt;%
 count: false
  
 
-.panel1-hux_large-auto[
+.panel1-the_chunk-auto[
 
 ```r
 iris %&gt;%
@@ -942,8 +947,8 @@ iris %&gt;%
 ```
 ]
  
-.panel2-hux_large-auto[
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:hux_large_auto_13_output">
+.panel2-the_chunk-auto[
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:the_chunk_auto_13_output">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: bold;"></td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: bold;">Sepal</td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; padding: 0pt 6pt 0pt 6pt; font-weight: bold;">Petal</td></tr>
 <tr>
@@ -983,23 +988,23 @@ iris %&gt;%
 ]
 
 &lt;style&gt;
-.panel1-hux_large-auto {
+.panel1-the_chunk-auto {
   color: black;
-  width: 38.6060606060606%;
+  width: 58.8%;
   hight: 32%;
   float: left;
   padding-left: 1%;
   font-size: 80%
 }
-.panel2-hux_large-auto {
+.panel2-the_chunk-auto {
   color: black;
-  width: 59.3939393939394%;
+  width: 39.2%;
   hight: 32%;
   float: left;
   padding-left: 1%;
   font-size: 80%
 }
-.panel3-hux_large-auto {
+.panel3-the_chunk-auto {
   color: black;
   width: NA%;
   hight: 33%;

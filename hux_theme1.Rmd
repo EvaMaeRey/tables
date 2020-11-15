@@ -24,21 +24,34 @@ load("current_image.Rdata")
 ```
 
 
-```{r, echo = F, eval = FALSE , message = F, warning = F}
+```{r, echo = F, eval = TRUE , message = F, warning = F}
 xaringanExtra::use_share_again()
 ```
 
-```{r, include = F}
-readLines("hux_theme1.R") %>%
-  paste(collapse = "
-") %>%
-  code_parse() %>%
-  parsed_return_partial_code_sequence(break_type = "rotate") ->
-the_code_seq
+
+```{r the_chunk, include = F}
+library(huxtable)
+gapminder::gapminder %>%
+  filter(year == 2002,
+         pop > 100000000) %>% 
+  arrange(-pop) %>% 
+  select(-year) %>% 
+  as_hux() %>% 
+  set_caption("Most populous Countries, 2002") %>% 
+  theme_bright() %>% #ROTATE
+  theme_blue() %>% #ROTATE
+  theme_article() %>% #ROTATE
+  theme_basic() %>% #ROTATE
+  theme_compact() %>% #ROTATE
+  theme_green() %>% #ROTATE
+  theme_grey() %>% #ROTATE
+  theme_mondrian() %>% #ROTATE
+  theme_orange() %>% #ROTATE
+  theme_plain() %>% #ROTATE
+  theme_striped() #ROTATE
 ```
 
-
-`r chunk_reveal(code_seq = the_code_seq, chunk_name = "hux_theme1", break_type = "rotate", ...)`
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "rotate", ...)`
 
 
 

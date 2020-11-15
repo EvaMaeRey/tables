@@ -7,6 +7,10 @@ tribble(
 "huxtable",	1,	1,	1,	1, "`as_hux_table()`",
 "tibble",	3,	3,	3,	3, "`as_tibble()`"
 ) %>% 
+    mutate_at(.vars = 2:5, 
+            funs(factor(., 
+                        levels = 1:5, 
+                        ordered = T))) %>% 
   dplyr::mutate(
     link = dplyr::case_when(
       printer == "gt" ~ 
@@ -39,6 +43,21 @@ tribble(
       reverse = TRUE
     ),
     alpha = 0.8
+  ) %>%
+  gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
+             vars(link) ~ px(110),
+             vars(link, fns) ~ px(140)) %>%
+  gt::text_transform(
+    locations = gt::cells_body(columns = vars(HTML, PDF, RTF, Word)),
+    fn = function(x) {
+      dplyr::case_when(
+        x == 3 ~ gt::local_image(filename = "img/icons8-confused-100.png"),
+        x == 1 ~ gt::local_image(filename = "img/icons8-smiling-100.png"),
+        x == 2 ~ gt::local_image(filename = "img/icons8-neutral-100.png"),
+        x == 4 ~ gt::local_image(filename = "img/icons8-no-entry-100.png"),
+        x == 5 ~ gt::local_image(filename = "img/icons8-under-construction-100.png")
+      )
+    }
   ) %>%
   gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
              vars(link) ~ px(110),

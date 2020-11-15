@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>### default look in html</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+    <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.8/datatables.js"></script>
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+    <script src="libs/core-js-2.5.3/shim.min.js"></script>
+    <script src="libs/react-16.12.0/react.min.js"></script>
+    <script src="libs/react-16.12.0/react-dom.min.js"></script>
+    <script src="libs/reactwidget-1.0.0/react-tools.js"></script>
+    <script src="libs/reactable-binding-0.2.3/reactable.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* tibble::tibble()
+```
+]
+ 
+.panel2-the_chunk-replace[
+
+```
+# A tibble: 20 x 5
+   country        continent lifeExp        pop gdpPercap
+   &lt;fct&gt;          &lt;fct&gt;       &lt;dbl&gt;      &lt;int&gt;     &lt;dbl&gt;
+ 1 China          Asia         72.0 1280400000     3119.
+ 2 India          Asia         62.9 1034172547     1747.
+ 3 United States  Americas     77.3  287675526    39097.
+ 4 Indonesia      Asia         68.6  211060000     2874.
+ 5 Brazil         Americas     71.0  179914212     8131.
+ 6 Pakistan       Asia         63.6  153403524     2093.
+ 7 Bangladesh     Asia         62.0  135656790     1136.
+ 8 Japan          Asia         82    127065841    28605.
+ 9 Nigeria        Africa       46.6  119901274     1615.
+10 Mexico         Americas     74.9  102479927    10742.
+11 Philippines    Asia         70.3   82995088     2651.
+12 Germany        Europe       78.7   82350671    30036.
+13 Vietnam        Asia         73.0   80908147     1764.
+14 Egypt          Africa       69.8   73312559     4755.
+15 Ethiopia       Africa       50.7   67946797      530.
+16 Turkey         Europe       70.8   67308928     6508.
+17 Iran           Asia         69.5   66907826     9241.
+18 Thailand       Asia         68.6   62806748     5913.
+19 France         Europe       79.6   59925035    28926.
+20 United Kingdom Europe       78.5   59912431    29479.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* data.table::data.table()
+```
+]
+ 
+.panel2-the_chunk-replace[
+
+```
+           country continent lifeExp        pop  gdpPercap
+ 1:          China      Asia  72.028 1280400000  3119.2809
+ 2:          India      Asia  62.879 1034172547  1746.7695
+ 3:  United States  Americas  77.310  287675526 39097.0995
+ 4:      Indonesia      Asia  68.588  211060000  2873.9129
+ 5:         Brazil  Americas  71.006  179914212  8131.2128
+ 6:       Pakistan      Asia  63.610  153403524  2092.7124
+ 7:     Bangladesh      Asia  62.013  135656790  1136.3904
+ 8:          Japan      Asia  82.000  127065841 28604.5919
+ 9:        Nigeria    Africa  46.608  119901274  1615.2864
+10:         Mexico  Americas  74.902  102479927 10742.4405
+11:    Philippines      Asia  70.303   82995088  2650.9211
+12:        Germany    Europe  78.670   82350671 30035.8020
+13:        Vietnam      Asia  73.017   80908147  1764.4567
+14:          Egypt    Africa  69.806   73312559  4754.6044
+15:       Ethiopia    Africa  50.725   67946797   530.0535
+16:         Turkey    Europe  70.845   67308928  6508.0857
+17:           Iran      Asia  69.451   66907826  9240.7620
+18:       Thailand      Asia  68.564   62806748  5913.1875
+19:         France    Europe  79.590   59925035 28926.0323
+20: United Kingdom    Europe  78.471   59912431 29478.9992
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* gt::gt()
+```
+]
+ 
+.panel2-the_chunk-replace[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ihhdncgrhl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ihhdncgrhl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ihhdncgrhl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ihhdncgrhl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ihhdncgrhl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ihhdncgrhl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ihhdncgrhl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ihhdncgrhl .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ihhdncgrhl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ihhdncgrhl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ihhdncgrhl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ihhdncgrhl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ihhdncgrhl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ihhdncgrhl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ihhdncgrhl .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ihhdncgrhl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ihhdncgrhl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ihhdncgrhl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ihhdncgrhl .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ihhdncgrhl .gt_left {
+  text-align: left;
+}
+
+#ihhdncgrhl .gt_center {
+  text-align: center;
+}
+
+#ihhdncgrhl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ihhdncgrhl .gt_font_normal {
+  font-weight: normal;
+}
+
+#ihhdncgrhl .gt_font_bold {
+  font-weight: bold;
+}
+
+#ihhdncgrhl .gt_font_italic {
+  font-style: italic;
+}
+
+#ihhdncgrhl .gt_super {
+  font-size: 65%;
+}
+
+#ihhdncgrhl .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ihhdncgrhl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">continent</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">lifeExp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">pop</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">gdpPercap</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">China</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">72.028</td>
+      <td class="gt_row gt_center">1280400000</td>
+      <td class="gt_row gt_right">3119.2809</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">India</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">62.879</td>
+      <td class="gt_row gt_center">1034172547</td>
+      <td class="gt_row gt_right">1746.7695</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">United States</td>
+      <td class="gt_row gt_center">Americas</td>
+      <td class="gt_row gt_right">77.310</td>
+      <td class="gt_row gt_center">287675526</td>
+      <td class="gt_row gt_right">39097.0995</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Indonesia</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">68.588</td>
+      <td class="gt_row gt_center">211060000</td>
+      <td class="gt_row gt_right">2873.9129</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Brazil</td>
+      <td class="gt_row gt_center">Americas</td>
+      <td class="gt_row gt_right">71.006</td>
+      <td class="gt_row gt_center">179914212</td>
+      <td class="gt_row gt_right">8131.2128</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Pakistan</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">63.610</td>
+      <td class="gt_row gt_center">153403524</td>
+      <td class="gt_row gt_right">2092.7124</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Bangladesh</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">62.013</td>
+      <td class="gt_row gt_center">135656790</td>
+      <td class="gt_row gt_right">1136.3904</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Japan</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">82.000</td>
+      <td class="gt_row gt_center">127065841</td>
+      <td class="gt_row gt_right">28604.5919</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Nigeria</td>
+      <td class="gt_row gt_center">Africa</td>
+      <td class="gt_row gt_right">46.608</td>
+      <td class="gt_row gt_center">119901274</td>
+      <td class="gt_row gt_right">1615.2864</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Mexico</td>
+      <td class="gt_row gt_center">Americas</td>
+      <td class="gt_row gt_right">74.902</td>
+      <td class="gt_row gt_center">102479927</td>
+      <td class="gt_row gt_right">10742.4405</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Philippines</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">70.303</td>
+      <td class="gt_row gt_center">82995088</td>
+      <td class="gt_row gt_right">2650.9211</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Germany</td>
+      <td class="gt_row gt_center">Europe</td>
+      <td class="gt_row gt_right">78.670</td>
+      <td class="gt_row gt_center">82350671</td>
+      <td class="gt_row gt_right">30035.8020</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Vietnam</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">73.017</td>
+      <td class="gt_row gt_center">80908147</td>
+      <td class="gt_row gt_right">1764.4567</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Egypt</td>
+      <td class="gt_row gt_center">Africa</td>
+      <td class="gt_row gt_right">69.806</td>
+      <td class="gt_row gt_center">73312559</td>
+      <td class="gt_row gt_right">4754.6044</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Ethiopia</td>
+      <td class="gt_row gt_center">Africa</td>
+      <td class="gt_row gt_right">50.725</td>
+      <td class="gt_row gt_center">67946797</td>
+      <td class="gt_row gt_right">530.0535</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Turkey</td>
+      <td class="gt_row gt_center">Europe</td>
+      <td class="gt_row gt_right">70.845</td>
+      <td class="gt_row gt_center">67308928</td>
+      <td class="gt_row gt_right">6508.0857</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Iran</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">69.451</td>
+      <td class="gt_row gt_center">66907826</td>
+      <td class="gt_row gt_right">9240.7620</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Thailand</td>
+      <td class="gt_row gt_center">Asia</td>
+      <td class="gt_row gt_right">68.564</td>
+      <td class="gt_row gt_center">62806748</td>
+      <td class="gt_row gt_right">5913.1875</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">France</td>
+      <td class="gt_row gt_center">Europe</td>
+      <td class="gt_row gt_right">79.590</td>
+      <td class="gt_row gt_center">59925035</td>
+      <td class="gt_row gt_right">28926.0323</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">United Kingdom</td>
+      <td class="gt_row gt_center">Europe</td>
+      <td class="gt_row gt_right">78.471</td>
+      <td class="gt_row gt_center">59912431</td>
+      <td class="gt_row gt_right">29478.9992</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* knitr::kable('html')
+```
+]
+ 
+.panel2-the_chunk-replace[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; lifeExp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; pop &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gdpPercap &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; China &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 72.028 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1280400000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3119.2809 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.879 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1034172547 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1746.7695 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United States &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 77.310 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 287675526 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39097.0995 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Indonesia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.588 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 211060000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2873.9129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Brazil &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.006 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 179914212 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8131.2128 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pakistan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63.610 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 153403524 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2092.7124 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 135656790 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1136.3904 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Japan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127065841 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28604.5919 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Nigeria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 46.608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 119901274 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1615.2864 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mexico &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74.902 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 102479927 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10742.4405 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Philippines &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.303 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82995088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2650.9211 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Germany &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78.670 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82350671 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30035.8020 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Vietnam &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73.017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80908147 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1764.4567 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Egypt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73312559 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4754.6044 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ethiopia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50.725 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67946797 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 530.0535 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Turkey &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.845 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67308928 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6508.0857 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Iran &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.451 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66907826 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9240.7620 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Thailand &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.564 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62806748 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5913.1875 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; France &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.590 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59925035 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28926.0323 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United Kingdom &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78.471 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59912431 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29478.9992 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* flextable::flextable()
+```
+]
+ 
+.panel2-the_chunk-replace[
+<div class="tabwid"><style>.cl-0e093ec0{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-0e0994ce{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-0e099514{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-0e0a17c8{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0e0a180e{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0e0a1818{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0e0a182c{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0e0a1836{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 2.00px solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0e0a184a{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 2.00px solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-0e0a1836"><p class="cl-0e0994ce"><span class="cl-0e093ec0">country</span></p></td><td class="cl-0e0a1836"><p class="cl-0e0994ce"><span class="cl-0e093ec0">continent</span></p></td><td class="cl-0e0a184a"><p class="cl-0e099514"><span class="cl-0e093ec0">lifeExp</span></p></td><td class="cl-0e0a184a"><p class="cl-0e099514"><span class="cl-0e093ec0">pop</span></p></td><td class="cl-0e0a184a"><p class="cl-0e099514"><span class="cl-0e093ec0">gdpPercap</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">China</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">72.028</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1280400000</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">3119.2809</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">India</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">62.879</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1034172547</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1746.7695</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">United States</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Americas</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">77.310</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">287675526</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">39097.0995</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Indonesia</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">68.588</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">211060000</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">2873.9129</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Brazil</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Americas</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">71.006</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">179914212</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">8131.2128</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Pakistan</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">63.610</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">153403524</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">2092.7124</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Bangladesh</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">62.013</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">135656790</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1136.3904</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Japan</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">82.000</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">127065841</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">28604.5919</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Nigeria</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Africa</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">46.608</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">119901274</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1615.2864</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Mexico</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Americas</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">74.902</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">102479927</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">10742.4405</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Philippines</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">70.303</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">82995088</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">2650.9211</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Germany</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Europe</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">78.670</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">82350671</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">30035.8020</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Vietnam</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">73.017</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">80908147</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">1764.4567</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Egypt</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Africa</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">69.806</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">73312559</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">4754.6044</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Ethiopia</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Africa</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">50.725</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">67946797</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">530.0535</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Turkey</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Europe</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">70.845</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">67308928</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">6508.0857</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Iran</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">69.451</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">66907826</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">9240.7620</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Thailand</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Asia</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">68.564</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">62806748</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">5913.1875</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">France</span></p></td><td class="cl-0e0a180e"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Europe</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">79.590</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">59925035</span></p></td><td class="cl-0e0a17c8"><p class="cl-0e099514"><span class="cl-0e093ec0">28926.0323</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0e0a182c"><p class="cl-0e0994ce"><span class="cl-0e093ec0">United Kingdom</span></p></td><td class="cl-0e0a182c"><p class="cl-0e0994ce"><span class="cl-0e093ec0">Europe</span></p></td><td class="cl-0e0a1818"><p class="cl-0e099514"><span class="cl-0e093ec0">78.471</span></p></td><td class="cl-0e0a1818"><p class="cl-0e099514"><span class="cl-0e093ec0">59912431</span></p></td><td class="cl-0e0a1818"><p class="cl-0e099514"><span class="cl-0e093ec0">29478.9992</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* DT::datatable()
+```
+]
+ 
+.panel2-the_chunk-replace[
+<div id="htmlwidget-ff45f56d277fe7c0c9ec" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ff45f56d277fe7c0c9ec">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["China","India","United States","Indonesia","Brazil","Pakistan","Bangladesh","Japan","Nigeria","Mexico","Philippines","Germany","Vietnam","Egypt","Ethiopia","Turkey","Iran","Thailand","France","United Kingdom"],["Asia","Asia","Americas","Asia","Americas","Asia","Asia","Asia","Africa","Americas","Asia","Europe","Asia","Africa","Africa","Europe","Asia","Asia","Europe","Europe"],[72.028,62.879,77.31,68.588,71.006,63.61,62.013,82,46.608,74.902,70.303,78.67,73.017,69.806,50.725,70.845,69.451,68.564,79.59,78.471],[1280400000,1034172547,287675526,211060000,179914212,153403524,135656790,127065841,119901274,102479927,82995088,82350671,80908147,73312559,67946797,67308928,66907826,62806748,59925035,59912431],[3119.280896,1746.769454,39097.09955,2873.91287,8131.212843,2092.712441,1136.39043,28604.5919,1615.286395,10742.44053,2650.921068,30035.80198,1764.456677,4754.604414,530.0535319,6508.085718,9240.761975,5913.187529,28926.03234,29478.99919]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>country<\/th>\n      <th>continent<\/th>\n      <th>lifeExp<\/th>\n      <th>pop<\/th>\n      <th>gdpPercap<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-replace[
+
+```r
+gapminder::gapminder %&gt;% 
+  filter(year == 2002) %&gt;% 
+  select(-year) %&gt;% 
+  arrange(-pop) %&gt;% 
+  slice(1:20) %&gt;% 
+* reactable::reactable()
+```
+]
+ 
+.panel2-the_chunk-replace[
+<div id="htmlwidget-0ba678cf1fa210a25038" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0ba678cf1fa210a25038">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"country":["China","India","United States","Indonesia","Brazil","Pakistan","Bangladesh","Japan","Nigeria","Mexico","Philippines","Germany","Vietnam","Egypt","Ethiopia","Turkey","Iran","Thailand","France","United Kingdom"],"continent":["Asia","Asia","Americas","Asia","Americas","Asia","Asia","Asia","Africa","Americas","Asia","Europe","Asia","Africa","Africa","Europe","Asia","Asia","Europe","Europe"],"lifeExp":[72.028,62.879,77.31,68.588,71.006,63.61,62.013,82,46.608,74.902,70.303,78.67,73.017,69.806,50.725,70.845,69.451,68.564,79.59,78.471],"pop":[1280400000,1034172547,287675526,211060000,179914212,153403524,135656790,127065841,119901274,102479927,82995088,82350671,80908147,73312559,67946797,67308928,66907826,62806748,59925035,59912431],"gdpPercap":[3119.280896,1746.769454,39097.09955,2873.91287,8131.212843,2092.712441,1136.39043,28604.5919,1615.286395,10742.44053,2650.921068,30035.80198,1764.456677,4754.604414,530.0535319,6508.085718,9240.761975,5913.187529,28926.03234,29478.99919]},"columns":[{"accessor":"country","name":"country","type":"factor"},{"accessor":"continent","name":"continent","type":"factor"},{"accessor":"lifeExp","name":"lifeExp","type":"numeric"},{"accessor":"pop","name":"pop","type":"numeric"},{"accessor":"gdpPercap","name":"gdpPercap","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"6cf8d58fb3f9da5d214038d8f68ef81f","key":"6cf8d58fb3f9da5d214038d8f68ef81f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-replace {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-replace {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-replace {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 110%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

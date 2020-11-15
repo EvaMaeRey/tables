@@ -8,12 +8,16 @@ pizzaplace %>%
     type == "supreme" ~ "supreme (pizzas that try a little harder)",
     type == "veggie" ~ "chicken (pizzas without any meats whatsoever)",
   )) %>%
-  mutate(size = factor(size, levels = c("S", "M", "L", "XL", "XXL"))) %>%
+  mutate(size = factor(size, 
+                       levels = c("S", "M", "L", 
+                                  "XL", "XXL"))) %>%
   dplyr::group_by(type, size) %>%
   dplyr::summarize(
     sold = n(),
     income = sum(price)
   ) %>% 
   # table is kind of large, hard to make sense of
-  dplyr::filter(size != "S" & size != "M" & size != "XL") ->
+  dplyr::filter(size != "S" & 
+                  size != "M" & 
+                  size != "XL") ->
 pizza_prep; pizza_prep

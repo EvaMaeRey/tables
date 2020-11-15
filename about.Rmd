@@ -1,6 +1,6 @@
 ---
-title: Table formatting in R
-author: Reynolds flipbook lab
+title: Formatting Tables in R
+author: Gina Reynolds
 output: 
   html_document:
     theme: yeti
@@ -15,37 +15,39 @@ library(tidyverse)
 ```
 
 
-Here we `R` again!
+Sometime data viz people dump on tables a little bit (I've done it), as not being able to very efficiently communicate information.  Data visualization uses all these super-speed channels: position, color, size.  But this is probably because they are not doing it right.  In fact, visuals can also be quite strong in well formatted tables; they also use encoding and meaning for visual cues. With the help of table formatting packages, we can do better at making more attractive tables that aid efficient understanding and use! Nice!  
+
+
+Okay, but there are a lot of table formatting tools out there -- just in R.
+
+This is the outline of an resource page on table formatting in R.  Some parts are more filled in, but a lot is missing.  
+
+I'm using flipbooks.  It's what you do if you are me.  And, because the formatting tools are so visual -- it is a fun to watch the outputs evolve and it is easy to identify parts of the pipeline that are relevant to what *you* want to get done.  I think they can help show how the different API's work in a detailed and accessible way.  Lot's of info, but presented in stacks of slides, it doesn't feel overwhelming -- I hope!  
+
+I'm using a new flipbook function: embed_flipbook() and there are some wrinkles to work out.  You may even see some error messages related to this!  Work in progress.  Embedded flipbooks benefit a lot from xaringanExtra, and flipbooks benefit from {xaringan} itself! 
+
+Tables have been an inspiration for moving the flipbook project forward too, to thinking more about flipbooks in documentation and specifically motivating "rotate" and "replace" modes for such work.  Thanks especially [{gt}](https://twitter.com/EvaMaeRey/status/1261486426534719488)!
 
 
 
-## [gt](gt.html){target="_blank"} the grammar of tables *to html*
+## Motivation
 
+Let's start with a motivating example. Of my tables, my favorite is probably this named colors table.  It is nice and compact and the you can copy and paste the names of the colors.  I made it with {gt}. Then we'll give you a birds eye view on some table formatting packages in R. 
 
-
-# reactable
-
-
-> Interactive data tables for R, based on the React Table library and made with reactR.
-
-
-## [flextable](flextable.html){target="_blank"} easy table reporting from data frames *HTML format, Microsoft Word, Microsoft PowerPoint and PDF*
-
-## [huxtable](huxtable.html){target="_blank"}
-
-
-
-
-
-
-
-gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra
-
-
-
-```{r, fig.align='center', out.width='50%'}
-knitr::include_graphics("https://github.com/ddsjoberg/gtsummary/blob/master/man/figures/gt_output_formats.PNG?raw=true")
+```{r,out.width="100%"}
+knitr::include_url("https://evamaerey.github.io/ggplot2_grammar_guide/named_colors")
 ```
+
+
+
+
+## Cross-Package Comparisons {.tabset .tabset-fade .tabset-pills}
+
+### output formats
+
+This comparison table summarizes a lot of information about table packages:  what outputs the package supports.  Even if you like the way a package's table looks in html, if you can't output to the format you need, you probably don't want to go too far down that road. 
+
+It is put together by Daniel Sjoberg and use with permission!  He built the table with {gt}, and we reproduce much of the build here. 
 
 
 ```{r comparison_build}
@@ -58,6 +60,10 @@ tribble(
 "huxtable",	1,	1,	1,	1, "`as_hux_table()`",
 "tibble",	3,	3,	3,	3, "`as_tibble()`"
 ) %>% 
+    mutate_at(.vars = 2:5, 
+            funs(factor(., 
+                        levels = 1:5, 
+                        ordered = T))) %>% 
   dplyr::mutate(
     link = dplyr::case_when(
       printer == "gt" ~ 
@@ -93,6 +99,21 @@ tribble(
   ) %>%
   gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
              vars(link) ~ px(110),
+             vars(link, fns) ~ px(140)) %>%
+  gt::text_transform(
+    locations = gt::cells_body(columns = vars(HTML, PDF, RTF, Word)),
+    fn = function(x) {
+      dplyr::case_when(
+        x == 3 ~ gt::local_image(filename = "img/icons8-confused-100.png"),
+        x == 1 ~ gt::local_image(filename = "img/icons8-smiling-100.png"),
+        x == 2 ~ gt::local_image(filename = "img/icons8-neutral-100.png"),
+        x == 4 ~ gt::local_image(filename = "img/icons8-no-entry-100.png"),
+        x == 5 ~ gt::local_image(filename = "img/icons8-under-construction-100.png")
+      )
+    }
+  ) %>%
+  gt::cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
+             vars(link) ~ px(110),
              vars(link, fns) ~ px(140))
 ```
 
@@ -106,34 +127,18 @@ embed_flipbook("comparison_build",
 ```
 
 
-%>%
-  text_transform(
-    locations = cells_body(columns = vars(HTML, PDF, RTF, Word)),
-    fn = function(x) {
-      dplyr::case_when(
-        x == 1 ~ local_image(filename = path_figure[[1]]),
-        x == 2 ~ local_image(filename = path_figure[[2]]),
-        x == 3 ~ local_image(filename = path_figure[[3]]),
-        x == 4 ~ local_image(filename = path_figure[[4]]),
-        x == 5 ~ local_image(filename = path_figure[[5]])
-      )
-    }
-  ) %>%
-  cols_width(vars(HTML, PDF, RTF, Word) ~ px(60),
-             vars(link) ~ px(110),
-             vars(link, fns) ~ px(140))
+
 
 
 
 
 ---
 
-# Default table look (in html)
+### Default table appearance
 
 
-```{r}
-base_behavior <- c("data.frame()", 
-                   "tibble::tibble()", 
+```{r, include = F}
+base_behavior <- c("tibble::tibble()", 
                    "data.table::data.table()",
                    "gt::gt()", 
                    "knitr::kable('html')",
@@ -142,7 +147,7 @@ base_behavior <- c("data.frame()",
                    "reactable::reactable()")
 ```
 
-```{r tables}
+```{r tables, include = F}
 gapminder::gapminder %>% 
   filter(year == 2002) %>% 
   select(-year) %>% 
@@ -155,58 +160,181 @@ gapminder::gapminder %>%
 embed_flipbook("tables", 
                font_size = 110,
                break_type = "replace", 
-               replace = "flextable::flextable\\(\\)", 
+               replace = "flextable::flextable\\(\\)",
                replacements = base_behavior, 
                title = "### default look in html",
                use_embed_xaringan = T)
 ```
 
 
----
 
-# list column
 
-```{r listcolumn, eval = F, echo = F}
+### list column
+
+```{r listcolumn, include=F}
 tibble(x = c(1,2,3,4,6),
        y = 1:5,
-       z = list(1:2, 4:5, 8, NA, c(1,7,9,0))) %>% 
-  tibble() #ROTATE
-  data.frame() #ROTATE
-  data.table::data.table() #ROTATE
-  knitr::kable() #ROTATE
-  gt::gt() #ROTATE
-  DT::datatable() #ROTATE
-```
-
-
----
-# group
----
-`r chunk_reveal("group", break_type = 1, title = "### What they do with grouped data..." )`
-```{r group, eval = F, echo = F}
-gapminder::gapminder %>%
-  group_by(country) %>% 
-  filter(year > 1990) %>% 
-  filter(continent == "Americas") %>% 
-  select(-continent) %>% 
+       z = list(1:2, 4:5, 8, NA,
+                c(1,7,9,0))) %>%
   gt::gt()
 ```
 
 
-# kableExtra
-
----
-
-# gtsummary
-# stargazer
-# modelsummary
-# table1
-
-Including Yihui Xie of DT, Rich Iannone of gt, Greg Lin of reactable, David Gohel of flextable, David Hugh-Jones of huxtable , and Hao Zhu of kableExtra. Many of these maintainers will help review submissions built with their packages.
-
-```{r}
-
+```{r, eval = T}
+base_b <- c(
+                   "gt::gt()",
+                   "knitr::kable('html')",
+                   "DT::datatable()",
+                   "reactable::reactable()")
+embed_flipbook("listcolumn",
+               font_size = 110,
+               break_type = "replace",
+               replace = "gt::gt\\(\\)",
+               replacements = base_b,
+               use_embed_xaringan = T,
+               use_share_again = T
+               )
 ```
 
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Newish: left justifying output panel makes it easier to track changes to table outputs. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/flipbooks?src=hash&amp;ref_src=twsrc%5Etfw">#flipbooks</a> <a href="https://t.co/n00XY8UQ2t">pic.twitter.com/n00XY8UQ2t</a></p>&mdash; Gina Reynolds (@EvaMaeRey) <a href="https://twitter.com/EvaMaeRey/status/1154382975179591681?ref_src=twsrc%5Etfw">July 25, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- ## group -->
+
+
+<!-- ```{r grouping, eval = F, echo = F} -->
+<!-- gapminder::gapminder %>% -->
+<!--   group_by(country) %>%  -->
+<!--   filter(year > 1990) %>%  -->
+<!--   filter(continent == "Oceania") %>%  -->
+<!--   select(-continent) %>%  -->
+<!--   gt::gt() #ROTATE -->
+<!--   tibble::tibble() #ROTATE -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- embed_flipbook(chunk_name = "grouping", -->
+<!--                break_type = "rotate") -->
+<!-- ``` -->
+
+
+## Longer builds {.tabset .tabset-fade .tabset-pills}
+
+This section just compares to builds from two separate packages, but would ideally compare the full set of packages.  The results are similar, but APIs are a bit different. 
+
+### {flextable}
+
+```{r flex_long}
+library(flextable)
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  head() %>%
+  select(year, continent, everything()) %>% 
+  flextable() %>% 
+  theme_box() %>% 
+  merge_v(j = c("year", "country", "continent") ) %>% 
+  set_header_labels(country = "The Country Name", 
+                    year = "Year", 
+                    continent = "",
+                    pop = "Population") %>% 
+  autofit() %>% 
+  bg(bg = "grey95", part = "body") %>% 
+  bg(bg = "steelblue", part = "header") %>% 
+  color(color = "oldlace", part = "header") %>% 
+  font(fontname = "Times") %>% 
+  bg(bg = "grey70", j = 6) %>% 
+  bg(bg = "goldenrod2", j = 1) %>% 
+  rotate(j = 1:4, rotation="btlr", part = "header") %>% 
+  rotate(j = 3, rotation="lrtb", part = "header") %>% 
+  rotate(i = 3, j = 2, rotation="btlr", part = "body") %>% 
+  rotate(j = 1, rotation="btlr", part = "body") %>%
+  # conditional formatting
+  color(i = ~ lifeExp > 75, 
+        j = ~ country + lifeExp, 
+        color = "goldenrod4") %>% 
+  bold(j = c("year", "gdpPercap"), 
+       bold = TRUE) %>% 
+  align(align = "center", part = "all" ) %>% 
+  fontsize(j = "continent", size = 14) %>% 
+  fontsize(j = "year", size = 20) %>% 
+  color(j = 1, color = "steelblue", part = "body") %>% 
+  line_spacing(space = 3, part = "header") %>% 
+  vline(border = officer::fp_border(color="goldenrod3", 
+                           style = "dashed"), 
+        part = "all" ) %>% 
+  hline_bottom(border = 
+                  officer::fp_border(color="steelblue", 
+                            style = "solid", width = 5), 
+               part = "body" ) %>% 
+  hline(i = 5, border = officer::fp_border(color = "plum4", width = 4)) %>% 
+  hline_top(border = officer::fp_border(color="goldenrod3", width = 3), 
+            part = "all")
+```
+
+```{r, eval = T}
+embed_flipbook("flex_long",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
+```
+
+
+
+
+### {huxtable}
+
+```{r hux_long, include = T}
+library(huxtable)
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  head() %>%
+  select(year, continent, everything()) %>% 
+  hux() %>% 
+  set_all_border_colors(value = "grey10") %>% 
+  set_lr_borders(value =
+                   brdr(thickness = 1,
+                        style = "dotted",
+                        color = "goldenrod")) %>% 
+  set_background_color(row = everywhere,
+                       col = everywhere,
+                       value = "grey85") %>% 
+  set_background_color(row = 1,
+                       col = everywhere,
+                       value = "steelblue") %>% 
+  set_text_color(row = -1,
+                 col = everywhere,
+                 value = "black") %>% 
+  set_text_color(row = -1,
+                 col = everywhere,
+                 value = "black") %>% 
+  merge_cells(row = 2:7, col = 1) %>% 
+  merge_cells(row = 4:5, col = 2) %>% 
+  map_text_color(by_regex("Al" = "goldenrod4", "navy")) %>% 
+  map_text_color(row = 2:7, col = 4, 
+                 by_colorspace("darkred", "red", "red2", colwise = TRUE))
+```
+
+
+```{r, eval = T}
+embed_flipbook("hux_long",
+               use_share_again = T,
+               use_embed_xaringan = T,
+               font_size = 80)
+```
+
+
+
+## Links to step-by-step tutorials mostly the authors' examples, animated
+
+- ## [{gt}](gt.html){target="_blank"}
+- ## [{flextable}](flextable.html){target="_blank"}
+- ## [{huxtable}](huxtable.html){target="_blank"}
+- ## [{kableExtra}](kableextra.html){target="_blank"}
+
+
+---
+## Future comparisons of model output formatting?
+
+- ## gtsummary
+- ## stargazer
+- ## modelsummary
+
+

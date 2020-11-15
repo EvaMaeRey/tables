@@ -1,0 +1,3405 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>gt pizza2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+*pizza3
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#iksqwogxlz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#iksqwogxlz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#iksqwogxlz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#iksqwogxlz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#iksqwogxlz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#iksqwogxlz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#iksqwogxlz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#iksqwogxlz .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iksqwogxlz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iksqwogxlz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#iksqwogxlz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#iksqwogxlz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#iksqwogxlz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#iksqwogxlz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iksqwogxlz .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iksqwogxlz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#iksqwogxlz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#iksqwogxlz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iksqwogxlz .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#iksqwogxlz .gt_left {
+  text-align: left;
+}
+
+#iksqwogxlz .gt_center {
+  text-align: center;
+}
+
+#iksqwogxlz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#iksqwogxlz .gt_font_normal {
+  font-weight: normal;
+}
+
+#iksqwogxlz .gt_font_bold {
+  font-weight: bold;
+}
+
+#iksqwogxlz .gt_font_italic {
+  font-style: italic;
+}
+
+#iksqwogxlz .gt_super {
+  font-size: 65%;
+}
+
+#iksqwogxlz .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="iksqwogxlz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">&mdash;</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+* grand_summary_rows(
+*   columns = vars(income),
+*   fns = list(`GRAND TOTAL` = "sum"),
+*   formatter = fmt_currency,
+*   currency = "USD"
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nqfrbfkirg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nqfrbfkirg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nqfrbfkirg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nqfrbfkirg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nqfrbfkirg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nqfrbfkirg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nqfrbfkirg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nqfrbfkirg .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nqfrbfkirg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nqfrbfkirg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nqfrbfkirg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nqfrbfkirg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nqfrbfkirg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#nqfrbfkirg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nqfrbfkirg .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nqfrbfkirg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nqfrbfkirg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nqfrbfkirg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nqfrbfkirg .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nqfrbfkirg .gt_left {
+  text-align: left;
+}
+
+#nqfrbfkirg .gt_center {
+  text-align: center;
+}
+
+#nqfrbfkirg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nqfrbfkirg .gt_font_normal {
+  font-weight: normal;
+}
+
+#nqfrbfkirg .gt_font_bold {
+  font-weight: bold;
+}
+
+#nqfrbfkirg .gt_font_italic {
+  font-style: italic;
+}
+
+#nqfrbfkirg .gt_super {
+  font-size: 65%;
+}
+
+#nqfrbfkirg .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="nqfrbfkirg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %&gt;%
+* tab_options(table.font.size = "tiny")
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pxyohzbtsg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: tiny;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pxyohzbtsg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pxyohzbtsg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pxyohzbtsg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pxyohzbtsg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pxyohzbtsg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pxyohzbtsg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pxyohzbtsg .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxyohzbtsg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxyohzbtsg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pxyohzbtsg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pxyohzbtsg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pxyohzbtsg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pxyohzbtsg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxyohzbtsg .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxyohzbtsg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pxyohzbtsg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pxyohzbtsg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxyohzbtsg .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pxyohzbtsg .gt_left {
+  text-align: left;
+}
+
+#pxyohzbtsg .gt_center {
+  text-align: center;
+}
+
+#pxyohzbtsg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pxyohzbtsg .gt_font_normal {
+  font-weight: normal;
+}
+
+#pxyohzbtsg .gt_font_bold {
+  font-weight: bold;
+}
+
+#pxyohzbtsg .gt_font_italic {
+  font-style: italic;
+}
+
+#pxyohzbtsg .gt_super {
+  font-size: 65%;
+}
+
+#pxyohzbtsg .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="pxyohzbtsg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %&gt;%
+  tab_options(table.font.size = "tiny") %&gt;%
+* tab_footnote(
+*   footnote = "The pizza category with the highest total sales.",
+*   locations = cells_row_groups("classic (classical pizzas)")
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#twulrztfax .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: tiny;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#twulrztfax .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#twulrztfax .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#twulrztfax .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#twulrztfax .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twulrztfax .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#twulrztfax .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#twulrztfax .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#twulrztfax .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#twulrztfax .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#twulrztfax .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#twulrztfax .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#twulrztfax .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#twulrztfax .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#twulrztfax .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#twulrztfax .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#twulrztfax .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#twulrztfax .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twulrztfax .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#twulrztfax .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twulrztfax .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#twulrztfax .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#twulrztfax .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twulrztfax .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#twulrztfax .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#twulrztfax .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#twulrztfax .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#twulrztfax .gt_left {
+  text-align: left;
+}
+
+#twulrztfax .gt_center {
+  text-align: center;
+}
+
+#twulrztfax .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#twulrztfax .gt_font_normal {
+  font-weight: normal;
+}
+
+#twulrztfax .gt_font_bold {
+  font-weight: bold;
+}
+
+#twulrztfax .gt_font_italic {
+  font-style: italic;
+}
+
+#twulrztfax .gt_super {
+  font-size: 65%;
+}
+
+#twulrztfax .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="twulrztfax" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)<sup class="gt_footnote_marks">1</sup></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          The pizza category with the highest total sales.
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %&gt;%
+  tab_options(table.font.size = "tiny") %&gt;%
+  tab_footnote(
+    footnote = "The pizza category with the highest total sales.",
+    locations = cells_row_groups("classic (classical pizzas)")
+  ) %&gt;%
+* tab_footnote(
+*   footnote = md("Custom sizes for **The Greek** pizza."),
+*   locations = cells_stub("XXL")
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#wwmxbeabgd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: tiny;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wwmxbeabgd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wwmxbeabgd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wwmxbeabgd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wwmxbeabgd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wwmxbeabgd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wwmxbeabgd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wwmxbeabgd .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wwmxbeabgd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wwmxbeabgd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wwmxbeabgd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wwmxbeabgd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wwmxbeabgd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#wwmxbeabgd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwmxbeabgd .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwmxbeabgd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wwmxbeabgd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wwmxbeabgd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwmxbeabgd .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wwmxbeabgd .gt_left {
+  text-align: left;
+}
+
+#wwmxbeabgd .gt_center {
+  text-align: center;
+}
+
+#wwmxbeabgd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wwmxbeabgd .gt_font_normal {
+  font-weight: normal;
+}
+
+#wwmxbeabgd .gt_font_bold {
+  font-weight: bold;
+}
+
+#wwmxbeabgd .gt_font_italic {
+  font-style: italic;
+}
+
+#wwmxbeabgd .gt_super {
+  font-size: 65%;
+}
+
+#wwmxbeabgd .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="wwmxbeabgd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)<sup class="gt_footnote_marks">1</sup></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL<sup class="gt_footnote_marks">2</sup></td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          The pizza category with the highest total sales.
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Custom sizes for <strong>The Greek</strong> pizza.
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %&gt;%
+  tab_options(table.font.size = "tiny") %&gt;%
+  tab_footnote(
+    footnote = "The pizza category with the highest total sales.",
+    locations = cells_row_groups("classic (classical pizzas)")
+  ) %&gt;%
+  tab_footnote(
+    footnote = md("Custom sizes for **The Greek** pizza."),
+    locations = cells_stub("XXL")
+  ) %&gt;%
+* tab_footnote(
+*   footnote = md("This is a new record. Truly, 2015 was a **great** year for the `pizzaplace`."),
+*   locations = cells_grand_summary(columns = vars(sold))
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mbojjmmzrc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: tiny;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mbojjmmzrc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mbojjmmzrc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mbojjmmzrc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mbojjmmzrc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mbojjmmzrc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mbojjmmzrc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mbojjmmzrc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mbojjmmzrc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mbojjmmzrc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mbojjmmzrc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mbojjmmzrc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mbojjmmzrc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#mbojjmmzrc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mbojjmmzrc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mbojjmmzrc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mbojjmmzrc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mbojjmmzrc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mbojjmmzrc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mbojjmmzrc .gt_left {
+  text-align: left;
+}
+
+#mbojjmmzrc .gt_center {
+  text-align: center;
+}
+
+#mbojjmmzrc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mbojjmmzrc .gt_font_normal {
+  font-weight: normal;
+}
+
+#mbojjmmzrc .gt_font_bold {
+  font-weight: bold;
+}
+
+#mbojjmmzrc .gt_font_italic {
+  font-style: italic;
+}
+
+#mbojjmmzrc .gt_super {
+  font-size: 65%;
+}
+
+#mbojjmmzrc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="mbojjmmzrc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)<sup class="gt_footnote_marks">1</sup></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL<sup class="gt_footnote_marks">2</sup></td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984<sup class="gt_footnote_marks">3</sup></td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          The pizza category with the highest total sales.
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Custom sizes for <strong>The Greek</strong> pizza.
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>3</em>
+          </sup>
+           
+          This is a new record. Truly, 2015 was a <strong>great</strong> year for the <code>pizzaplace</code>.
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+pizza3 %&gt;%
+  grand_summary_rows(
+    columns = vars(income),
+    fns = list(`GRAND TOTAL` = "sum"),
+    formatter = fmt_currency,
+    currency = "USD"
+  ) %&gt;%
+  tab_options(table.font.size = "tiny") %&gt;%
+  tab_footnote(
+    footnote = "The pizza category with the highest total sales.",
+    locations = cells_row_groups("classic (classical pizzas)")
+  ) %&gt;%
+  tab_footnote(
+    footnote = md("Custom sizes for **The Greek** pizza."),
+    locations = cells_stub("XXL")
+  ) %&gt;%
+  tab_footnote(
+    footnote = md("This is a new record. Truly, 2015 was a **great** year for the `pizzaplace`."),
+    locations = cells_grand_summary(columns = vars(sold))
+  ) -&gt;
+*pizza_tab; pizza_tab
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#yunpjswsyj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: tiny;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yunpjswsyj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yunpjswsyj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yunpjswsyj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yunpjswsyj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yunpjswsyj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yunpjswsyj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yunpjswsyj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yunpjswsyj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yunpjswsyj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yunpjswsyj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yunpjswsyj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yunpjswsyj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#yunpjswsyj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yunpjswsyj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yunpjswsyj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yunpjswsyj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#yunpjswsyj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yunpjswsyj .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#yunpjswsyj .gt_left {
+  text-align: left;
+}
+
+#yunpjswsyj .gt_center {
+  text-align: center;
+}
+
+#yunpjswsyj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yunpjswsyj .gt_font_normal {
+  font-weight: normal;
+}
+
+#yunpjswsyj .gt_font_bold {
+  font-weight: bold;
+}
+
+#yunpjswsyj .gt_font_italic {
+  font-style: italic;
+}
+
+#yunpjswsyj .gt_super {
+  font-size: 65%;
+}
+
+#yunpjswsyj .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="yunpjswsyj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>🍕 Pizzas Sold in 2015 🍕</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sold</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas with chicken as a major ingredient)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(195,38,37,0.8); color: #FFFFFF;">4,932</td>
+      <td class="gt_row gt_right" style="background-color: rgba(185,30,30,0.8); color: #FFFFFF;">$102,339.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,932</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$102,339.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">chicken (pizzas without any meats whatsoever)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">5,403</td>
+      <td class="gt_row gt_right" style="background-color: rgba(183,28,28,0.8); color: #FFFFFF;">$104,202.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">5,403</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$104,202.70</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">classic (classical pizzas)<sup class="gt_footnote_marks">1</sup></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(216,50,49,0.8); color: #FFFFFF;">4,057</td>
+      <td class="gt_row gt_right" style="background-color: rgba(222,53,51,0.8); color: #FFFFFF;">$74,518.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">XXL<sup class="gt_footnote_marks">2</sup></td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">28</td>
+      <td class="gt_row gt_right" style="background-color: rgba(255,235,238,0.8); color: #000000;">$1,006.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,085</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$75,525.10</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">supreme (pizzas that try a little harder)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">L</td>
+      <td class="gt_row gt_right" style="background-color: rgba(203,43,43,0.8); color: #FFFFFF;">4,564</td>
+      <td class="gt_row gt_right" style="background-color: rgba(196,38,38,0.8); color: #FFFFFF;">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">TOTAL</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">4,564</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">$94,258.50</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">GRAND TOTAL</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">18,984<sup class="gt_footnote_marks">3</sup></td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">$376,325.30</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          The pizza category with the highest total sales.
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Custom sizes for <strong>The Greek</strong> pizza.
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>3</em>
+          </sup>
+           
+          This is a new record. Truly, 2015 was a <strong>great</strong> year for the <code>pizzaplace</code>.
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 75%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

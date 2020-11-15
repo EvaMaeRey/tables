@@ -24,21 +24,28 @@ load("current_image.Rdata")
 ```
 
 
-```{r, echo = F, eval = FALSE , message = F, warning = F}
+```{r, echo = F, eval = TRUE , message = F, warning = F}
 xaringanExtra::use_share_again()
 ```
 
-```{r, include = F}
-readLines("hux_reshape.R") %>%
-  paste(collapse = "
-") %>%
-  code_parse() %>%
-  parsed_return_partial_code_sequence() ->
-the_code_seq
+
+```{r the_chunk, include = F}
+matrix(1:16, 4, 4) %>% 
+  as_hux() %>% 
+  set_background_color(1:2, 1:2, "red") %>% 
+  set_background_color(1:2, 3:4, "yellow") %>% 
+  set_background_color(3:4, 1:2, "darkgreen") %>% 
+  set_background_color(3:4, 3:4, "blue") %>% 
+  set_text_color(3:4, 1:4, "white") %>% 
+  set_all_borders(brdr(2, "solid", "white")) %>%   
+  set_caption("Original table") %>% 
+  restack_across(rows = 2) %>% 
+  set_caption("Restacked across") %>% 
+  restack_down(cols = 2) %>% 
+  set_caption("Restacked down")
 ```
 
-
-`r chunk_reveal(code_seq = the_code_seq, chunk_name = "hux_reshape", break_type = "auto")`
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
 
 
 

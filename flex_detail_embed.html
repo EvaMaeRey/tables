@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>flex detail</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+*iris[c(1:3, 51:53, 101:104),]
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+1            5.1         3.5          1.4         0.2     setosa
+2            4.9         3.0          1.4         0.2     setosa
+3            4.7         3.2          1.3         0.2     setosa
+51           7.0         3.2          4.7         1.4 versicolor
+52           6.4         3.2          4.5         1.5 versicolor
+53           6.9         3.1          4.9         1.5 versicolor
+101          6.3         3.3          6.0         2.5  virginica
+102          5.8         2.7          5.1         1.9  virginica
+103          7.1         3.0          5.9         2.1  virginica
+104          6.3         2.9          5.6         1.8  virginica
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+iris[c(1:3, 51:53, 101:104),] %&gt;%
+* flextable(col_keys =
+*             c("Species", "col_1",
+*              "Sepal.Length",
+*              "Petal.Length"))
+```
+]
+ 
+.panel2-the_chunk-auto[
+<div class="tabwid"><style>.cl-975d67c4{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-975d7f84{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-975d7fa2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-975ddbc8{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975ddbf0{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975ddc04{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975ddc0e{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975ddc18{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 2.00px solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975ddc22{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 2.00px solid rgba(0, 0, 0, 1.00);border-top: 2.00px solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-975ddc18"><p class="cl-975d7f84"><span class="cl-975d67c4">Species</span></p></td><td class="cl-975ddc18"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddc22"><p class="cl-975d7fa2"><span class="cl-975d67c4">Sepal.Length</span></p></td><td class="cl-975ddc22"><p class="cl-975d7fa2"><span class="cl-975d67c4">Petal.Length</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">setosa</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">5.1</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">setosa</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">4.9</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">setosa</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">4.7</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">versicolor</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">7.0</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">4.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">versicolor</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">6.4</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">4.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">versicolor</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">6.9</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">virginica</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">6.3</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">virginica</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">5.8</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">5.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4">virginica</span></p></td><td class="cl-975ddbc8"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">7.1</span></p></td><td class="cl-975ddbf0"><p class="cl-975d7fa2"><span class="cl-975d67c4">5.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975ddc04"><p class="cl-975d7f84"><span class="cl-975d67c4">virginica</span></p></td><td class="cl-975ddc04"><p class="cl-975d7f84"><span class="cl-975d67c4"></span></p></td><td class="cl-975ddc0e"><p class="cl-975d7fa2"><span class="cl-975d67c4">6.3</span></p></td><td class="cl-975ddc0e"><p class="cl-975d7fa2"><span class="cl-975d67c4">5.6</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+iris[c(1:3, 51:53, 101:104),] %&gt;%
+  flextable(col_keys =
+              c("Species", "col_1",
+               "Sepal.Length",
+               "Petal.Length")) %&gt;%
+* theme_vanilla()
+```
+]
+ 
+.panel2-the_chunk-auto[
+<div class="tabwid"><style>.cl-977d5a16{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-977d5a48{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-977d896e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-977d89a0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-977dcde8{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-977dce24{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-977dce2e{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-977dce38{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a16">Species</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a16"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a16">Sepal.Length</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a16">Petal.Length</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-977dcde8"><p class="cl-977d896e"><span class="cl-977d5a48">setosa</span></p></td><td class="cl-977dcde8"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce24"><p class="cl-977d89a0"><span class="cl-977d5a48">5.1</span></p></td><td class="cl-977dce24"><p class="cl-977d89a0"><span class="cl-977d5a48">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">setosa</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">4.9</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">setosa</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">4.7</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">versicolor</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">7.0</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">4.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">versicolor</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">6.4</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">4.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">versicolor</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">6.9</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">virginica</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">6.3</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">virginica</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">5.8</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">5.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">virginica</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">7.1</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">5.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48">virginica</span></p></td><td class="cl-977dce2e"><p class="cl-977d896e"><span class="cl-977d5a48"></span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">6.3</span></p></td><td class="cl-977dce38"><p class="cl-977d89a0"><span class="cl-977d5a48">5.6</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+iris[c(1:3, 51:53, 101:104),] %&gt;%
+  flextable(col_keys =
+              c("Species", "col_1",
+               "Sepal.Length",
+               "Petal.Length")) %&gt;%
+  theme_vanilla() %&gt;%
+* autofit()
+```
+]
+ 
+.panel2-the_chunk-auto[
+<div class="tabwid"><style>.cl-97c61f30{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-97c61fbc{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-97c66e0e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-97c66e40{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-97c78546{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c78578{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c78582{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c78596{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785a0{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785aa{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785b4{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785be{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785c8{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785d2{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785dc{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785e6{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785f0{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c785fa{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c78604{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-97c7860e{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-97c78604"><p class="cl-97c66e0e"><span class="cl-97c61f30">Species</span></p></td><td class="cl-97c785f0"><p class="cl-97c66e0e"><span class="cl-97c61f30"></span></p></td><td class="cl-97c7860e"><p class="cl-97c66e40"><span class="cl-97c61f30">Sepal.Length</span></p></td><td class="cl-97c785fa"><p class="cl-97c66e40"><span class="cl-97c61f30">Petal.Length</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-97c78596"><p class="cl-97c66e0e"><span class="cl-97c61fbc">setosa</span></p></td><td class="cl-97c78546"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c78582"><p class="cl-97c66e40"><span class="cl-97c61fbc">5.1</span></p></td><td class="cl-97c78578"><p class="cl-97c66e40"><span class="cl-97c61fbc">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785dc"><p class="cl-97c66e0e"><span class="cl-97c61fbc">setosa</span></p></td><td class="cl-97c785d2"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785c8"><p class="cl-97c66e40"><span class="cl-97c61fbc">4.9</span></p></td><td class="cl-97c785e6"><p class="cl-97c66e40"><span class="cl-97c61fbc">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785dc"><p class="cl-97c66e0e"><span class="cl-97c61fbc">setosa</span></p></td><td class="cl-97c785d2"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785c8"><p class="cl-97c66e40"><span class="cl-97c61fbc">4.7</span></p></td><td class="cl-97c785e6"><p class="cl-97c66e40"><span class="cl-97c61fbc">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785dc"><p class="cl-97c66e0e"><span class="cl-97c61fbc">versicolor</span></p></td><td class="cl-97c785d2"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785c8"><p class="cl-97c66e40"><span class="cl-97c61fbc">7.0</span></p></td><td class="cl-97c785e6"><p class="cl-97c66e40"><span class="cl-97c61fbc">4.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785dc"><p class="cl-97c66e0e"><span class="cl-97c61fbc">versicolor</span></p></td><td class="cl-97c785d2"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785c8"><p class="cl-97c66e40"><span class="cl-97c61fbc">6.4</span></p></td><td class="cl-97c785e6"><p class="cl-97c66e40"><span class="cl-97c61fbc">4.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785dc"><p class="cl-97c66e0e"><span class="cl-97c61fbc">versicolor</span></p></td><td class="cl-97c785d2"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785c8"><p class="cl-97c66e40"><span class="cl-97c61fbc">6.9</span></p></td><td class="cl-97c785e6"><p class="cl-97c66e40"><span class="cl-97c61fbc">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785aa"><p class="cl-97c66e0e"><span class="cl-97c61fbc">virginica</span></p></td><td class="cl-97c785a0"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785b4"><p class="cl-97c66e40"><span class="cl-97c61fbc">6.3</span></p></td><td class="cl-97c785be"><p class="cl-97c66e40"><span class="cl-97c61fbc">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785aa"><p class="cl-97c66e0e"><span class="cl-97c61fbc">virginica</span></p></td><td class="cl-97c785a0"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785b4"><p class="cl-97c66e40"><span class="cl-97c61fbc">5.8</span></p></td><td class="cl-97c785be"><p class="cl-97c66e40"><span class="cl-97c61fbc">5.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785aa"><p class="cl-97c66e0e"><span class="cl-97c61fbc">virginica</span></p></td><td class="cl-97c785a0"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785b4"><p class="cl-97c66e40"><span class="cl-97c61fbc">7.1</span></p></td><td class="cl-97c785be"><p class="cl-97c66e40"><span class="cl-97c61fbc">5.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-97c785aa"><p class="cl-97c66e0e"><span class="cl-97c61fbc">virginica</span></p></td><td class="cl-97c785a0"><p class="cl-97c66e0e"><span class="cl-97c61fbc"></span></p></td><td class="cl-97c785b4"><p class="cl-97c66e40"><span class="cl-97c61fbc">6.3</span></p></td><td class="cl-97c785be"><p class="cl-97c66e40"><span class="cl-97c61fbc">5.6</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+iris[c(1:3, 51:53, 101:104),] %&gt;%
+  flextable(col_keys =
+              c("Species", "col_1",
+               "Sepal.Length",
+               "Petal.Length")) %&gt;%
+  theme_vanilla() %&gt;%
+  autofit() %&gt;%
+* empty_blanks()
+```
+]
+ 
+.panel2-the_chunk-auto[
+<div class="tabwid"><style>.cl-9800e4d0{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-9800e4f8{font-family:'Arial';font-size:10px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9800e50c{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-9801014a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-9801017c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-98022ff2{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023038{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023056{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9802306a{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9802307e{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023092{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-980230b0{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-980230c4{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-980230d8{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-980230ec{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-980230f6{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023114{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023128{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9802313c{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98023146{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-9802313c"><p class="cl-9801014a"><span class="cl-9800e4d0">Species</span></p></td><td class="cl-98023114"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-98023146"><p class="cl-9801017c"><span class="cl-9800e4d0">Sepal.Length</span></p></td><td class="cl-98023128"><p class="cl-9801017c"><span class="cl-9800e4d0">Petal.Length</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-9802306a"><p class="cl-9801014a"><span class="cl-9800e50c">setosa</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-98023056"><p class="cl-9801017c"><span class="cl-9800e50c">5.1</span></p></td><td class="cl-98023038"><p class="cl-9801017c"><span class="cl-9800e50c">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-980230ec"><p class="cl-9801014a"><span class="cl-9800e50c">setosa</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230d8"><p class="cl-9801017c"><span class="cl-9800e50c">4.9</span></p></td><td class="cl-980230f6"><p class="cl-9801017c"><span class="cl-9800e50c">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-980230ec"><p class="cl-9801014a"><span class="cl-9800e50c">setosa</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230d8"><p class="cl-9801017c"><span class="cl-9800e50c">4.7</span></p></td><td class="cl-980230f6"><p class="cl-9801017c"><span class="cl-9800e50c">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-980230ec"><p class="cl-9801014a"><span class="cl-9800e50c">versicolor</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230d8"><p class="cl-9801017c"><span class="cl-9800e50c">7.0</span></p></td><td class="cl-980230f6"><p class="cl-9801017c"><span class="cl-9800e50c">4.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-980230ec"><p class="cl-9801014a"><span class="cl-9800e50c">versicolor</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230d8"><p class="cl-9801017c"><span class="cl-9800e50c">6.4</span></p></td><td class="cl-980230f6"><p class="cl-9801017c"><span class="cl-9800e50c">4.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-980230ec"><p class="cl-9801014a"><span class="cl-9800e50c">versicolor</span></p></td><td class="cl-98022ff2"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230d8"><p class="cl-9801017c"><span class="cl-9800e50c">6.9</span></p></td><td class="cl-980230f6"><p class="cl-9801017c"><span class="cl-9800e50c">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98023092"><p class="cl-9801014a"><span class="cl-9800e50c">virginica</span></p></td><td class="cl-9802307e"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230b0"><p class="cl-9801017c"><span class="cl-9800e50c">6.3</span></p></td><td class="cl-980230c4"><p class="cl-9801017c"><span class="cl-9800e50c">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98023092"><p class="cl-9801014a"><span class="cl-9800e50c">virginica</span></p></td><td class="cl-9802307e"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230b0"><p class="cl-9801017c"><span class="cl-9800e50c">5.8</span></p></td><td class="cl-980230c4"><p class="cl-9801017c"><span class="cl-9800e50c">5.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98023092"><p class="cl-9801014a"><span class="cl-9800e50c">virginica</span></p></td><td class="cl-9802307e"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230b0"><p class="cl-9801017c"><span class="cl-9800e50c">7.1</span></p></td><td class="cl-980230c4"><p class="cl-9801017c"><span class="cl-9800e50c">5.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98023092"><p class="cl-9801014a"><span class="cl-9800e50c">virginica</span></p></td><td class="cl-9802307e"><p class="cl-9801014a"><span class="cl-9800e4f8"></span></p></td><td class="cl-980230b0"><p class="cl-9801017c"><span class="cl-9800e50c">6.3</span></p></td><td class="cl-980230c4"><p class="cl-9801017c"><span class="cl-9800e50c">5.6</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+iris[c(1:3, 51:53, 101:104),] %&gt;%
+  flextable(col_keys =
+              c("Species", "col_1",
+               "Sepal.Length",
+               "Petal.Length")) %&gt;%
+  theme_vanilla() %&gt;%
+  autofit() %&gt;%
+  empty_blanks() %&gt;%
+* set_header_labels(
+*   Sepal.Length = "Sepal length",
+*   Sepal.Width = "Sepal width",
+*   Petal.Length = "Petal length",
+*   Petal.Width = "Petal width" )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<div class="tabwid"><style>.cl-982bd6fe{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-982bd73a{font-family:'Arial';font-size:10px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-982bd74e{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-982bef86{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-982befa4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-982c3a4a{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3a72{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3a86{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3a90{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3a9a{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3aa4{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3aae{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3ab8{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3ac2{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3acc{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3ad6{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3ae0{width:21px;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3aea{width:87px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3aeb{width:68px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-982c3af4{width:90px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(51, 51, 51, 1.00);border-top: 1.00px solid rgba(51, 51, 51, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-982c3aeb"><p class="cl-982bef86"><span class="cl-982bd6fe">Species</span></p></td><td class="cl-982c3ae0"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3af4"><p class="cl-982befa4"><span class="cl-982bd6fe">Sepal length</span></p></td><td class="cl-982c3aea"><p class="cl-982befa4"><span class="cl-982bd6fe">Petal length</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-982c3a90"><p class="cl-982bef86"><span class="cl-982bd74e">setosa</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3a86"><p class="cl-982befa4"><span class="cl-982bd74e">5.1</span></p></td><td class="cl-982c3a72"><p class="cl-982befa4"><span class="cl-982bd74e">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3acc"><p class="cl-982bef86"><span class="cl-982bd74e">setosa</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3ac2"><p class="cl-982befa4"><span class="cl-982bd74e">4.9</span></p></td><td class="cl-982c3ad6"><p class="cl-982befa4"><span class="cl-982bd74e">1.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3acc"><p class="cl-982bef86"><span class="cl-982bd74e">setosa</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3ac2"><p class="cl-982befa4"><span class="cl-982bd74e">4.7</span></p></td><td class="cl-982c3ad6"><p class="cl-982befa4"><span class="cl-982bd74e">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3acc"><p class="cl-982bef86"><span class="cl-982bd74e">versicolor</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3ac2"><p class="cl-982befa4"><span class="cl-982bd74e">7.0</span></p></td><td class="cl-982c3ad6"><p class="cl-982befa4"><span class="cl-982bd74e">4.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3acc"><p class="cl-982bef86"><span class="cl-982bd74e">versicolor</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3ac2"><p class="cl-982befa4"><span class="cl-982bd74e">6.4</span></p></td><td class="cl-982c3ad6"><p class="cl-982befa4"><span class="cl-982bd74e">4.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3acc"><p class="cl-982bef86"><span class="cl-982bd74e">versicolor</span></p></td><td class="cl-982c3a4a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3ac2"><p class="cl-982befa4"><span class="cl-982bd74e">6.9</span></p></td><td class="cl-982c3ad6"><p class="cl-982befa4"><span class="cl-982bd74e">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3aa4"><p class="cl-982bef86"><span class="cl-982bd74e">virginica</span></p></td><td class="cl-982c3a9a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3aae"><p class="cl-982befa4"><span class="cl-982bd74e">6.3</span></p></td><td class="cl-982c3ab8"><p class="cl-982befa4"><span class="cl-982bd74e">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3aa4"><p class="cl-982bef86"><span class="cl-982bd74e">virginica</span></p></td><td class="cl-982c3a9a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3aae"><p class="cl-982befa4"><span class="cl-982bd74e">5.8</span></p></td><td class="cl-982c3ab8"><p class="cl-982befa4"><span class="cl-982bd74e">5.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3aa4"><p class="cl-982bef86"><span class="cl-982bd74e">virginica</span></p></td><td class="cl-982c3a9a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3aae"><p class="cl-982befa4"><span class="cl-982bd74e">7.1</span></p></td><td class="cl-982c3ab8"><p class="cl-982befa4"><span class="cl-982bd74e">5.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-982c3aa4"><p class="cl-982bef86"><span class="cl-982bd74e">virginica</span></p></td><td class="cl-982c3a9a"><p class="cl-982bef86"><span class="cl-982bd73a"></span></p></td><td class="cl-982c3aae"><p class="cl-982befa4"><span class="cl-982bd74e">6.3</span></p></td><td class="cl-982c3ab8"><p class="cl-982befa4"><span class="cl-982bd74e">5.6</span></p></td></tr></tbody></table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

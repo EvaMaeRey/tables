@@ -1,0 +1,91 @@
+---
+title: "gt wide"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = TRUE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+library(gt)
+gapminder::gapminder %>% 
+  filter(country %in% 
+           c("Australia", "New Zealand", 
+             "Canada", "United States", "Mexico"),
+         year > 1990) %>% 
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %>% 
+  mutate(gdp_billion = round(gdp_billion,1)) %>% 
+  select(1:3, gdp_billion) %>% 
+  pivot_wider(values_from = gdp_billion,names_from = year) %>% 
+  select(continent, everything()) %>% 
+  arrange(continent) %>% 
+  group_by(continent) %>% 
+  gt() %>% 
+  gt::grand_summary_rows(
+    columns = vars(`1992`, `1997`, `2002`, `2007`),
+    fns = list(
+      `grand total` = ~sum(.),
+      mean = ~mean(.)),
+    formatter = fmt_number,
+    use_seps = FALSE
+  ) %>% 
+  summary_rows(
+    groups = TRUE,
+    columns = vars(`1992`, `1997`, `2002`, `2007`),
+    fns = list(`continent total` = "sum"),
+    formatter = fmt_number,
+    decimals = 0,
+    use_seps = TRUE
+  ) %>% 
+  tab_header(title = "A countries table")
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+

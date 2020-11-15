@@ -10,10 +10,15 @@ arranged_table %>%
   bg(i = ~ country == "Total", 
      bg = "steelblue3") %>% 
   bg(i = ~ country == "Grand Total", 
-     bg = "steelblue4") %>% 
+     bg = "steelblue3") %>% 
   color (i = ~ country == "Grand Total", 
      color = "grey90") %>% 
   bg(j = "continent", bg = "steelblue3") %>% 
   bold(j = "Total", part = "all") %>% 
   bold(i = ~ str_detect(country, "Total")) %>% 
-  font(fontname = "Times")
+  font(fontname = "Times") %>% 
+  flextable::set_caption("Very good") %>% 
+  flextable::add_header(continent = "This is my title") %>% 
+  flextable::add_footer(country = "A footnote goes here") %>% 
+  merge_h()
+  

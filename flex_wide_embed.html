@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>flex wide</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+*gapminder::gapminder
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 1,704 x 6
+   country     continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Afghanistan Asia       1952    28.8  8425333      779.
+ 2 Afghanistan Asia       1957    30.3  9240934      821.
+ 3 Afghanistan Asia       1962    32.0 10267083      853.
+ 4 Afghanistan Asia       1967    34.0 11537966      836.
+ 5 Afghanistan Asia       1972    36.1 13079460      740.
+ 6 Afghanistan Asia       1977    38.4 14880372      786.
+ 7 Afghanistan Asia       1982    39.9 12881816      978.
+ 8 Afghanistan Asia       1987    40.8 13867957      852.
+ 9 Afghanistan Asia       1992    41.7 16317921      649.
+10 Afghanistan Asia       1997    41.8 22227415      635.
+# … with 1,694 more rows
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+* filter(country %in%
+*          c("Australia", "New Zealand",
+*            "Canada", "United States", "Mexico"),
+*        year &gt; 1990)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 6
+   country       continent  year lifeExp       pop gdpPercap
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.
+ 2 Australia     Oceania    1997    78.8  18565243    26998.
+ 3 Australia     Oceania    2002    80.4  19546792    30688.
+ 4 Australia     Oceania    2007    81.2  20434176    34435.
+ 5 Canada        Americas   1992    78.0  28523502    26343.
+ 6 Canada        Americas   1997    78.6  30305843    28955.
+ 7 Canada        Americas   2002    79.8  31902268    33329.
+ 8 Canada        Americas   2007    80.7  33390141    36319.
+ 9 Mexico        Americas   1992    71.5  88111030     9472.
+10 Mexico        Americas   1997    73.7  95895146     9767.
+11 Mexico        Americas   2002    74.9 102479927    10742.
+12 Mexico        Americas   2007    76.2 108700891    11978.
+13 New Zealand   Oceania    1992    76.3   3437674    18363.
+14 New Zealand   Oceania    1997    77.6   3676187    21050.
+15 New Zealand   Oceania    2002    79.1   3908037    23190.
+16 New Zealand   Oceania    2007    80.2   4115771    25185.
+17 United States Americas   1992    76.1 256894189    32004.
+18 United States Americas   1997    76.8 272911760    35767.
+19 United States Americas   2002    77.3 287675526    39097.
+20 United States Americas   2007    78.2 301139947    42952.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+* mutate(gdp_billion = pop * gdpPercap/1000000000)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 7
+   country       continent  year lifeExp       pop gdpPercap gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.       410. 
+ 2 Australia     Oceania    1997    78.8  18565243    26998.       501. 
+ 3 Australia     Oceania    2002    80.4  19546792    30688.       600. 
+ 4 Australia     Oceania    2007    81.2  20434176    34435.       704. 
+ 5 Canada        Americas   1992    78.0  28523502    26343.       751. 
+ 6 Canada        Americas   1997    78.6  30305843    28955.       878. 
+ 7 Canada        Americas   2002    79.8  31902268    33329.      1063. 
+ 8 Canada        Americas   2007    80.7  33390141    36319.      1213. 
+ 9 Mexico        Americas   1992    71.5  88111030     9472.       835. 
+10 Mexico        Americas   1997    73.7  95895146     9767.       937. 
+11 Mexico        Americas   2002    74.9 102479927    10742.      1101. 
+12 Mexico        Americas   2007    76.2 108700891    11978.      1302. 
+13 New Zealand   Oceania    1992    76.3   3437674    18363.        63.1
+14 New Zealand   Oceania    1997    77.6   3676187    21050.        77.4
+15 New Zealand   Oceania    2002    79.1   3908037    23190.        90.6
+16 New Zealand   Oceania    2007    80.2   4115771    25185.       104. 
+17 United States Americas   1992    76.1 256894189    32004.      8222. 
+18 United States Americas   1997    76.8 272911760    35767.      9761. 
+19 United States Americas   2002    77.3 287675526    39097.     11247. 
+20 United States Americas   2007    78.2 301139947    42952.     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+* mutate(gdp_billion = round(gdp_billion,1))
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 7
+   country       continent  year lifeExp       pop gdpPercap gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.       410. 
+ 2 Australia     Oceania    1997    78.8  18565243    26998.       501. 
+ 3 Australia     Oceania    2002    80.4  19546792    30688.       600. 
+ 4 Australia     Oceania    2007    81.2  20434176    34435.       704. 
+ 5 Canada        Americas   1992    78.0  28523502    26343.       751. 
+ 6 Canada        Americas   1997    78.6  30305843    28955.       878. 
+ 7 Canada        Americas   2002    79.8  31902268    33329.      1063. 
+ 8 Canada        Americas   2007    80.7  33390141    36319.      1213. 
+ 9 Mexico        Americas   1992    71.5  88111030     9472.       835. 
+10 Mexico        Americas   1997    73.7  95895146     9767.       937. 
+11 Mexico        Americas   2002    74.9 102479927    10742.      1101. 
+12 Mexico        Americas   2007    76.2 108700891    11978.      1302  
+13 New Zealand   Oceania    1992    76.3   3437674    18363.        63.1
+14 New Zealand   Oceania    1997    77.6   3676187    21050.        77.4
+15 New Zealand   Oceania    2002    79.1   3908037    23190.        90.6
+16 New Zealand   Oceania    2007    80.2   4115771    25185.       104. 
+17 United States Americas   1992    76.1 256894189    32004.      8222. 
+18 United States Americas   1997    76.8 272911760    35767.      9761. 
+19 United States Americas   2002    77.3 287675526    39097.     11247. 
+20 United States Americas   2007    78.2 301139947    42952.     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+* select(1:3, gdp_billion)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 4
+   country       continent  year gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992       410. 
+ 2 Australia     Oceania    1997       501. 
+ 3 Australia     Oceania    2002       600. 
+ 4 Australia     Oceania    2007       704. 
+ 5 Canada        Americas   1992       751. 
+ 6 Canada        Americas   1997       878. 
+ 7 Canada        Americas   2002      1063. 
+ 8 Canada        Americas   2007      1213. 
+ 9 Mexico        Americas   1992       835. 
+10 Mexico        Americas   1997       937. 
+11 Mexico        Americas   2002      1101. 
+12 Mexico        Americas   2007      1302  
+13 New Zealand   Oceania    1992        63.1
+14 New Zealand   Oceania    1997        77.4
+15 New Zealand   Oceania    2002        90.6
+16 New Zealand   Oceania    2007       104. 
+17 United States Americas   1992      8222. 
+18 United States Americas   1997      9761. 
+19 United States Americas   2002     11247. 
+20 United States Americas   2007     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+* pivot_wider(values_from = gdp_billion,names_from = year)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  country       continent `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;         &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Australia     Oceania    410.   501.    600.    704.
+2 Canada        Americas   751.   878.   1063.   1213.
+3 Mexico        Americas   835.   937.   1101.   1302 
+4 New Zealand   Oceania     63.1   77.4    90.6   104.
+5 United States Americas  8222.  9761.  11247.  12934.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+* select(continent, everything())
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  continent country       `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Oceania   Australia      410.   501.    600.    704.
+2 Americas  Canada         751.   878.   1063.   1213.
+3 Americas  Mexico         835.   937.   1101.   1302 
+4 Oceania   New Zealand     63.1   77.4    90.6   104.
+5 Americas  United States 8222.  9761.  11247.  12934.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+* arrange(continent)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  continent country       `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Americas  Canada         751.   878.   1063.   1213.
+2 Americas  Mexico         835.   937.   1101.   1302 
+3 Americas  United States 8222.  9761.  11247.  12934.
+4 Oceania   Australia      410.   501.    600.    704.
+5 Oceania   New Zealand     63.1   77.4    90.6   104.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+* mutate(Total = `1992` + `1997` + `2002` + `2007`)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 7
+  continent country       `1992` `1997`  `2002` `2007`  Total
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 Americas  Canada         751.   878.   1063.   1213.  3905.
+2 Americas  Mexico         835.   937.   1101.   1302   4174.
+3 Americas  United States 8222.  9761.  11247.  12934. 42165.
+4 Oceania   Australia      410.   501.    600.    704.  2214.
+5 Oceania   New Zealand     63.1   77.4    90.6   104.   335.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+* mutate(is_sub = F)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 8
+  continent country       `1992` `1997`  `2002` `2007`  Total is_sub
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt; 
+1 Americas  Canada         751.   878.   1063.   1213.  3905. FALSE 
+2 Americas  Mexico         835.   937.   1101.   1302   4174. FALSE 
+3 Americas  United States 8222.  9761.  11247.  12934. 42165. FALSE 
+4 Oceania   Australia      410.   501.    600.    704.  2214. FALSE 
+5 Oceania   New Zealand     63.1   77.4    90.6   104.   335. FALSE 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+*prep
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+*prep
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 8
+  continent country       `1992` `1997`  `2002` `2007`  Total is_sub
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt; 
+1 Americas  Canada         751.   878.   1063.   1213.  3905. FALSE 
+2 Americas  Mexico         835.   937.   1101.   1302   4174. FALSE 
+3 Americas  United States 8222.  9761.  11247.  12934. 42165. FALSE 
+4 Oceania   Australia      410.   501.    600.    704.  2214. FALSE 
+5 Oceania   New Zealand     63.1   77.4    90.6   104.   335. FALSE 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+* group_by(continent)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 8
+# Groups:   continent [2]
+  continent country       `1992` `1997`  `2002` `2007`  Total is_sub
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt; 
+1 Americas  Canada         751.   878.   1063.   1213.  3905. FALSE 
+2 Americas  Mexico         835.   937.   1101.   1302   4174. FALSE 
+3 Americas  United States 8222.  9761.  11247.  12934. 42165. FALSE 
+4 Oceania   Australia      410.   501.    600.    704.  2214. FALSE 
+5 Oceania   New Zealand     63.1   77.4    90.6   104.   335. FALSE 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+* summarise_at(vars(`1992`:Total), sum, na.rm = TRUE)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 2 x 6
+  continent `1992` `1997` `2002` `2007`  Total
+  &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 Americas   9808. 11576. 13412. 15449. 50244.
+2 Oceania     473.   579.   690.   807.  2549 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+* mutate(country = "Total")
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 2 x 7
+  continent `1992` `1997` `2002` `2007`  Total country
+  &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  
+1 Americas   9808. 11576. 13412. 15449. 50244. Total  
+2 Oceania     473.   579.   690.   807.  2549  Total  
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+* mutate(is_sub = T)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 2 x 8
+  continent `1992` `1997` `2002` `2007`  Total country is_sub
+  &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;lgl&gt; 
+1 Americas   9808. 11576. 13412. 15449. 50244. Total   TRUE  
+2 Oceania     473.   579.   690.   807.  2549  Total   TRUE  
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+* bind_rows(prep, .)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 7 x 8
+  continent country       `1992`  `1997`  `2002` `2007`  Total is_sub
+  &lt;fct&gt;     &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt; 
+1 Americas  Canada         751.    878.   1063.   1213.  3905. FALSE 
+2 Americas  Mexico         835.    937.   1101.   1302   4174. FALSE 
+3 Americas  United States 8222.   9761.  11247.  12934. 42165. FALSE 
+4 Oceania   Australia      410.    501.    600.    704.  2214. FALSE 
+5 Oceania   New Zealand     63.1    77.4    90.6   104.   335. FALSE 
+6 Americas  Total         9808.  11576.  13412.  15449. 50244. TRUE  
+7 Oceania   Total          473.    579.    690.    807.  2549  TRUE  
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+  bind_rows(prep, .) %&gt;%
+* mutate(is_grand = F)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 7 x 9
+  continent country       `1992`  `1997`  `2002` `2007`  Total is_sub is_grand
+  &lt;fct&gt;     &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;   
+1 Americas  Canada         751.    878.   1063.   1213.  3905. FALSE  FALSE   
+2 Americas  Mexico         835.    937.   1101.   1302   4174. FALSE  FALSE   
+3 Americas  United States 8222.   9761.  11247.  12934. 42165. FALSE  FALSE   
+4 Oceania   Australia      410.    501.    600.    704.  2214. FALSE  FALSE   
+5 Oceania   New Zealand     63.1    77.4    90.6   104.   335. FALSE  FALSE   
+6 Americas  Total         9808.  11576.  13412.  15449. 50244. TRUE   FALSE   
+7 Oceania   Total          473.    579.    690.    807.  2549  TRUE   FALSE   
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+  bind_rows(prep, .) %&gt;%
+  mutate(is_grand = F) %&gt;%
+* bind_rows(prep %&gt;%
+*             summarise_at(vars(`1992`:Total),
+*                          sum, na.rm = TRUE) %&gt;%
+*             mutate(country = "Grand Total") %&gt;%
+*             mutate(is_sub = F) %&gt;%
+*             mutate(is_grand = T))
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 8 x 9
+  continent country        `1992`  `1997`  `2002` `2007`  Total is_sub is_grand
+  &lt;fct&gt;     &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;   
+1 Americas  Canada          751.    878.   1063.   1213.  3905. FALSE  FALSE   
+2 Americas  Mexico          835.    937.   1101.   1302   4174. FALSE  FALSE   
+3 Americas  United States  8222.   9761.  11247.  12934. 42165. FALSE  FALSE   
+4 Oceania   Australia       410.    501.    600.    704.  2214. FALSE  FALSE   
+5 Oceania   New Zealand      63.1    77.4    90.6   104.   335. FALSE  FALSE   
+6 Americas  Total          9808.  11576.  13412.  15449. 50244. TRUE   FALSE   
+7 Oceania   Total           473.    579.    690.    807.  2549  TRUE   FALSE   
+8 &lt;NA&gt;      Grand Total   10280.  12154.  14102.  16257. 52793. FALSE  TRUE    
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+  bind_rows(prep, .) %&gt;%
+  mutate(is_grand = F) %&gt;%
+  bind_rows(prep %&gt;%
+              summarise_at(vars(`1992`:Total),
+                           sum, na.rm = TRUE) %&gt;%
+              mutate(country = "Grand Total") %&gt;%
+              mutate(is_sub = F) %&gt;%
+              mutate(is_grand = T)) %&gt;%
+* arrange(is_grand, continent, is_sub)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 8 x 9
+  continent country        `1992`  `1997`  `2002` `2007`  Total is_sub is_grand
+  &lt;fct&gt;     &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;   
+1 Americas  Canada          751.    878.   1063.   1213.  3905. FALSE  FALSE   
+2 Americas  Mexico          835.    937.   1101.   1302   4174. FALSE  FALSE   
+3 Americas  United States  8222.   9761.  11247.  12934. 42165. FALSE  FALSE   
+4 Americas  Total          9808.  11576.  13412.  15449. 50244. TRUE   FALSE   
+5 Oceania   Australia       410.    501.    600.    704.  2214. FALSE  FALSE   
+6 Oceania   New Zealand      63.1    77.4    90.6   104.   335. FALSE  FALSE   
+7 Oceania   Total           473.    579.    690.    807.  2549  TRUE   FALSE   
+8 &lt;NA&gt;      Grand Total   10280.  12154.  14102.  16257. 52793. FALSE  TRUE    
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+  bind_rows(prep, .) %&gt;%
+  mutate(is_grand = F) %&gt;%
+  bind_rows(prep %&gt;%
+              summarise_at(vars(`1992`:Total),
+                           sum, na.rm = TRUE) %&gt;%
+              mutate(country = "Grand Total") %&gt;%
+              mutate(is_sub = F) %&gt;%
+              mutate(is_grand = T)) %&gt;%
+  arrange(is_grand, continent, is_sub) -&gt;
+*arranged_table
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %&gt;%
+  mutate(is_sub = F) -&gt;
+prep
+
+prep %&gt;%
+  group_by(continent) %&gt;%
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %&gt;%
+  mutate(country = "Total") %&gt;%
+  mutate(is_sub = T) %&gt;%
+  bind_rows(prep, .) %&gt;%
+  mutate(is_grand = F) %&gt;%
+  bind_rows(prep %&gt;%
+              summarise_at(vars(`1992`:Total),
+                           sum, na.rm = TRUE) %&gt;%
+              mutate(country = "Grand Total") %&gt;%
+              mutate(is_sub = F) %&gt;%
+              mutate(is_grand = T)) %&gt;%
+  arrange(is_grand, continent, is_sub) -&gt;
+arranged_table
+
+*arranged_table
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 8 x 9
+  continent country        `1992`  `1997`  `2002` `2007`  Total is_sub is_grand
+  &lt;fct&gt;     &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;   
+1 Americas  Canada          751.    878.   1063.   1213.  3905. FALSE  FALSE   
+2 Americas  Mexico          835.    937.   1101.   1302   4174. FALSE  FALSE   
+3 Americas  United States  8222.   9761.  11247.  12934. 42165. FALSE  FALSE   
+4 Americas  Total          9808.  11576.  13412.  15449. 50244. TRUE   FALSE   
+5 Oceania   Australia       410.    501.    600.    704.  2214. FALSE  FALSE   
+6 Oceania   New Zealand      63.1    77.4    90.6   104.   335. FALSE  FALSE   
+7 Oceania   Total           473.    579.    690.    807.  2549  TRUE   FALSE   
+8 &lt;NA&gt;      Grand Total   10280.  12154.  14102.  16257. 52793. FALSE  TRUE    
+```
+]
+
+&lt;style&gt;
+.panel1-the_chunk-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

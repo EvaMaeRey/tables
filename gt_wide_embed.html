@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>gt wide</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+*library(gt)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+*gapminder::gapminder
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 1,704 x 6
+   country     continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Afghanistan Asia       1952    28.8  8425333      779.
+ 2 Afghanistan Asia       1957    30.3  9240934      821.
+ 3 Afghanistan Asia       1962    32.0 10267083      853.
+ 4 Afghanistan Asia       1967    34.0 11537966      836.
+ 5 Afghanistan Asia       1972    36.1 13079460      740.
+ 6 Afghanistan Asia       1977    38.4 14880372      786.
+ 7 Afghanistan Asia       1982    39.9 12881816      978.
+ 8 Afghanistan Asia       1987    40.8 13867957      852.
+ 9 Afghanistan Asia       1992    41.7 16317921      649.
+10 Afghanistan Asia       1997    41.8 22227415      635.
+# … with 1,694 more rows
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+* filter(country %in%
+*          c("Australia", "New Zealand",
+*            "Canada", "United States", "Mexico"),
+*        year &gt; 1990)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 6
+   country       continent  year lifeExp       pop gdpPercap
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.
+ 2 Australia     Oceania    1997    78.8  18565243    26998.
+ 3 Australia     Oceania    2002    80.4  19546792    30688.
+ 4 Australia     Oceania    2007    81.2  20434176    34435.
+ 5 Canada        Americas   1992    78.0  28523502    26343.
+ 6 Canada        Americas   1997    78.6  30305843    28955.
+ 7 Canada        Americas   2002    79.8  31902268    33329.
+ 8 Canada        Americas   2007    80.7  33390141    36319.
+ 9 Mexico        Americas   1992    71.5  88111030     9472.
+10 Mexico        Americas   1997    73.7  95895146     9767.
+11 Mexico        Americas   2002    74.9 102479927    10742.
+12 Mexico        Americas   2007    76.2 108700891    11978.
+13 New Zealand   Oceania    1992    76.3   3437674    18363.
+14 New Zealand   Oceania    1997    77.6   3676187    21050.
+15 New Zealand   Oceania    2002    79.1   3908037    23190.
+16 New Zealand   Oceania    2007    80.2   4115771    25185.
+17 United States Americas   1992    76.1 256894189    32004.
+18 United States Americas   1997    76.8 272911760    35767.
+19 United States Americas   2002    77.3 287675526    39097.
+20 United States Americas   2007    78.2 301139947    42952.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+* mutate(gdp_billion = pop * gdpPercap/1000000000)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 7
+   country       continent  year lifeExp       pop gdpPercap gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.       410. 
+ 2 Australia     Oceania    1997    78.8  18565243    26998.       501. 
+ 3 Australia     Oceania    2002    80.4  19546792    30688.       600. 
+ 4 Australia     Oceania    2007    81.2  20434176    34435.       704. 
+ 5 Canada        Americas   1992    78.0  28523502    26343.       751. 
+ 6 Canada        Americas   1997    78.6  30305843    28955.       878. 
+ 7 Canada        Americas   2002    79.8  31902268    33329.      1063. 
+ 8 Canada        Americas   2007    80.7  33390141    36319.      1213. 
+ 9 Mexico        Americas   1992    71.5  88111030     9472.       835. 
+10 Mexico        Americas   1997    73.7  95895146     9767.       937. 
+11 Mexico        Americas   2002    74.9 102479927    10742.      1101. 
+12 Mexico        Americas   2007    76.2 108700891    11978.      1302. 
+13 New Zealand   Oceania    1992    76.3   3437674    18363.        63.1
+14 New Zealand   Oceania    1997    77.6   3676187    21050.        77.4
+15 New Zealand   Oceania    2002    79.1   3908037    23190.        90.6
+16 New Zealand   Oceania    2007    80.2   4115771    25185.       104. 
+17 United States Americas   1992    76.1 256894189    32004.      8222. 
+18 United States Americas   1997    76.8 272911760    35767.      9761. 
+19 United States Americas   2002    77.3 287675526    39097.     11247. 
+20 United States Americas   2007    78.2 301139947    42952.     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+* mutate(gdp_billion = round(gdp_billion,1))
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 7
+   country       continent  year lifeExp       pop gdpPercap gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992    77.6  17481977    23425.       410. 
+ 2 Australia     Oceania    1997    78.8  18565243    26998.       501. 
+ 3 Australia     Oceania    2002    80.4  19546792    30688.       600. 
+ 4 Australia     Oceania    2007    81.2  20434176    34435.       704. 
+ 5 Canada        Americas   1992    78.0  28523502    26343.       751. 
+ 6 Canada        Americas   1997    78.6  30305843    28955.       878. 
+ 7 Canada        Americas   2002    79.8  31902268    33329.      1063. 
+ 8 Canada        Americas   2007    80.7  33390141    36319.      1213. 
+ 9 Mexico        Americas   1992    71.5  88111030     9472.       835. 
+10 Mexico        Americas   1997    73.7  95895146     9767.       937. 
+11 Mexico        Americas   2002    74.9 102479927    10742.      1101. 
+12 Mexico        Americas   2007    76.2 108700891    11978.      1302  
+13 New Zealand   Oceania    1992    76.3   3437674    18363.        63.1
+14 New Zealand   Oceania    1997    77.6   3676187    21050.        77.4
+15 New Zealand   Oceania    2002    79.1   3908037    23190.        90.6
+16 New Zealand   Oceania    2007    80.2   4115771    25185.       104. 
+17 United States Americas   1992    76.1 256894189    32004.      8222. 
+18 United States Americas   1997    76.8 272911760    35767.      9761. 
+19 United States Americas   2002    77.3 287675526    39097.     11247. 
+20 United States Americas   2007    78.2 301139947    42952.     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+* select(1:3, gdp_billion)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 20 x 4
+   country       continent  year gdp_billion
+   &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
+ 1 Australia     Oceania    1992       410. 
+ 2 Australia     Oceania    1997       501. 
+ 3 Australia     Oceania    2002       600. 
+ 4 Australia     Oceania    2007       704. 
+ 5 Canada        Americas   1992       751. 
+ 6 Canada        Americas   1997       878. 
+ 7 Canada        Americas   2002      1063. 
+ 8 Canada        Americas   2007      1213. 
+ 9 Mexico        Americas   1992       835. 
+10 Mexico        Americas   1997       937. 
+11 Mexico        Americas   2002      1101. 
+12 Mexico        Americas   2007      1302  
+13 New Zealand   Oceania    1992        63.1
+14 New Zealand   Oceania    1997        77.4
+15 New Zealand   Oceania    2002        90.6
+16 New Zealand   Oceania    2007       104. 
+17 United States Americas   1992      8222. 
+18 United States Americas   1997      9761. 
+19 United States Americas   2002     11247. 
+20 United States Americas   2007     12934. 
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+* pivot_wider(values_from = gdp_billion,names_from = year)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  country       continent `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;         &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Australia     Oceania    410.   501.    600.    704.
+2 Canada        Americas   751.   878.   1063.   1213.
+3 Mexico        Americas   835.   937.   1101.   1302 
+4 New Zealand   Oceania     63.1   77.4    90.6   104.
+5 United States Americas  8222.  9761.  11247.  12934.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+* select(continent, everything())
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  continent country       `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Oceania   Australia      410.   501.    600.    704.
+2 Americas  Canada         751.   878.   1063.   1213.
+3 Americas  Mexico         835.   937.   1101.   1302 
+4 Oceania   New Zealand     63.1   77.4    90.6   104.
+5 Americas  United States 8222.  9761.  11247.  12934.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+* arrange(continent)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+  continent country       `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Americas  Canada         751.   878.   1063.   1213.
+2 Americas  Mexico         835.   937.   1101.   1302 
+3 Americas  United States 8222.  9761.  11247.  12934.
+4 Oceania   Australia      410.   501.    600.    704.
+5 Oceania   New Zealand     63.1   77.4    90.6   104.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+* group_by(continent)
+```
+]
+ 
+.panel2-the_chunk-auto[
+
+```
+# A tibble: 5 x 6
+# Groups:   continent [2]
+  continent country       `1992` `1997`  `2002` `2007`
+  &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 Americas  Canada         751.   878.   1063.   1213.
+2 Americas  Mexico         835.   937.   1101.   1302 
+3 Americas  United States 8222.  9761.  11247.  12934.
+4 Oceania   Australia      410.   501.    600.    704.
+5 Oceania   New Zealand     63.1   77.4    90.6   104.
+```
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  group_by(continent) %&gt;%
+* gt()
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#hcdpxxxfwg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hcdpxxxfwg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hcdpxxxfwg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hcdpxxxfwg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hcdpxxxfwg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hcdpxxxfwg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hcdpxxxfwg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hcdpxxxfwg .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hcdpxxxfwg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hcdpxxxfwg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hcdpxxxfwg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hcdpxxxfwg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hcdpxxxfwg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#hcdpxxxfwg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hcdpxxxfwg .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hcdpxxxfwg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hcdpxxxfwg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#hcdpxxxfwg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hcdpxxxfwg .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#hcdpxxxfwg .gt_left {
+  text-align: left;
+}
+
+#hcdpxxxfwg .gt_center {
+  text-align: center;
+}
+
+#hcdpxxxfwg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hcdpxxxfwg .gt_font_normal {
+  font-weight: normal;
+}
+
+#hcdpxxxfwg .gt_font_bold {
+  font-weight: bold;
+}
+
+#hcdpxxxfwg .gt_font_italic {
+  font-style: italic;
+}
+
+#hcdpxxxfwg .gt_super {
+  font-size: 65%;
+}
+
+#hcdpxxxfwg .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="hcdpxxxfwg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1992</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1997</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2002</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2007</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Americas</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Canada</td>
+      <td class="gt_row gt_right">751.4</td>
+      <td class="gt_row gt_right">877.5</td>
+      <td class="gt_row gt_right">1063.3</td>
+      <td class="gt_row gt_right">1212.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Mexico</td>
+      <td class="gt_row gt_right">834.6</td>
+      <td class="gt_row gt_right">936.6</td>
+      <td class="gt_row gt_right">1100.9</td>
+      <td class="gt_row gt_right">1302.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">United States</td>
+      <td class="gt_row gt_right">8221.6</td>
+      <td class="gt_row gt_right">9761.4</td>
+      <td class="gt_row gt_right">11247.3</td>
+      <td class="gt_row gt_right">12934.5</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Oceania</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Australia</td>
+      <td class="gt_row gt_right">409.5</td>
+      <td class="gt_row gt_right">501.2</td>
+      <td class="gt_row gt_right">599.8</td>
+      <td class="gt_row gt_right">703.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">New Zealand</td>
+      <td class="gt_row gt_right">63.1</td>
+      <td class="gt_row gt_right">77.4</td>
+      <td class="gt_row gt_right">90.6</td>
+      <td class="gt_row gt_right">103.7</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  group_by(continent) %&gt;%
+  gt() %&gt;%
+* gt::grand_summary_rows(
+*   columns = vars(`1992`, `1997`, `2002`, `2007`),
+*   fns = list(
+*     `grand total` = ~sum(.),
+*     mean = ~mean(.)),
+*   formatter = fmt_number,
+*   use_seps = FALSE
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#kocbdzdafc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kocbdzdafc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kocbdzdafc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kocbdzdafc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kocbdzdafc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kocbdzdafc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kocbdzdafc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kocbdzdafc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kocbdzdafc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kocbdzdafc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kocbdzdafc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kocbdzdafc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kocbdzdafc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#kocbdzdafc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kocbdzdafc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kocbdzdafc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kocbdzdafc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kocbdzdafc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kocbdzdafc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kocbdzdafc .gt_left {
+  text-align: left;
+}
+
+#kocbdzdafc .gt_center {
+  text-align: center;
+}
+
+#kocbdzdafc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kocbdzdafc .gt_font_normal {
+  font-weight: normal;
+}
+
+#kocbdzdafc .gt_font_bold {
+  font-weight: bold;
+}
+
+#kocbdzdafc .gt_font_italic {
+  font-style: italic;
+}
+
+#kocbdzdafc .gt_super {
+  font-size: 65%;
+}
+
+#kocbdzdafc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="kocbdzdafc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1992</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1997</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2002</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2007</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Americas</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Canada</td>
+      <td class="gt_row gt_right">751.4</td>
+      <td class="gt_row gt_right">877.5</td>
+      <td class="gt_row gt_right">1063.3</td>
+      <td class="gt_row gt_right">1212.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Mexico</td>
+      <td class="gt_row gt_right">834.6</td>
+      <td class="gt_row gt_right">936.6</td>
+      <td class="gt_row gt_right">1100.9</td>
+      <td class="gt_row gt_right">1302.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">United States</td>
+      <td class="gt_row gt_right">8221.6</td>
+      <td class="gt_row gt_right">9761.4</td>
+      <td class="gt_row gt_right">11247.3</td>
+      <td class="gt_row gt_right">12934.5</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Oceania</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Australia</td>
+      <td class="gt_row gt_right">409.5</td>
+      <td class="gt_row gt_right">501.2</td>
+      <td class="gt_row gt_right">599.8</td>
+      <td class="gt_row gt_right">703.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">New Zealand</td>
+      <td class="gt_row gt_right">63.1</td>
+      <td class="gt_row gt_right">77.4</td>
+      <td class="gt_row gt_right">90.6</td>
+      <td class="gt_row gt_right">103.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">grand total</td>
+      <td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">10280.20</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">12154.10</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">14101.90</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">16256.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row">mean</td>
+      <td class="gt_row gt_center gt_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2056.04</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2430.82</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2820.38</td>
+      <td class="gt_row gt_right gt_grand_summary_row">3251.32</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  group_by(continent) %&gt;%
+  gt() %&gt;%
+  gt::grand_summary_rows(
+    columns = vars(`1992`, `1997`, `2002`, `2007`),
+    fns = list(
+      `grand total` = ~sum(.),
+      mean = ~mean(.)),
+    formatter = fmt_number,
+    use_seps = FALSE
+  ) %&gt;%
+* summary_rows(
+*   groups = TRUE,
+*   columns = vars(`1992`, `1997`, `2002`, `2007`),
+*   fns = list(`continent total` = "sum"),
+*   formatter = fmt_number,
+*   decimals = 0,
+*   use_seps = TRUE
+* )
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#xpzuubxicn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xpzuubxicn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xpzuubxicn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xpzuubxicn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xpzuubxicn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xpzuubxicn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xpzuubxicn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xpzuubxicn .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xpzuubxicn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xpzuubxicn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xpzuubxicn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xpzuubxicn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xpzuubxicn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#xpzuubxicn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpzuubxicn .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpzuubxicn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xpzuubxicn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xpzuubxicn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xpzuubxicn .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xpzuubxicn .gt_left {
+  text-align: left;
+}
+
+#xpzuubxicn .gt_center {
+  text-align: center;
+}
+
+#xpzuubxicn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xpzuubxicn .gt_font_normal {
+  font-weight: normal;
+}
+
+#xpzuubxicn .gt_font_bold {
+  font-weight: bold;
+}
+
+#xpzuubxicn .gt_font_italic {
+  font-style: italic;
+}
+
+#xpzuubxicn .gt_super {
+  font-size: 65%;
+}
+
+#xpzuubxicn .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="xpzuubxicn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1992</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1997</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2002</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2007</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Americas</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Canada</td>
+      <td class="gt_row gt_right">751.4</td>
+      <td class="gt_row gt_right">877.5</td>
+      <td class="gt_row gt_right">1063.3</td>
+      <td class="gt_row gt_right">1212.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Mexico</td>
+      <td class="gt_row gt_right">834.6</td>
+      <td class="gt_row gt_right">936.6</td>
+      <td class="gt_row gt_right">1100.9</td>
+      <td class="gt_row gt_right">1302.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">United States</td>
+      <td class="gt_row gt_right">8221.6</td>
+      <td class="gt_row gt_right">9761.4</td>
+      <td class="gt_row gt_right">11247.3</td>
+      <td class="gt_row gt_right">12934.5</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">continent total</td>
+      <td class="gt_row gt_center gt_summary_row gt_first_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">9,808</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">11,576</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">13,412</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">15,449</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Oceania</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Australia</td>
+      <td class="gt_row gt_right">409.5</td>
+      <td class="gt_row gt_right">501.2</td>
+      <td class="gt_row gt_right">599.8</td>
+      <td class="gt_row gt_right">703.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">New Zealand</td>
+      <td class="gt_row gt_right">63.1</td>
+      <td class="gt_row gt_right">77.4</td>
+      <td class="gt_row gt_right">90.6</td>
+      <td class="gt_row gt_right">103.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">continent total</td>
+      <td class="gt_row gt_center gt_summary_row gt_first_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">473</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">579</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">690</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">807</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">grand total</td>
+      <td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">10280.20</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">12154.10</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">14101.90</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">16256.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row">mean</td>
+      <td class="gt_row gt_center gt_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2056.04</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2430.82</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2820.38</td>
+      <td class="gt_row gt_right gt_grand_summary_row">3251.32</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-auto[
+
+```r
+library(gt)
+gapminder::gapminder %&gt;%
+  filter(country %in%
+           c("Australia", "New Zealand",
+             "Canada", "United States", "Mexico"),
+         year &gt; 1990) %&gt;%
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %&gt;%
+  mutate(gdp_billion = round(gdp_billion,1)) %&gt;%
+  select(1:3, gdp_billion) %&gt;%
+  pivot_wider(values_from = gdp_billion,names_from = year) %&gt;%
+  select(continent, everything()) %&gt;%
+  arrange(continent) %&gt;%
+  group_by(continent) %&gt;%
+  gt() %&gt;%
+  gt::grand_summary_rows(
+    columns = vars(`1992`, `1997`, `2002`, `2007`),
+    fns = list(
+      `grand total` = ~sum(.),
+      mean = ~mean(.)),
+    formatter = fmt_number,
+    use_seps = FALSE
+  ) %&gt;%
+  summary_rows(
+    groups = TRUE,
+    columns = vars(`1992`, `1997`, `2002`, `2007`),
+    fns = list(`continent total` = "sum"),
+    formatter = fmt_number,
+    decimals = 0,
+    use_seps = TRUE
+  ) %&gt;%
+* tab_header(title = "A countries table")
+```
+]
+ 
+.panel2-the_chunk-auto[
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#jmdumivwub .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jmdumivwub .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jmdumivwub .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jmdumivwub .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jmdumivwub .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jmdumivwub .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jmdumivwub .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jmdumivwub .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jmdumivwub .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jmdumivwub .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jmdumivwub .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jmdumivwub .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jmdumivwub .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#jmdumivwub .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmdumivwub .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmdumivwub .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jmdumivwub .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#jmdumivwub .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jmdumivwub .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#jmdumivwub .gt_left {
+  text-align: left;
+}
+
+#jmdumivwub .gt_center {
+  text-align: center;
+}
+
+#jmdumivwub .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jmdumivwub .gt_font_normal {
+  font-weight: normal;
+}
+
+#jmdumivwub .gt_font_bold {
+  font-weight: bold;
+}
+
+#jmdumivwub .gt_font_italic {
+  font-style: italic;
+}
+
+#jmdumivwub .gt_super {
+  font-size: 65%;
+}
+
+#jmdumivwub .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="jmdumivwub" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="6" class="gt_heading gt_title gt_font_normal" style>A countries table</th>
+    </tr>
+    <tr>
+      <th colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1992</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">1997</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2002</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">2007</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Americas</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Canada</td>
+      <td class="gt_row gt_right">751.4</td>
+      <td class="gt_row gt_right">877.5</td>
+      <td class="gt_row gt_right">1063.3</td>
+      <td class="gt_row gt_right">1212.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Mexico</td>
+      <td class="gt_row gt_right">834.6</td>
+      <td class="gt_row gt_right">936.6</td>
+      <td class="gt_row gt_right">1100.9</td>
+      <td class="gt_row gt_right">1302.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">United States</td>
+      <td class="gt_row gt_right">8221.6</td>
+      <td class="gt_row gt_right">9761.4</td>
+      <td class="gt_row gt_right">11247.3</td>
+      <td class="gt_row gt_right">12934.5</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">continent total</td>
+      <td class="gt_row gt_center gt_summary_row gt_first_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">9,808</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">11,576</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">13,412</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">15,449</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">Oceania</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">Australia</td>
+      <td class="gt_row gt_right">409.5</td>
+      <td class="gt_row gt_right">501.2</td>
+      <td class="gt_row gt_right">599.8</td>
+      <td class="gt_row gt_right">703.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub"></td>
+      <td class="gt_row gt_center">New Zealand</td>
+      <td class="gt_row gt_right">63.1</td>
+      <td class="gt_row gt_right">77.4</td>
+      <td class="gt_row gt_right">90.6</td>
+      <td class="gt_row gt_right">103.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_summary_row gt_first_summary_row">continent total</td>
+      <td class="gt_row gt_center gt_summary_row gt_first_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">473</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">579</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">690</td>
+      <td class="gt_row gt_right gt_summary_row gt_first_summary_row">807</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row gt_first_grand_summary_row">grand total</td>
+      <td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">10280.20</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">12154.10</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">14101.90</td>
+      <td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row">16256.60</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_stub gt_right gt_grand_summary_row">mean</td>
+      <td class="gt_row gt_center gt_grand_summary_row">&mdash;</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2056.04</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2430.82</td>
+      <td class="gt_row gt_right gt_grand_summary_row">2820.38</td>
+      <td class="gt_row gt_right gt_grand_summary_row">3251.32</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

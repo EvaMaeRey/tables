@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>flex merge</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.1/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.1/shareagain.js"></script>
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_v(j = ~ letters1 + letters2 )
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-a069661a{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a0696656{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a0699db0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a0699de2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a069f788{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a069f7c4{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a069661a">letters1</span></p></td><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a069661a">letters2</span></p></td><td class="cl-a069f7c4"><p class="cl-a0699de2"><span class="cl-a069661a">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">a</span></p></td><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">d</span></p></td><td class="cl-a069f7c4"><p class="cl-a0699de2"><span class="cl-a0696656">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">b</span></p></td><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">e</span></p></td><td class="cl-a069f7c4"><p class="cl-a0699de2"><span class="cl-a0696656">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">b</span></p></td><td class="cl-a069f7c4"><p class="cl-a0699de2"><span class="cl-a0696656">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a069f788"><p class="cl-a0699db0"><span class="cl-a0696656">c</span></p></td><td class="cl-a069f7c4"><p class="cl-a0699de2"><span class="cl-a0696656">4</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_h()
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-a091f9ea{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a091fa44{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a0921ccc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a0921cfe{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a092ded2{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a092df18{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091f9ea">letters1</span></p></td><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091f9ea">letters2</span></p></td><td class="cl-a092df18"><p class="cl-a0921cfe"><span class="cl-a091f9ea">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">a</span></p></td><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">d</span></p></td><td class="cl-a092df18"><p class="cl-a0921cfe"><span class="cl-a091fa44">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">b</span></p></td><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">e</span></p></td><td class="cl-a092df18"><p class="cl-a0921cfe"><span class="cl-a091fa44">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">b</span></p></td><td class="cl-a092df18"><p class="cl-a0921cfe"><span class="cl-a091fa44">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">c</span></p></td><td class="cl-a092ded2"><p class="cl-a0921ccc"><span class="cl-a091fa44">b</span></p></td><td class="cl-a092df18"><p class="cl-a0921cfe"><span class="cl-a091fa44">4</span></p></td></tr></tbody></table></div>
+]
+
+---
+count: false
+ 
+
+.panel1-the_chunk-rotate[
+
+```r
+tibble(
+  letters1 = c("a", "b", "b", "c"),
+  letters2 = c("d", "e", "b", "b"),
+  number = 1:4) %&gt;%
+  flextable() %&gt;%
+  theme_box() %&gt;%
+* merge_h_range(i =  ~ number &lt; 3, j1 = "letters1", j2 = "letters2")
+```
+]
+ 
+.panel2-the_chunk-rotate[
+<div class="tabwid"><style>.cl-a0d09466{font-family:'Arial';font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a0d09498{font-family:'Arial';font-size:11px;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(17, 17, 17, 1.00);background-color:transparent;}.cl-a0d0afe6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a0d0b00e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2px;padding-top:2px;padding-left:5px;padding-right:5px;line-height: 1.00;background-color:transparent;}.cl-a0d117b0{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a0d117f6{width:54px;background-color:transparent;vertical-align: middle;border-bottom: 1.00px solid rgba(102, 102, 102, 1.00);border-top: 1.00px solid rgba(102, 102, 102, 1.00);border-left: 1.00px solid rgba(102, 102, 102, 1.00);border-right: 1.00px solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table style='border-collapse:collapse;'><thead><tr style="overflow-wrap:break-word;"><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09466">letters1</span></p></td><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09466">letters2</span></p></td><td class="cl-a0d117f6"><p class="cl-a0d0b00e"><span class="cl-a0d09466">number</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">a</span></p></td><td class="cl-a0d117f6"><p class="cl-a0d0b00e"><span class="cl-a0d09498">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  colspan="2"class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">b</span></p></td><td class="cl-a0d117f6"><p class="cl-a0d0b00e"><span class="cl-a0d09498">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">b</span></p></td><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">b</span></p></td><td class="cl-a0d117f6"><p class="cl-a0d0b00e"><span class="cl-a0d09498">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">c</span></p></td><td class="cl-a0d117b0"><p class="cl-a0d0afe6"><span class="cl-a0d09498">b</span></p></td><td class="cl-a0d117f6"><p class="cl-a0d0b00e"><span class="cl-a0d09498">4</span></p></td></tr></tbody></table></div>
+]
+
+&lt;style&gt;
+.panel1-the_chunk-rotate {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-the_chunk-rotate {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-the_chunk-rotate {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

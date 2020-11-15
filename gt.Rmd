@@ -11,27 +11,42 @@ library(flipbookr)
 library(tidyverse)
 ```
 
-# Using gt w/ example data
+
+---
+
+## a taste of gt {.tabset .tabset-fade .tabset-pills}
+
+
+### example prep
+
+Using the exibble data that comes with gt, but I like a more more concrete variable names so doing some prep here:
 
 ```{r gt_prep, include = F}
 library(gt)
 gt::exibble %>% 
-  rename(fruit = char) %>%
-  rename(team = fctr) %>% 
-  rename(weight = num) %>% 
-  rename(holiday = date) %>% 
-  rename(schedule = time) %>% 
-  rename(appointment = datetime) %>% 
-  rename(price = currency) %>% 
-  rename(id = row) %>% 
-  rename(club = group) ->
-example
+  rename(fruit = char,
+         team = fctr,
+         weight = num,
+         holiday = date,
+         schedule = time,
+         appointment = datetime, 
+         price = currency,
+         id = row,
+         club = group) ->
+example; example
 ```
 
 
+```{r}
+embed_flipbook("gt_prep", 
+               font_size = 75,
+               use_share_again = T,
+               use_embed_xaringan = T)
+```
+
 ---
 
-# gt functionality
+### gt overview
 
 
 ```{r gt2}
@@ -62,16 +77,22 @@ example %>%
 
 
 ```{r}
-embed_flipbook("gt2", font_size = 75)
+embed_flipbook("gt2", 
+               font_size = 75,
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
-
-# Formatted values: time
-
+## formating {.tabset .tabset-fade .tabset-pills}
 
 
 
-```{r gt_time}
+### Formatted values: time
+
+
+
+
+```{r gt_time, include=F}
 library(gt)  
 example %>%  
   .[1:5, 5] %>%  
@@ -84,19 +105,20 @@ example %>%
 ```
 
 ```{r}
-embed_flipbook("gt_time", break_type = "rotate", font_size = 90, widths = c(2,1))
+embed_flipbook("gt_time", 
+               break_type = "rotate", 
+               font_size = 90, 
+               widths = c(2,1),
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
-
----
-class: middle, inverse, center
-
-# Formatted values: date
+### Formatted values: date
 
 ---
 
 
-```{r gt_date}
+```{r gt_date, include=F}
 library(gt)  
 example %>%  
   .[1:5, 4] %>%  
@@ -114,23 +136,20 @@ embed_flipbook(chunk_name = "gt_date",
                                 "wday_day_month_year", "month_day_year", 
                                 "m_day_year", "day_m_year", "day_month_year", 
                                 "day_month", "year", "month", "day", 
-                                "year.mn.day", "y.mn.day")
-               )
+                                "year.mn.day", "y.mn.day"),
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 
 
-
----
-class: middle, inverse, center
-
-# Formatted values: currencies
+### Formatted values: currencies
 
 
 ---
 
 
-```{r gt_currency}
+```{r gt_currency, include=F}
 library(gt)  
 example %>%  
   .[1:8, 7] %>%  
@@ -151,16 +170,15 @@ embed_flipbook("gt_currency",
                  "VUV", "XPD", "XPF", "XPT", "XSU", "XUA", "YER", "ZAR", "ZMW"
                ),
                font_size = 90, 
-               widths = c(2,1)
-               )
+               widths = c(2,1),
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 
----
+## Prepping a pizza menu in four parts {.tabset .tabset-fade .tabset-pills}
 
-# Prepping a snazzy table
-
-## A pizza menu
+### part 1
 
 ```{r gt_pizza}
 library(tidyverse)
@@ -173,21 +191,27 @@ pizzaplace %>%
     type == "supreme" ~ "supreme (pizzas that try a little harder)",
     type == "veggie" ~ "chicken (pizzas without any meats whatsoever)",
   )) %>%
-  mutate(size = factor(size, levels = c("S", "M", "L", "XL", "XXL"))) %>%
+  mutate(size = factor(size, 
+                       levels = c("S", "M", "L", 
+                                  "XL", "XXL"))) %>%
   dplyr::group_by(type, size) %>%
   dplyr::summarize(
     sold = n(),
     income = sum(price)
   ) %>% 
   # table is kind of large, hard to make sense of
-  dplyr::filter(size != "S" & size != "M" & size != "XL") ->
+  dplyr::filter(size != "S" & 
+                  size != "M" & 
+                  size != "XL") ->
 pizza_prep; pizza_prep
 ```
 
 
 ```{r}
 embed_flipbook("gt_pizza",
-               font_size = 90, widths = c(2,1))
+               font_size = 90, widths = c(1,1),
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 
@@ -196,7 +220,7 @@ embed_flipbook("gt_pizza",
 ---
 
 
-# prep a pizza menu table
+### part 2
 
 ```{r gt_pizza_prep}
 pizza_prep %>% 
@@ -218,13 +242,17 @@ pizza2; pizza2
 
 
 ```{r}
-embed_flipbook("gt_pizza_prep", font_size = 90)
+embed_flipbook("gt_pizza_prep",
+               font_size = 90,
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 
 
 ---
 
+### part 3
 
 ```{r gt_pizza1}
 pizza2 %>% 
@@ -264,11 +292,14 @@ pizza3; pizza3
 ```
 
 ```{r}
-embed_flipbook("gt_pizza1", font_size = 75)
+embed_flipbook("gt_pizza1", 
+               font_size = 75,
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 
-
+### part 4
 
 ---
 
@@ -299,7 +330,10 @@ pizza_tab; pizza_tab
   
 
 ```{r}
-embed_flipbook("gt_pizza2", font_size = 75)
+embed_flipbook("gt_pizza2", 
+               font_size = 75,
+               use_share_again = T,
+               use_embed_xaringan = T)
 ```
 
 

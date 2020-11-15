@@ -6,7 +6,8 @@ example %>%
              decimals = 2) %>%
   fmt_date(columns = vars(holiday), 
            date_style = 1) %>% 
-  fmt_time(columns = vars(schedule), time_style = 1) %>%
+  fmt_time(columns = vars(schedule), 
+           time_style = 1) %>%
   fmt_datetime(columns = vars(appointment), 
                date_style = 6, 
                time_style = 4) %>%

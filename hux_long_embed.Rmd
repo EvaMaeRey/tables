@@ -1,0 +1,88 @@
+---
+title: "hux long"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = TRUE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+library(huxtable)
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  head() %>%
+  select(year, continent, everything()) %>% 
+  hux() %>% 
+  set_all_border_colors(value = "grey10") %>% 
+  set_lr_borders(value =
+                   brdr(thickness = 1,
+                        style = "dotted",
+                        color = "goldenrod")) %>% 
+  set_background_color(row = everywhere,
+                       col = everywhere,
+                       value = "grey85") %>% 
+  set_background_color(row = 1,
+                       col = everywhere,
+                       value = "steelblue") %>% 
+  set_text_color(row = -1,
+                 col = everywhere,
+                 value = "black") %>% 
+  set_text_color(row = -1,
+                 col = everywhere,
+                 value = "black") %>% 
+  merge_cells(row = 2:7, col = 1) %>% 
+  merge_cells(row = 4:5, col = 2) %>% 
+  map_text_color(by_regex("Al" = "goldenrod4", "navy")) %>% 
+  map_text_color(row = 2:7, col = 4, 
+                 by_colorspace("darkred", "red", "red2", colwise = TRUE))
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+

@@ -24,21 +24,29 @@ load("current_image.Rdata")
 ```
 
 
-```{r, echo = F, eval = FALSE , message = F, warning = F}
+```{r, echo = F, eval = TRUE , message = F, warning = F}
 xaringanExtra::use_share_again()
 ```
 
-```{r, include = F}
-readLines("hux_large.R") %>%
-  paste(collapse = "
-") %>%
-  code_parse() %>%
-  parsed_return_partial_code_sequence(break_type = "auto") ->
-the_code_seq
+
+```{r the_chunk, include = F}
+iris %>% 
+  group_by(Species) %>% 
+  select(Species, Sepal.Length, Sepal.Width, 
+             Petal.Length, Petal.Width) %>% 
+  slice(1:5) %>% 
+  as_hux() %>%
+  set_tb_padding(2) %>% 
+  set_contents(1, 2:5, c("Length", "Width", "Length", "Width")) %>% 
+  insert_row("", "Sepal", "", "Petal", "", after = 0) %>% 
+  merge_cells(1, 2:3) %>% 
+  merge_cells(1, 4:5) %>% 
+  set_align(1, everywhere, "center") %>% 
+  set_tb_padding(1, everywhere, 0) %>% 
+  set_bold(1, everywhere)
 ```
 
-
-`r chunk_reveal(code_seq = the_code_seq, chunk_name = "hux_large", break_type = "auto", ...)`
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
 
 
 

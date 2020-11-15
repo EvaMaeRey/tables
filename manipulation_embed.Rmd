@@ -1,0 +1,92 @@
+---
+title: "manipulation"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = TRUE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+
+```{r the_chunk, include = F}
+gapminder::gapminder %>% 
+  filter(country %in% 
+           c("Australia", "New Zealand", 
+             "Canada", "United States", "Mexico"),
+         year > 1990) %>% 
+  mutate(gdp_billion = pop * gdpPercap/1000000000) %>% 
+  mutate(gdp_billion = round(gdp_billion,1)) %>% 
+  select(1:3, gdp_billion) %>% 
+  pivot_wider(values_from = gdp_billion,names_from = year) %>% 
+  select(continent, everything()) %>% 
+  arrange(continent) %>% 
+  mutate(Total = `1992` + `1997` + `2002` + `2007`) %>% 
+  mutate(is_sub = F) ->
+prep
+
+prep %>% 
+  group_by(continent) %>% 
+  summarise_at(vars(`1992`:Total), sum, na.rm = TRUE) %>% 
+  mutate(country = "Total") %>% 
+  mutate(is_sub = T) %>% 
+  bind_rows(prep, .) %>% 
+  mutate(is_grand = F) %>% 
+  bind_rows(prep %>% 
+              summarise_at(vars(`1992`:Total), 
+                           sum, na.rm = TRUE) %>% 
+              mutate(country = "Grand Total") %>% 
+              mutate(is_sub = F) %>% 
+              mutate(is_grand = T)) %>% 
+  arrange(is_grand, continent, is_sub) ->
+arranged_table
+
+arranged_table
+```
+
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "auto", ...)`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+
