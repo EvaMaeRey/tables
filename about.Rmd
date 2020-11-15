@@ -15,14 +15,16 @@ library(tidyverse)
 ```
 
 
-Sometime data viz people dump on tables a little bit (I've done it), as not being able to very efficiently communicate information.  Data visualization uses all these super-speed channels: position, color, size.  But this is probably because they are not doing it right.  In fact, visuals can also be quite strong in well formatted tables; they also use encoding and meaning for visual cues. With the help of table formatting packages, we can do better at making more attractive tables that aid efficient understanding and use! Nice!  
+Sometime data viz people dump on tables a little bit (I've done it), as not being able to very efficiently communicate information.  But this is probably because they are not doing it right.  
+
+Data visualization uses all these super-speed channels: position, color, size.   In fact, visuals can also be quite strong in well formatted tables; they also use encoding and meaning for visual cues. With the help of table formatting packages, we can do better at making more attractive tables that aid efficient understanding and use! Nice!  
 
 
-Okay, but there are a lot of table formatting tools out there -- just in R.
+Okay, but there are a lot of table formatting tools out there -- just in R.  How do I know which one to use?
 
 This is the outline of an resource page on table formatting in R.  Some parts are more filled in, but a lot is missing.  
 
-I'm using flipbooks.  It's what you do if you are me.  And, because the formatting tools are so visual -- it is a fun to watch the outputs evolve and it is easy to identify parts of the pipeline that are relevant to what *you* want to get done.  I think they can help show how the different API's work in a detailed and accessible way.  Lot's of info, but presented in stacks of slides, it doesn't feel overwhelming -- I hope!  
+I'm using flipbooks.  Because the formatting tools are so visual -- it is a fun to watch the outputs evolve and it is easy to identify parts of the pipeline that are relevant to what *you* want to get done.  I think they can help show how the different API's work in a detailed and accessible way.  Lot's of info, but presented in stacks of slides, it doesn't feel overwhelming -- I hope!  
 
 I'm using a new flipbook function: embed_flipbook() and there are some wrinkles to work out.  You may even see some error messages related to this!  Work in progress.  Embedded flipbooks benefit a lot from xaringanExtra, and flipbooks benefit from {xaringan} itself! 
 
